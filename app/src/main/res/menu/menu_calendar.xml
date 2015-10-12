@@ -1,0 +1,20 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".CalendarActivity">
+
+    <item
+        android:id="@+id/go_to_current_date"
+        android:orderInCategory="50"
+        android:title="@string/jump_to_today"
+        app:showAsAction="ifRoom"
+        android:showAsAction="ifRoom"
+        android:icon="@mipmap/ic_today_black_24dp"/>
+    <item
+        android:id="@+id/action_settings"
+        android:orderInCategory="100"
+        android:title="@string/action_settings"
+        app:showAsAction="never"
+        android:showAsAction="never"/>
+
+</menu>

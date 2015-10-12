@@ -1,0 +1,531 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CalendarActivity">
+
+    <ScrollView
+        android:id="@+id/scroll_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TableLayout
+            android:id="@+id/table_layout_calendar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="36dp"
+            android:stretchColumns="*"
+            android:shrinkColumns="*"><!--android:stretchColumns="0,1,2,3,4,5,6"-->
+
+            <TableRow
+                android:id="@+id/row0"
+                android:layout_width="fill_parent"
+                android:layout_height="48dp"
+                android:gravity="center_horizontal"
+                >
+
+                <TextView
+                    android:id="@+id/sun"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:layout_weight="1"
+                    android:padding="4dp"
+                    android:text="@string/sun" />
+
+                <TextView
+                    android:id="@+id/mon"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:layout_weight="1"
+                    android:padding="4dp"
+                    android:text="@string/mon" />
+
+                <TextView
+                    android:id="@+id/tue"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:layout_weight="1"
+                    android:padding="4dp"
+                    android:text="@string/tue" />
+
+                <TextView
+                    android:id="@+id/wed"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:layout_weight="1"
+                    android:padding="4dp"
+                    android:text="@string/wed" />
+
+                <TextView
+                    android:id="@+id/thu"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:layout_weight="1"
+                    android:padding="4dp"
+                    android:text="@string/thu" />
+
+                <TextView
+                    android:id="@+id/fri"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:layout_weight="1"
+                    android:padding="4dp"
+                    android:text="@string/fri" />
+
+                <TextView
+                    android:id="@+id/sat"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:layout_weight="1"
+                    android:padding="4dp"
+                    android:text="@string/sat" />
+            </TableRow>
+
+            <TableRow>
+
+                <Button
+                    android:id="@+id/cell00"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+
+                    
+                    android:layout_margin="0dp"
+                    android:background="@mipmap/ic_launcher"/>
+
+                <Button
+                    android:id="@+id/cell01"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    
+
+                    
+                    android:layout_margin="0dp"
+                    android:background="@mipmap/ic_launcher" />
+
+                <Button
+                    android:id="@+id/cell02"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    
+
+                    
+                    android:layout_margin="0dp"
+                    android:background="@mipmap/ic_launcher" />
+
+                <Button
+                    android:id="@+id/cell03"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    
+
+                    
+                    android:layout_margin="0dp"
+                    android:background="@mipmap/ic_launcher" />
+
+                <Button
+                    android:id="@+id/cell04"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    
+
+                    
+                    android:layout_margin="0dp"
+                    android:background="@mipmap/ic_launcher" />
+
+                <Button
+                    android:id="@+id/cell05"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    
+
+                    
+                    android:layout_margin="0dp"
+                    android:background="@mipmap/ic_launcher" />
+
+                <Button
+                    android:id="@+id/cell06"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    
+
+                    
+                    android:layout_margin="0dp"
+                    android:background="@mipmap/ic_launcher" />
+            </TableRow>
+
+            <TableRow>
+
+                <Button
+                    android:id="@+id/cell10"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    
+
+                    
+                    android:layout_margin="0dp"
+                    android:background="@mipmap/ic_launcher" />
+
+                <Button
+                    android:id="@+id/cell11"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    
+
+                    
+                    android:layout_margin="0dp"
+                    android:background="@mipmap/ic_launcher" />
+
+                <Button
+                    android:id="@+id/cell12"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    
+
+                    
+                    android:layout_margin="0dp"
+                    android:background="@mipmap/ic_launcher" />
+
+                <Button
+                    android:id="@+id/cell13"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    
+
+                    
+                    android:layout_margin="0dp"
+                    android:background="@mipmap/ic_launcher" />
+
+                <Button
+                    android:id="@+id/cell14"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    
+
+                    
+                    android:layout_margin="0dp"
+                    android:background="@mipmap/ic_launcher" />
+
+                <Button
+                    android:id="@+id/cell15"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    
+
+                    
+                    android:layout_margin="0dp"
+                    android:background="@mipmap/ic_launcher" />
+
+                <Button
+                    android:id="@+id/cell16"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    
+
+                    
+                    android:layout_margin="0dp"
+                    android:background="@mipmap/ic_launcher" />
+            </TableRow>
+
+            <TableRow>
+
+                <Button
+                    android:id="@+id/cell20"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    
+
+                    
+                    android:layout_margin="0dp"
+                    android:background="@mipmap/ic_launcher" />
+
+                <Button
+                    android:id="@+id/cell21"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    
+
+                    
+                    android:layout_margin="0dp"
+                    android:background="@mipmap/ic_launcher" />
+
+                <Button
+                    android:id="@+id/cell22"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    
+
+                    
+                    android:layout_margin="0dp"
+                    android:background="@mipmap/ic_launcher" />
+
+                <Button
+                    android:id="@+id/cell23"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    
+
+                    
+                    android:layout_margin="0dp"
+                    android:background="@mipmap/ic_launcher" />
+
+                <Button
+                    android:id="@+id/cell24"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    
+
+                    
+                    android:layout_margin="0dp"
+                    android:background="@mipmap/ic_launcher" />
+
+                <Button
+                    android:id="@+id/cell25"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    
+
+                    
+                    android:layout_margin="0dp"
+                    android:background="@mipmap/ic_launcher" />
+
+                <Button
+                    android:id="@+id/cell26"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    
+
+                    
+                    android:layout_margin="0dp"
+                    android:background="@mipmap/ic_launcher" />
+            </TableRow>
+
+            <TableRow>
+
+                <Button
+                    android:id="@+id/cell30"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    
+
+                    
+                    android:layout_margin="0dp"
+                    android:background="@mipmap/ic_launcher" />
+
+                <Button
+                    android:id="@+id/cell31"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    
+
+                    
+                    android:layout_margin="0dp"
+                    android:background="@mipmap/ic_launcher" />
+
+                <Button
+                    android:id="@+id/cell32"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    
+
+                    
+                    android:layout_margin="0dp"
+                    android:background="@mipmap/ic_launcher" />
+
+                <Button
+                    android:id="@+id/cell33"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    
+
+                    
+                    android:layout_margin="0dp"
+                    android:background="@mipmap/ic_launcher" />
+
+                <Button
+                    android:id="@+id/cell34"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    
+
+                    
+                    android:layout_margin="0dp"
+                    android:background="@mipmap/ic_launcher" />
+
+                <Button
+                    android:id="@+id/cell35"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    
+
+                    
+                    android:layout_margin="0dp"
+                    android:background="@mipmap/ic_launcher" />
+
+                <Button
+                    android:id="@+id/cell36"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    
+
+                    
+                    android:layout_margin="0dp"
+                    android:background="@mipmap/ic_launcher" />
+            </TableRow>
+
+            <TableRow>
+
+                <Button
+                    android:id="@+id/cell40"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    
+
+                    
+                    android:layout_margin="0dp"
+                    android:background="@mipmap/ic_launcher" />
+
+                <Button
+                    android:id="@+id/cell41"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    
+
+                    
+                    android:layout_margin="0dp"
+                    android:background="@mipmap/ic_launcher" />
+
+                <Button
+                    android:id="@+id/cell42"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    
+
+                    
+                    android:layout_margin="0dp"
+                    android:background="@mipmap/ic_launcher" />
+
+                <Button
+                    android:id="@+id/cell43"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    
+
+                    
+                    android:layout_margin="0dp"
+                    android:background="@mipmap/ic_launcher" />
+
+                <Button
+                    android:id="@+id/cell44"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    
+
+                    
+                    android:layout_margin="0dp"
+                    android:background="@mipmap/ic_launcher" />
+
+                <Button
+                    android:id="@+id/cell45"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    
+
+                    
+                    android:layout_margin="0dp"
+                    android:background="@mipmap/ic_launcher" />
+
+                <Button
+                    android:id="@+id/cell46"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    
+
+                    
+                    android:layout_margin="0dp"
+                    android:background="@mipmap/ic_launcher" />
+            </TableRow>
+
+            <TableRow>
+
+                <Button
+                    android:id="@+id/cell50"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    
+
+                    
+                    android:layout_margin="0dp"
+                    android:background="@mipmap/ic_launcher" />
+
+                <Button
+                    android:id="@+id/cell51"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    
+
+                    
+                    android:layout_margin="0dp"
+                    android:background="@mipmap/ic_launcher" />
+
+                <Button
+                    android:id="@+id/cell52"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    
+
+                    
+                    android:layout_margin="0dp"
+                    android:background="@mipmap/ic_launcher" />
+
+                <Button
+                    android:id="@+id/cell53"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    
+
+                    
+                    android:layout_margin="0dp"
+                    android:background="@mipmap/ic_launcher" />
+
+                <Button
+                    android:id="@+id/cell54"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    
+
+                    
+                    android:layout_margin="0dp"
+                    android:background="@mipmap/ic_launcher" />
+
+                <Button
+                    android:id="@+id/cell55"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    
+
+                    
+                    android:layout_margin="0dp"
+                    android:background="@mipmap/ic_launcher" />
+
+                <Button
+                    android:id="@+id/cell56"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    
+
+                    
+                    android:layout_margin="0dp"
+                    android:background="@mipmap/ic_launcher" />
+            </TableRow>
+
+        </TableLayout>
+    </ScrollView>
+
+</RelativeLayout>
