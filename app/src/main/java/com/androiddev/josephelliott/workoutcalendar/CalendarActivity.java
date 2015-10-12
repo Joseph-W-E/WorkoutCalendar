@@ -180,7 +180,7 @@ public class CalendarActivity extends FragmentActivity {
      * * on touch listeners to buttons
      * * disables unused buttons
      * * allows access to workouts*/
-    private void updateFragment() {
+    private void updateFragment() {/*
 
         int firstDayOfMonth = calendarData.getFirstDayOfMonth();
         int numberOfDaysInMonth = calendarData.getNumberOfDaysInMonth();
@@ -193,7 +193,7 @@ public class CalendarActivity extends FragmentActivity {
             } else if (i >= firstDayOfMonth - 1 && i < numberOfDaysInMonth + counter) {
                 arrayList.get(i).setText(Integer.toString(i+1-counter));
             }
-        }
+        }*/
     }
 
 }
