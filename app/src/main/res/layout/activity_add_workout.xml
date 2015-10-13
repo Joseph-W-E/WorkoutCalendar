@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/aaw_rl_01"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/title_image"
+            android:layout_width="48dp"
+            android:layout_height="48dp"/>
+        <AutoCompleteTextView
+            android:id="@+id/workout_title_txt"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/title_image"
+            android:layout_marginEnd="48dp"
+            android:hint="@string/title_hint"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/aaw_rl_02"
+        android:layout_below="@id/aaw_rl_01"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/description_image"
+            android:layout_width="48dp"
+            android:layout_height="48dp"/>
+        <EditText
+            android:id="@+id/workout_description_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/description_image"
+            android:hint="@string/description_hint"/>
+        <Spinner
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_alignParentEnd="true">
+
+        </Spinner>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/aaw_rl_03"
+        android:layout_below="@id/aaw_rl_02"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/select_date_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="@string/select_date"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/aaw_rl_04"
+        android:layout_below="@id/aaw_rl_03"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/workout_image_view"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_toStartOf="@id/change_image_btn"/>
+        <Button
+            android:id="@+id/change_image_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="@string/change"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/aaw_rl_05"
+        android:layout_below="@id/aaw_rl_04"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/location_image"
+            android:layout_width="48dp"
+            android:layout_height="48dp"/>
+        <AutoCompleteTextView
+            android:id="@+id/workout_location_txt"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/location_image"
+            android:layout_marginEnd="48dp"
+            android:hint="@string/location_hint"/>
+    </RelativeLayout>
+
+
+
+</RelativeLayout>

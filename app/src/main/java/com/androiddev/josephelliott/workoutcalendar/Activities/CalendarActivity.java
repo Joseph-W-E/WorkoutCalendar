@@ -84,6 +84,8 @@ public class CalendarActivity extends FragmentActivity {
                     setMonthAndYearTextFields(calendarData.getDateObj());
                     primaryFragment = mPagerAdapter.getFragment(vpIndex);
                     updateFragment();
+                    // Update the fragment that is off the screen to the right
+
                 } else if (position < vpIndex) {
                     // Then we scrolled to the left
                     calendarData.subtractMonth();
@@ -187,10 +189,17 @@ public class CalendarActivity extends FragmentActivity {
         int counter = 0;
         for (int i = 0; i < 42; i++) {
             if (i < firstDayOfMonth - 1) {
+                // All the days BEFORE the month starts
                 counter++;
                 arrayList.get(i).setEnabled(false);
+                arrayList.get(i).setVisibility(View.INVISIBLE);
             } else if (i >= firstDayOfMonth - 1 && i < numberOfDaysInMonth + counter) {
+                // All the days DURING the month
                 arrayList.get(i).setText(Integer.toString(i+1-counter));
+
+            } else {
+                // All the days AFTER the month ends
+                arrayList.get(i).setVisibility(View.INVISIBLE);
             }
         }
     }
