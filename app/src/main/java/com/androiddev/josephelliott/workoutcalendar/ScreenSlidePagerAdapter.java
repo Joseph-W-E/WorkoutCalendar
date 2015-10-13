@@ -44,30 +44,4 @@ public class ScreenSlidePagerAdapter extends FragmentStatePagerAdapter {
         return map.get(key);
     }
 
-
-
-    /*
-    @Override
-    public Fragment getItem(int position) {
-        CalendarFragment fragment = new CalendarFragment();
-        map.put(position, fragment);
-        return fragment;
-    }
-
-    @Override
-    public Object instantiateItem(ViewGroup container, int position) {
-
-    }
-
-    @Override
-    public void destroyItem(ViewGroup container, int position, Object object) {
-        super.destroyItem(container, position, object);
-        map.remove(position);
-    }
-
-    public CalendarFragment getFragment(int position) {
-        return map.get(position);
-    }*/
-
-
 }

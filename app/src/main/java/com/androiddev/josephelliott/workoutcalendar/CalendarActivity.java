@@ -50,7 +50,6 @@ public class CalendarActivity extends FragmentActivity {
 
         // Get the calendar data right away!! We need this for the pager adapter
         calendarData = new CurrentCalendarData();
-        //map = new HashMap<>();
 
         // Initialize all components in this activity
         btnNextMonth = (ImageButton) findViewById(R.id.image_button_right);
@@ -62,6 +61,8 @@ public class CalendarActivity extends FragmentActivity {
         // Set up the activity data
         moveViewPagerToMonth();
         setMonthAndYearTextFields(calendarData.getDateObj());
+
+        // This is required to get the first month to update!!!
         mViewPager.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
             @Override
             public void onGlobalLayout() {
@@ -69,8 +70,6 @@ public class CalendarActivity extends FragmentActivity {
                 updateFragment();
             }
         });
-
-
 
         // Add all component listeners
         mViewPager.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
@@ -82,7 +81,6 @@ public class CalendarActivity extends FragmentActivity {
                     calendarData.addMonth();
                     vpIndex++;
                     setMonthAndYearTextFields(calendarData.getDateObj());
-                    //primaryFragment = map.get(vpIndex);
                     primaryFragment = mPagerAdapter.getFragment(vpIndex);
                     updateFragment();
                 } else if (position < vpIndex) {
@@ -90,10 +88,6 @@ public class CalendarActivity extends FragmentActivity {
                     calendarData.subtractMonth();
                     vpIndex--;
                     setMonthAndYearTextFields(calendarData.getDateObj());
-                    //primaryFragment = map.get(vpIndex);
-                    primaryFragment = mPagerAdapter.getFragment(vpIndex);
-                    updateFragment();
-                } else {
                     primaryFragment = mPagerAdapter.getFragment(vpIndex);
                     updateFragment();
                 }
@@ -107,7 +101,6 @@ public class CalendarActivity extends FragmentActivity {
                 vpIndex++;
                 moveViewPagerToMonth();
                 setMonthAndYearTextFields(calendarData.getDateObj());
-                //primaryFragment = map.get(vpIndex);
                 primaryFragment = mPagerAdapter.getFragment(vpIndex);
                 updateFragment();
             }
@@ -120,19 +113,11 @@ public class CalendarActivity extends FragmentActivity {
                 vpIndex--;
                 moveViewPagerToMonth();
                 setMonthAndYearTextFields(calendarData.getDateObj());
-                //primaryFragment = map.get(vpIndex);
                 primaryFragment = mPagerAdapter.getFragment(vpIndex);
                 updateFragment();
             }
         });
     }
-/*
-    @Override
-    public void onAttachFragment(Fragment fragment) {
-        super.onAttachFragment(fragment);
-        map.put(vpIndex, (CalendarFragment) fragment);
-    }*/
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -154,7 +139,6 @@ public class CalendarActivity extends FragmentActivity {
             vpIndex = NUM_PAGES / 2;
             moveViewPagerToMonth();
             setMonthAndYearTextFields(calendarData.getDateObj());
-            //primaryFragment = map.get(vpIndex);
             primaryFragment = mPagerAdapter.getFragment(vpIndex);
             updateFragment();
             return true;
@@ -196,7 +180,6 @@ public class CalendarActivity extends FragmentActivity {
      * * disables unused buttons
      * * allows access to workouts*/
     private void updateFragment() {
-
         int firstDayOfMonth = calendarData.getFirstDayOfMonth();
         int numberOfDaysInMonth = calendarData.getNumberOfDaysInMonth();
         ArrayList<Button> arrayList = Utility.getCellsFromCalendarFragment(primaryFragment.getView());
