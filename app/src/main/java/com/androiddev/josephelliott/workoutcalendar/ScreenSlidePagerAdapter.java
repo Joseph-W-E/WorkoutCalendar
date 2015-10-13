@@ -14,12 +14,12 @@ import java.util.HashMap;
 public class ScreenSlidePagerAdapter extends FragmentStatePagerAdapter {
 
     private int NUM_PAGES;
-    //private HashMap<Integer, CalendarFragment> map;
+    private HashMap<Integer, CalendarFragment> map;
 
     public ScreenSlidePagerAdapter(FragmentManager fm, int NUM_PAGES) {
         super(fm);
         this.NUM_PAGES = NUM_PAGES;
-        //map = new HashMap<>();
+        map = new HashMap<>();
     }
 
     @Override
@@ -29,8 +29,22 @@ public class ScreenSlidePagerAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        return new CalendarFragment();
+        CalendarFragment cf = new CalendarFragment();
+        map.put(position, cf);
+        return cf;
     }
+
+    @Override
+    public void destroyItem(ViewGroup container, int position, Object object) {
+        super.destroyItem(container, position, object);
+        map.remove(position);
+    }
+
+    public CalendarFragment getFragment(int key) {
+        return map.get(key);
+    }
+
+
 
     /*
     @Override

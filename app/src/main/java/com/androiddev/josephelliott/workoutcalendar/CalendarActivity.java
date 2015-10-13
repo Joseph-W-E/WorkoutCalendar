@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewTreeObserver;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -61,9 +62,15 @@ public class CalendarActivity extends FragmentActivity {
         // Set up the activity data
         moveViewPagerToMonth();
         setMonthAndYearTextFields(calendarData.getDateObj());
-        //primaryFragment = mPagerAdapter.getFragment(vpIndex);
-        //primaryFragment = map.get(vpIndex);
-        updateFragment();
+        mViewPager.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            @Override
+            public void onGlobalLayout() {
+                primaryFragment = mPagerAdapter.getFragment(vpIndex);
+                updateFragment();
+            }
+        });
+
+
 
         // Add all component listeners
         mViewPager.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
@@ -76,6 +83,7 @@ public class CalendarActivity extends FragmentActivity {
                     vpIndex++;
                     setMonthAndYearTextFields(calendarData.getDateObj());
                     //primaryFragment = map.get(vpIndex);
+                    primaryFragment = mPagerAdapter.getFragment(vpIndex);
                     updateFragment();
                 } else if (position < vpIndex) {
                     // Then we scrolled to the left
@@ -83,6 +91,10 @@ public class CalendarActivity extends FragmentActivity {
                     vpIndex--;
                     setMonthAndYearTextFields(calendarData.getDateObj());
                     //primaryFragment = map.get(vpIndex);
+                    primaryFragment = mPagerAdapter.getFragment(vpIndex);
+                    updateFragment();
+                } else {
+                    primaryFragment = mPagerAdapter.getFragment(vpIndex);
                     updateFragment();
                 }
             }
@@ -96,6 +108,7 @@ public class CalendarActivity extends FragmentActivity {
                 moveViewPagerToMonth();
                 setMonthAndYearTextFields(calendarData.getDateObj());
                 //primaryFragment = map.get(vpIndex);
+                primaryFragment = mPagerAdapter.getFragment(vpIndex);
                 updateFragment();
             }
         });
@@ -108,6 +121,7 @@ public class CalendarActivity extends FragmentActivity {
                 moveViewPagerToMonth();
                 setMonthAndYearTextFields(calendarData.getDateObj());
                 //primaryFragment = map.get(vpIndex);
+                primaryFragment = mPagerAdapter.getFragment(vpIndex);
                 updateFragment();
             }
         });
@@ -141,6 +155,7 @@ public class CalendarActivity extends FragmentActivity {
             moveViewPagerToMonth();
             setMonthAndYearTextFields(calendarData.getDateObj());
             //primaryFragment = map.get(vpIndex);
+            primaryFragment = mPagerAdapter.getFragment(vpIndex);
             updateFragment();
             return true;
         } else if (id == R.id.action_settings) {
@@ -180,7 +195,7 @@ public class CalendarActivity extends FragmentActivity {
      * * on touch listeners to buttons
      * * disables unused buttons
      * * allows access to workouts*/
-    private void updateFragment() {/*
+    private void updateFragment() {
 
         int firstDayOfMonth = calendarData.getFirstDayOfMonth();
         int numberOfDaysInMonth = calendarData.getNumberOfDaysInMonth();
@@ -193,7 +208,7 @@ public class CalendarActivity extends FragmentActivity {
             } else if (i >= firstDayOfMonth - 1 && i < numberOfDaysInMonth + counter) {
                 arrayList.get(i).setText(Integer.toString(i+1-counter));
             }
-        }*/
+        }
     }
 
 }
