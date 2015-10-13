@@ -1,9 +1,11 @@
-package com.androiddev.josephelliott.workoutcalendar;
+package com.androiddev.josephelliott.workoutcalendar.Utility;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.view.ViewGroup;
+
+import com.androiddev.josephelliott.workoutcalendar.Activities.CalendarFragment;
 
 import java.util.HashMap;
 

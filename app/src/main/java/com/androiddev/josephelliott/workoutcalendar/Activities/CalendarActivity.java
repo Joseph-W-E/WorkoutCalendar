@@ -1,11 +1,8 @@
-package com.androiddev.josephelliott.workoutcalendar;
+package com.androiddev.josephelliott.workoutcalendar.Activities;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -14,10 +11,14 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.androiddev.josephelliott.workoutcalendar.ObjectData.CurrentCalendarData;
+import com.androiddev.josephelliott.workoutcalendar.R;
+import com.androiddev.josephelliott.workoutcalendar.Utility.ScreenSlidePagerAdapter;
+import com.androiddev.josephelliott.workoutcalendar.Utility.Utility;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
 
 public class CalendarActivity extends FragmentActivity {
 
