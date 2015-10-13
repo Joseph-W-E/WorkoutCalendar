@@ -61,18 +61,17 @@
         android:layout_below="@id/aaw_rl_03"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content">
-
-        <ImageView
-            android:id="@+id/workout_image_view"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_toStartOf="@id/change_image_btn"/>
         <Button
             android:id="@+id/change_image_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:text="@string/change"/>
+        <ImageView
+            android:id="@+id/workout_image_view"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_toStartOf="@id/change_image_btn"/>
     </RelativeLayout>
 
     <RelativeLayout

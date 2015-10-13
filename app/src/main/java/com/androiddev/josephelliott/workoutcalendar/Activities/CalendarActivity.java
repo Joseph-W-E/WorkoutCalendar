@@ -1,5 +1,6 @@
 package com.androiddev.josephelliott.workoutcalendar.Activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
@@ -35,8 +36,9 @@ public class CalendarActivity extends FragmentActivity {
     * Variables to be manipulated through the activity's lifetime.*/
     private CurrentCalendarData calendarData;
     private CalendarFragment primaryFragment;
-    //private HashMap<Integer, CalendarFragment> map;
     private int vpIndex = NUM_PAGES / 2;
+    /**
+     * Other variables*/
 
     /**
     * * Activity Startup:
@@ -153,6 +155,13 @@ public class CalendarActivity extends FragmentActivity {
     }
 
     /**
+     * Starts the Add Workout Activity*/
+    public void goToAddWorkoutActivity(View view) {
+        Intent intent = new Intent(this, AddWorkoutActivity.class);
+        startActivity(intent);
+    }
+
+    /**
      * This method updates the Month and Year textfields.
      * Call this method when there is a change to currentMonth*/
     private void setMonthAndYearTextFields(Date date) {
@@ -196,7 +205,13 @@ public class CalendarActivity extends FragmentActivity {
             } else if (i >= firstDayOfMonth - 1 && i < numberOfDaysInMonth + counter) {
                 // All the days DURING the month
                 arrayList.get(i).setText(Integer.toString(i+1-counter));
-
+                arrayList.get(i).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        // TODO Set the intent to open up the AddWorkoutActivity with info
+                        goToAddWorkoutActivity(v);
+                    }
+                });
             } else {
                 // All the days AFTER the month ends
                 arrayList.get(i).setVisibility(View.INVISIBLE);

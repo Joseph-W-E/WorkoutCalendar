@@ -12,20 +12,24 @@ public class Workout {
     private long ID;
     private String title;
     private String description;
+    private String location;
     private Date date;
     private Image image;
 
     public Workout() {
         title = "";
         description = "";
+        location = "";
         date = new Date();
         image = null;
     }
 
-    public Workout(String title, String description, Date date) {
+    public Workout(String title, String description, String location, Date date, Image image) {
         this.title = title;
         this.description = description;
+        this.location = location;
         this.date = date;
+        this.image = image;
     }
 
 
