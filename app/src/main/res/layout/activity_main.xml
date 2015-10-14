@@ -72,7 +72,7 @@
         android:clickable="true"
         android:src="@mipmap/ic_add_white_24dp"
         app:backgroundTint="@color/accent"
-        app:rippleColor="@color/divider"
+        app:rippleColor="@color/accent_ripple"
         android:onClick="goToAddWorkoutActivity"/>
 
 </RelativeLayout>
