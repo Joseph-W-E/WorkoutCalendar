@@ -4,528 +4,511 @@
     android:layout_height="match_parent"
     tools:context=".CalendarActivity">
 
-    <ScrollView
-        android:id="@+id/scroll_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+    <RelativeLayout
+        android:id="@+id/rl_row_0"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal">
 
-        <TableLayout
-            android:id="@+id/table_layout_calendar"
-            android:layout_width="wrap_content"
+        <TextView
+            android:id="@+id/wed"
+            android:layout_width="48dp"
             android:layout_height="wrap_content"
-            android:padding="36dp"
-            android:stretchColumns="*"
-            android:shrinkColumns="*"><!--android:stretchColumns="0,1,2,3,4,5,6"-->
-
-            <TableRow
-                android:id="@+id/row0"
-                android:layout_width="fill_parent"
-                android:layout_height="48dp"
-                android:gravity="center_horizontal"
-                >
-
-                <TextView
-                    android:id="@+id/sun"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_horizontal"
-                    android:layout_weight="1"
-                    android:padding="4dp"
-                    android:text="@string/sun" />
-
-                <TextView
-                    android:id="@+id/mon"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_horizontal"
-                    android:layout_weight="1"
-                    android:padding="4dp"
-                    android:text="@string/mon" />
-
-                <TextView
-                    android:id="@+id/tue"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_horizontal"
-                    android:layout_weight="1"
-                    android:padding="4dp"
-                    android:text="@string/tue" />
-
-                <TextView
-                    android:id="@+id/wed"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_horizontal"
-                    android:layout_weight="1"
-                    android:padding="4dp"
-                    android:text="@string/wed" />
-
-                <TextView
-                    android:id="@+id/thu"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_horizontal"
-                    android:layout_weight="1"
-                    android:padding="4dp"
-                    android:text="@string/thu" />
-
-                <TextView
-                    android:id="@+id/fri"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_horizontal"
-                    android:layout_weight="1"
-                    android:padding="4dp"
-                    android:text="@string/fri" />
-
-                <TextView
-                    android:id="@+id/sat"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_horizontal"
-                    android:layout_weight="1"
-                    android:padding="4dp"
-                    android:text="@string/sat" />
-            </TableRow>
-
-            <TableRow>
-
-                <Button
-                    android:id="@+id/cell00"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-
-                    style="?android:attr/borderlessButtonStyle"
-                    android:layout_margin="0dp"
-                    android:background="@color/icons"/>
-
-                <Button
-                    android:id="@+id/cell01"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-
-
-                    style="?android:attr/borderlessButtonStyle"
-                    android:layout_margin="0dp"
-                    android:background="@color/icons" />
-
-                <Button
-                    android:id="@+id/cell02"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-
-
-                    style="?android:attr/borderlessButtonStyle"
-                    android:layout_margin="0dp"
-                    android:background="@color/icons" />
-
-                <Button
-                    android:id="@+id/cell03"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-
-
-                    style="?android:attr/borderlessButtonStyle"
-                    android:layout_margin="0dp"
-                    android:background="@color/icons" />
-
-                <Button
-                    android:id="@+id/cell04"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-
-
-                    style="?android:attr/borderlessButtonStyle"
-                    android:layout_margin="0dp"
-                    android:background="@color/icons" />
-
-                <Button
-                    android:id="@+id/cell05"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-
-
-                    style="?android:attr/borderlessButtonStyle"
-                    android:layout_margin="0dp"
-                    android:background="@color/icons" />
-
-                <Button
-                    android:id="@+id/cell06"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-
-
-                    style="?android:attr/borderlessButtonStyle"
-                    android:layout_margin="0dp"
-                    android:background="@color/icons" />
-            </TableRow>
-
-            <TableRow>
-
-                <Button
-                    android:id="@+id/cell10"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-
-
-                    style="?android:attr/borderlessButtonStyle"
-                    android:layout_margin="0dp"
-                    android:background="@color/icons" />
-
-                <Button
-                    android:id="@+id/cell11"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-
-
-                    style="?android:attr/borderlessButtonStyle"
-                    android:layout_margin="0dp"
-                    android:background="@color/icons" />
-
-                <Button
-                    android:id="@+id/cell12"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-
-
-                    style="?android:attr/borderlessButtonStyle"
-                    android:layout_margin="0dp"
-                    android:background="@color/icons" />
-
-                <Button
-                    android:id="@+id/cell13"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-
-
-                    style="?android:attr/borderlessButtonStyle"
-                    android:layout_margin="0dp"
-                    android:background="@color/icons" />
-
-                <Button
-                    android:id="@+id/cell14"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-
-
-                    style="?android:attr/borderlessButtonStyle"
-                    android:layout_margin="0dp"
-                    android:background="@color/icons" />
-
-                <Button
-                    android:id="@+id/cell15"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-
-
-                    style="?android:attr/borderlessButtonStyle"
-                    android:layout_margin="0dp"
-                    android:background="@color/icons" />
-
-                <Button
-                    android:id="@+id/cell16"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-
-
-                    style="?android:attr/borderlessButtonStyle"
-                    android:layout_margin="0dp"
-                    android:background="@color/icons" />
-            </TableRow>
-
-            <TableRow>
-
-                <Button
-                    android:id="@+id/cell20"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-
-
-                    style="?android:attr/borderlessButtonStyle"
-                    android:layout_margin="0dp"
-                    android:background="@color/icons" />
-
-                <Button
-                    android:id="@+id/cell21"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-
-
-                    style="?android:attr/borderlessButtonStyle"
-                    android:layout_margin="0dp"
-                    android:background="@color/icons" />
-
-                <Button
-                    android:id="@+id/cell22"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-
-
-                    style="?android:attr/borderlessButtonStyle"
-                    android:layout_margin="0dp"
-                    android:background="@color/icons" />
-
-                <Button
-                    android:id="@+id/cell23"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-
-
-                    style="?android:attr/borderlessButtonStyle"
-                    android:layout_margin="0dp"
-                    android:background="@color/icons" />
-
-                <Button
-                    android:id="@+id/cell24"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-
-
-                    style="?android:attr/borderlessButtonStyle"
-                    android:layout_margin="0dp"
-                    android:background="@color/icons" />
-
-                <Button
-                    android:id="@+id/cell25"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-
-
-                    style="?android:attr/borderlessButtonStyle"
-                    android:layout_margin="0dp"
-                    android:background="@color/icons" />
-
-                <Button
-                    android:id="@+id/cell26"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-
-
-                    style="?android:attr/borderlessButtonStyle"
-                    android:layout_margin="0dp"
-                    android:background="@color/icons" />
-            </TableRow>
-
-            <TableRow>
-
-                <Button
-                    android:id="@+id/cell30"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-
-
-                    style="?android:attr/borderlessButtonStyle"
-                    android:layout_margin="0dp"
-                    android:background="@color/icons" />
-
-                <Button
-                    android:id="@+id/cell31"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-
-
-                    style="?android:attr/borderlessButtonStyle"
-                    android:layout_margin="0dp"
-                    android:background="@color/icons" />
-
-                <Button
-                    android:id="@+id/cell32"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-
-
-                    style="?android:attr/borderlessButtonStyle"
-                    android:layout_margin="0dp"
-                    android:background="@color/icons" />
-
-                <Button
-                    android:id="@+id/cell33"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-
-
-                    style="?android:attr/borderlessButtonStyle"
-                    android:layout_margin="0dp"
-                    android:background="@color/icons" />
-
-                <Button
-                    android:id="@+id/cell34"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-
-
-                    style="?android:attr/borderlessButtonStyle"
-                    android:layout_margin="0dp"
-                    android:background="@color/icons" />
-
-                <Button
-                    android:id="@+id/cell35"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-
-
-                    style="?android:attr/borderlessButtonStyle"
-                    android:layout_margin="0dp"
-                    android:background="@color/icons" />
-
-                <Button
-                    android:id="@+id/cell36"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-
-
-                    style="?android:attr/borderlessButtonStyle"
-                    android:layout_margin="0dp"
-                    android:background="@color/icons" />
-            </TableRow>
-
-            <TableRow>
-
-                <Button
-                    android:id="@+id/cell40"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-
-
-                    style="?android:attr/borderlessButtonStyle"
-                    android:layout_margin="0dp"
-                    android:background="@color/icons" />
-
-                <Button
-                    android:id="@+id/cell41"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-
-
-                    style="?android:attr/borderlessButtonStyle"
-                    android:layout_margin="0dp"
-                    android:background="@color/icons" />
-
-                <Button
-                    android:id="@+id/cell42"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-
-
-                    style="?android:attr/borderlessButtonStyle"
-                    android:layout_margin="0dp"
-                    android:background="@color/icons" />
-
-                <Button
-                    android:id="@+id/cell43"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-
-
-                    style="?android:attr/borderlessButtonStyle"
-                    android:layout_margin="0dp"
-                    android:background="@color/icons" />
-
-                <Button
-                    android:id="@+id/cell44"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-
-
-                    style="?android:attr/borderlessButtonStyle"
-                    android:layout_margin="0dp"
-                    android:background="@color/icons" />
-
-                <Button
-                    android:id="@+id/cell45"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-
-
-                    style="?android:attr/borderlessButtonStyle"
-                    android:layout_margin="0dp"
-                    android:background="@color/icons" />
-
-                <Button
-                    android:id="@+id/cell46"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-
-
-                    style="?android:attr/borderlessButtonStyle"
-                    android:layout_margin="0dp"
-                    android:background="@color/icons" />
-            </TableRow>
-
-            <TableRow>
-
-                <Button
-                    android:id="@+id/cell50"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-
-
-                    style="?android:attr/borderlessButtonStyle"
-                    android:layout_margin="0dp"
-                    android:background="@color/icons" />
-
-                <Button
-                    android:id="@+id/cell51"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-
-
-                    style="?android:attr/borderlessButtonStyle"
-                    android:layout_margin="0dp"
-                    android:background="@color/icons" />
-
-                <Button
-                    android:id="@+id/cell52"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-
-
-                    style="?android:attr/borderlessButtonStyle"
-                    android:layout_margin="0dp"
-                    android:background="@color/icons" />
-
-                <Button
-                    android:id="@+id/cell53"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-
-
-                    style="?android:attr/borderlessButtonStyle"
-                    android:layout_margin="0dp"
-                    android:background="@color/icons" />
-
-                <Button
-                    android:id="@+id/cell54"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-
-
-                    style="?android:attr/borderlessButtonStyle"
-                    android:layout_margin="0dp"
-                    android:background="@color/icons" />
-
-                <Button
-                    android:id="@+id/cell55"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-
-
-                    style="?android:attr/borderlessButtonStyle"
-                    android:layout_margin="0dp"
-                    android:background="@color/icons" />
-
-                <Button
-                    android:id="@+id/cell56"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-
-
-                    style="?android:attr/borderlessButtonStyle"
-                    android:layout_margin="0dp"
-                    android:background="@color/icons" />
-            </TableRow>
-
-        </TableLayout>
-    </ScrollView>
+            android:layout_centerHorizontal="true"
+            android:padding="4dp"
+            android:layout_margin="2dp"
+            android:text="@string/wed"
+            android:gravity="center" />
+
+        <TextView
+            android:id="@+id/tue"
+            android:layout_width="48dp"
+            android:layout_height="wrap_content"
+            android:layout_toStartOf="@id/wed"
+            android:padding="4dp"
+            android:layout_margin="2dp"
+            android:text="@string/tue"
+            android:gravity="center" />
+
+        <TextView
+            android:id="@+id/mon"
+            android:layout_width="48dp"
+            android:layout_height="wrap_content"
+            android:layout_toStartOf="@id/tue"
+            android:padding="4dp"
+            android:layout_margin="2dp"
+            android:text="@string/mon"
+            android:gravity="center" />
+
+        <TextView
+            android:id="@+id/sun"
+            android:layout_width="48dp"
+            android:layout_height="wrap_content"
+            android:layout_toStartOf="@id/mon"
+            android:padding="4dp"
+            android:layout_margin="2dp"
+            android:text="@string/sun"
+            android:gravity="center" />
+
+
+        <TextView
+            android:id="@+id/thu"
+            android:layout_width="48dp"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/wed"
+            android:padding="4dp"
+            android:layout_margin="2dp"
+            android:text="@string/thu"
+            android:gravity="center" />
+
+        <TextView
+            android:id="@+id/fri"
+            android:layout_width="48dp"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/thu"
+            android:padding="4dp"
+            android:layout_margin="2dp"
+            android:text="@string/fri"
+            android:gravity="center" />
+
+        <TextView
+            android:id="@+id/sat"
+            android:layout_width="48dp"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/fri"
+            android:padding="4dp"
+            android:layout_margin="2dp"
+            android:text="@string/sat"
+            android:gravity="center" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_row_1"
+        android:layout_width="fill_parent"
+        android:layout_height="48dp"
+        android:layout_below="@id/rl_row_0">
+
+        <Button
+            android:id="@+id/cell03"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="2dp"
+            android:background="@color/icons" />
+
+        <Button
+            android:id="@+id/cell02"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_margin="2dp"
+            android:layout_toStartOf="@id/cell03"
+            android:background="@color/icons" />
+
+        <Button
+            android:id="@+id/cell01"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_margin="2dp"
+            android:layout_toStartOf="@id/cell02"
+            android:background="@color/icons" />
+
+        <Button
+            android:id="@+id/cell00"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_margin="2dp"
+            android:layout_toStartOf="@id/cell01"
+            android:background="@color/icons" />
+
+
+        <Button
+            android:id="@+id/cell04"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_margin="2dp"
+            android:layout_toEndOf="@id/cell03"
+            android:background="@color/icons" />
+
+        <Button
+            android:id="@+id/cell05"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_margin="2dp"
+            android:layout_toEndOf="@id/cell04"
+            android:background="@color/icons" />
+
+        <Button
+            android:id="@+id/cell06"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_margin="2dp"
+            android:layout_toEndOf="@id/cell05"
+            android:background="@color/icons" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_row_2"
+        android:layout_width="fill_parent"
+        android:layout_height="48dp"
+        android:layout_below="@id/rl_row_1">
+
+        <Button
+            android:id="@+id/cell13"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="2dp"
+            android:background="@color/icons" />
+
+        <Button
+            android:id="@+id/cell12"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_margin="2dp"
+            android:layout_toStartOf="@id/cell13"
+            android:background="@color/icons" />
+
+        <Button
+            android:id="@+id/cell11"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_margin="2dp"
+            android:layout_toStartOf="@id/cell12"
+            android:background="@color/icons" />
+
+        <Button
+            android:id="@+id/cell10"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_margin="2dp"
+            android:layout_toStartOf="@id/cell11"
+            android:background="@color/icons" />
+
+
+        <Button
+            android:id="@+id/cell14"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_margin="2dp"
+            android:layout_toEndOf="@id/cell13"
+            android:background="@color/icons" />
+
+        <Button
+            android:id="@+id/cell15"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_margin="2dp"
+            android:layout_toEndOf="@id/cell14"
+            android:background="@color/icons" />
+
+        <Button
+            android:id="@+id/cell16"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_margin="2dp"
+            android:layout_toEndOf="@id/cell15"
+            android:background="@color/icons" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_row_3"
+        android:layout_width="fill_parent"
+        android:layout_height="48dp"
+        android:layout_below="@id/rl_row_2">
+
+        <Button
+            android:id="@+id/cell23"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="2dp"
+            android:background="@color/icons" />
+
+        <Button
+            android:id="@+id/cell22"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_margin="2dp"
+            android:layout_toStartOf="@id/cell23"
+            android:background="@color/icons" />
+
+        <Button
+            android:id="@+id/cell21"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_margin="2dp"
+            android:layout_toStartOf="@id/cell22"
+            android:background="@color/icons" />
+
+        <Button
+            android:id="@+id/cell20"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_margin="2dp"
+            android:layout_toStartOf="@id/cell21"
+            android:background="@color/icons" />
+
+
+        <Button
+            android:id="@+id/cell24"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_margin="2dp"
+            android:layout_toEndOf="@id/cell23"
+            android:background="@color/icons" />
+
+        <Button
+            android:id="@+id/cell25"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_margin="2dp"
+            android:layout_toEndOf="@id/cell24"
+            android:background="@color/icons" />
+
+        <Button
+            android:id="@+id/cell26"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_margin="2dp"
+            android:layout_toEndOf="@id/cell25"
+            android:background="@color/icons" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_row_4"
+        android:layout_width="fill_parent"
+        android:layout_height="48dp"
+        android:layout_below="@id/rl_row_3">
+
+
+        <Button
+            android:id="@+id/cell33"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="2dp"
+            android:background="@color/icons" />
+
+        <Button
+            android:id="@+id/cell32"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_margin="2dp"
+            android:layout_toStartOf="@id/cell33"
+            android:background="@color/icons" />
+
+        <Button
+            android:id="@+id/cell31"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_margin="2dp"
+            android:layout_toStartOf="@id/cell32"
+            android:background="@color/icons" />
+
+        <Button
+            android:id="@+id/cell30"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_margin="2dp"
+            android:layout_toStartOf="@id/cell31"
+            android:background="@color/icons" />
+
+
+        <Button
+            android:id="@+id/cell34"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_margin="2dp"
+            android:layout_toEndOf="@id/cell33"
+            android:background="@color/icons" />
+
+        <Button
+            android:id="@+id/cell35"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_margin="2dp"
+            android:layout_toEndOf="@id/cell34"
+            android:background="@color/icons" />
+
+        <Button
+            android:id="@+id/cell36"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_margin="2dp"
+            android:layout_toEndOf="@id/cell35"
+            android:background="@color/icons" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_row_5"
+        android:layout_width="fill_parent"
+        android:layout_height="48dp"
+        android:layout_below="@id/rl_row_4">
+
+
+        <Button
+            android:id="@+id/cell43"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="2dp"
+            android:background="@color/icons" />
+
+        <Button
+            android:id="@+id/cell42"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_margin="2dp"
+            android:layout_toStartOf="@id/cell43"
+            android:background="@color/icons" />
+
+        <Button
+            android:id="@+id/cell41"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_margin="2dp"
+            android:layout_toStartOf="@id/cell42"
+            android:background="@color/icons" />
+
+        <Button
+            android:id="@+id/cell40"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_margin="2dp"
+            android:layout_toStartOf="@id/cell41"
+            android:background="@color/icons" />
+
+
+        <Button
+            android:id="@+id/cell44"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_margin="2dp"
+            android:layout_toEndOf="@id/cell43"
+            android:background="@color/icons" />
+
+        <Button
+            android:id="@+id/cell45"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_margin="2dp"
+            android:layout_toEndOf="@id/cell44"
+            android:background="@color/icons" />
+
+        <Button
+            android:id="@+id/cell46"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_margin="2dp"
+            android:layout_toEndOf="@id/cell45"
+            android:background="@color/icons" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_row_6"
+        android:layout_width="fill_parent"
+        android:layout_height="48dp"
+        android:layout_below="@id/rl_row_5">
+
+
+        <Button
+            android:id="@+id/cell53"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="2dp"
+            android:background="@color/icons" />
+
+        <Button
+            android:id="@+id/cell52"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_margin="2dp"
+            android:layout_toStartOf="@id/cell53"
+            android:background="@color/icons" />
+
+        <Button
+            android:id="@+id/cell51"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_margin="2dp"
+            android:layout_toStartOf="@id/cell52"
+            android:background="@color/icons" />
+
+        <Button
+            android:id="@+id/cell50"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_margin="2dp"
+            android:layout_toStartOf="@id/cell51"
+            android:background="@color/icons" />
+
+
+        <Button
+            android:id="@+id/cell54"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_margin="2dp"
+            android:layout_toEndOf="@id/cell53"
+            android:background="@color/icons" />
+
+        <Button
+            android:id="@+id/cell55"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_margin="2dp"
+            android:layout_toEndOf="@id/cell54"
+            android:background="@color/icons" />
+
+        <Button
+            android:id="@+id/cell56"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_margin="2dp"
+            android:layout_toEndOf="@id/cell55"
+            android:background="@color/icons" />
+    </RelativeLayout>
 
 </RelativeLayout>
