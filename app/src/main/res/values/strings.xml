@@ -2,6 +2,9 @@
     <string name="app_name">Workout Calendar</string>
     <string name="add_workout_activity_name">Add Workout Activity</string>
 
+    <string name="splash_description">Keeping track of your workouts\nhas never been easier.</string>
+    <string name="get_started">Get Started</string>
+
 
     <string name="add">Add</string>
     <string name="edit">Edit</string>

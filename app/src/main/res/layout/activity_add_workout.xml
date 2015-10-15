@@ -68,6 +68,7 @@
             android:layout_marginBottom="3dp"
             android:layout_centerHorizontal="true"
             android:text="@string/select_date"
+            android:textAllCaps="false"
             style="?android:attr/borderlessButtonStyle"/>
     </RelativeLayout>
 
@@ -84,6 +85,7 @@
             android:layout_marginBottom="3dp"
             android:layout_centerHorizontal="true"
             android:text="@string/change"
+            android:textAllCaps="false"
             style="?android:attr/borderlessButtonStyle"/>
         <ImageView
             android:id="@+id/workout_image_view"
