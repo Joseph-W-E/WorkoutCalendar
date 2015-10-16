@@ -24,35 +24,44 @@ import java.util.Date;
 public class CalendarActivity extends FragmentActivity {
 
     /**
-    * Number of buffer pages for the view pager*/
+     * Number of buffer pages for the view pager
+     */
     private final int NUM_PAGES = 1000;
     /**
-    * Components to be used in this activity.*/
+     * Components to be used in this activity.
+     */
     private ViewPager mViewPager;
     private ScreenSlidePagerAdapter mPagerAdapter;
     private ImageButton btnNextMonth;
     private ImageButton btnPrevMonth;
     /**
-    * Variables to be manipulated through the activity's lifetime.*/
+     * Variables to be manipulated through the activity's lifetime.
+     */
     private CurrentCalendarData calendarData;
     private CalendarFragment primaryFragment;
     private int vpIndex = NUM_PAGES / 2;
     /**
-     * Other variables*/
+     * Other variables
+     */
+    private static boolean runSplash = true;
 
-    /**
-    * * Activity Startup:
-    * * Get today's date
-    * * Initialize all components in this activity
-    * * Move the ViewPager to today's month
-    * * Set listeners*/
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Intent intent = new Intent(this, Splash.class);
-        this.startActivity(intent);
+        if (runSplash) {
+            Intent intent = new Intent(this, Splash.class);
+            this.startActivity(intent);
+            runSplash = false;
+        }
+        try {
+            getActionBar().setElevation(0);
+            //getActionBar().setTitle("Workout Calendar");
+        } catch (NullPointerException e) {
+            // TODO
+        }
 
         // Get the calendar data right away!! We need this for the pager adapter
         calendarData = new CurrentCalendarData();
@@ -158,7 +167,8 @@ public class CalendarActivity extends FragmentActivity {
     }
 
     /**
-     * Starts the Add Workout Activity*/
+     * Starts the Add Workout Activity
+     */
     public void goToAddWorkoutActivity(View view) {
         Intent intent = new Intent(this, AddWorkoutActivity.class);
         startActivity(intent);
@@ -166,7 +176,8 @@ public class CalendarActivity extends FragmentActivity {
 
     /**
      * This method updates the Month and Year textfields.
-     * Call this method when there is a change to currentMonth*/
+     * Call this method when there is a change to currentMonth
+     */
     private void setMonthAndYearTextFields(Date date) {
         // Set the current month
         TextView monthText = (TextView) findViewById(R.id.text_view_month);
@@ -181,7 +192,8 @@ public class CalendarActivity extends FragmentActivity {
     /**
      * Moves the viewpager to the currentViewPageIndex.
      * The viewpager performs a 'smooth scroll'.
-     * Call this AFTER setPrevMonth/setNextMonth.*/
+     * Call this AFTER setPrevMonth/setNextMonth.
+     */
     private void moveViewPagerToMonth() {
         // Go to the current view pager index
         mViewPager.setCurrentItem(vpIndex, true);
@@ -193,7 +205,8 @@ public class CalendarActivity extends FragmentActivity {
      * * days of the month
      * * on touch listeners to buttons
      * * disables unused buttons
-     * * allows access to workouts*/
+     * * allows access to workouts
+     */
     private void updateFragment() {
         int firstDayOfMonth = calendarData.getFirstDayOfMonth();
         int numberOfDaysInMonth = calendarData.getNumberOfDaysInMonth();
@@ -207,7 +220,7 @@ public class CalendarActivity extends FragmentActivity {
                 arrayList.get(i).setVisibility(View.INVISIBLE);
             } else if (i >= firstDayOfMonth - 1 && i < numberOfDaysInMonth + counter) {
                 // All the days DURING the month
-                arrayList.get(i).setText(Integer.toString(i+1-counter));
+                arrayList.get(i).setText(Integer.toString(i + 1 - counter));
                 arrayList.get(i).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {

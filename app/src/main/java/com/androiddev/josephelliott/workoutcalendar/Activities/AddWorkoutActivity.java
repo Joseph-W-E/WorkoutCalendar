@@ -18,6 +18,13 @@ public class AddWorkoutActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_workout);
+
+        try {
+            getActionBar().setElevation(0);
+            getActionBar().setTitle("Add Your Workout");
+        } catch (NullPointerException e) {
+            // TODO
+        }
     }
 
     @Override
