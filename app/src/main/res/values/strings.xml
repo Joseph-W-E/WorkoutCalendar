@@ -23,6 +23,7 @@
     <string name="return_to_today">Return To Today</string>
     <string name="month_spinner">Month Spinner</string>
 
+    <string name="set_preset_workout">Add Preset Workout</string>
     <string name="empty"> </string>
     <string name="action_settings">Settings</string>
     <string name="select_date">Select a date</string>

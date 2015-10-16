@@ -1,6 +1,5 @@
 package com.androiddev.josephelliott.workoutcalendar.Activities;
 
-import android.app.ActionBar;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;

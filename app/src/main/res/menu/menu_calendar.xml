@@ -10,6 +10,7 @@
         app:showAsAction="ifRoom"
         android:showAsAction="ifRoom"
         android:icon="@mipmap/ic_today_white_24dp"/>
+
     <item
         android:id="@+id/action_settings"
         android:orderInCategory="100"
