@@ -24,6 +24,9 @@
             android:label="@string/add_workout_activity_name"
             android:screenOrientation="portrait">
         </activity>
+        <activity android:name=".Activities.Splash">
+
+        </activity>
 
     </application>
 

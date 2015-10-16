@@ -51,6 +51,9 @@ public class CalendarActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        Intent intent = new Intent(this, Splash.class);
+        this.startActivity(intent);
+
         // Get the calendar data right away!! We need this for the pager adapter
         calendarData = new CurrentCalendarData();
 
