@@ -18,7 +18,8 @@
             android:padding="4dp"
             android:layout_margin="2dp"
             android:text="@string/wed"
-            android:gravity="center" />
+            android:gravity="center"
+            android:textSize="16sp"/>
 
         <TextView
             android:id="@+id/tue"
@@ -28,7 +29,8 @@
             android:padding="4dp"
             android:layout_margin="2dp"
             android:text="@string/tue"
-            android:gravity="center" />
+            android:gravity="center"
+            android:textSize="16sp"/>
 
         <TextView
             android:id="@+id/mon"
@@ -38,7 +40,8 @@
             android:padding="4dp"
             android:layout_margin="2dp"
             android:text="@string/mon"
-            android:gravity="center" />
+            android:gravity="center"
+            android:textSize="16sp"/>
 
         <TextView
             android:id="@+id/sun"
@@ -48,7 +51,8 @@
             android:padding="4dp"
             android:layout_margin="2dp"
             android:text="@string/sun"
-            android:gravity="center" />
+            android:gravity="center"
+            android:textSize="16sp"/>
 
 
         <TextView
@@ -59,7 +63,8 @@
             android:padding="4dp"
             android:layout_margin="2dp"
             android:text="@string/thu"
-            android:gravity="center" />
+            android:gravity="center"
+            android:textSize="16sp"/>
 
         <TextView
             android:id="@+id/fri"
@@ -69,7 +74,8 @@
             android:padding="4dp"
             android:layout_margin="2dp"
             android:text="@string/fri"
-            android:gravity="center" />
+            android:gravity="center"
+            android:textSize="16sp"/>
 
         <TextView
             android:id="@+id/sat"
@@ -79,7 +85,8 @@
             android:padding="4dp"
             android:layout_margin="2dp"
             android:text="@string/sat"
-            android:gravity="center" />
+            android:gravity="center"
+            android:textSize="16sp" />
     </RelativeLayout>
 
     <RelativeLayout

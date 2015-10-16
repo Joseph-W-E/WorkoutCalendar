@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Styles for non-splash screen activities -->
     <style name="AppTheme" parent="android:Theme.Material.Light.DarkActionBar">
         <item name="android:colorAccent">@color/accent</item>
         <item name="android:colorPrimaryDark">@color/primary_dark</item>
@@ -19,4 +20,23 @@
         <item name="android:textColor">@android:color/white</item>
         <item name="android:textSize">20sp</item>
     </style>
+    <!-- Styles for non-splash screen activities -->
+
+
+    <!-- Styles for splash screen -->
+    <style name="AppTheme.Splash" parent="android:Theme.Material.Light.DarkActionBar">
+        <item name="android:colorAccent">@color/accent</item>
+        <item name="android:colorPrimaryDark">@color/primary_dark</item>
+        <item name="android:actionBarStyle">@style/ActionBarTheme.Splash</item>
+        <item name="android:background">@color/primary_dark</item>
+    </style>
+
+    <!-- ActionBar Styles -->
+    <style name="ActionBarTheme.Splash" parent="@android:style/Widget.Material.Light.ActionBar">
+        <item name="android:background">@color/primary_dark</item>
+        <item name="android:displayOptions">disableHome</item>
+    </style>
+    <!-- Styles for splash screen -->
+
+
 </resources>

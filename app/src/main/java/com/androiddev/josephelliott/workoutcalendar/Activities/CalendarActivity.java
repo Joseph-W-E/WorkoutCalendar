@@ -1,6 +1,8 @@
 package com.androiddev.josephelliott.workoutcalendar.Activities;
 
+import android.app.ActionBar;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
@@ -43,7 +45,6 @@ public class CalendarActivity extends FragmentActivity {
     /**
      * Other variables
      */
-    private static boolean runSplash = true;
 
 
     @Override
@@ -51,16 +52,13 @@ public class CalendarActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        if (runSplash) {
-            Intent intent = new Intent(this, Splash.class);
-            this.startActivity(intent);
-            runSplash = false;
-        }
         try {
             getActionBar().setElevation(0);
+            ActionBar actionBar = getActionBar();
+            actionBar.setDisplayHomeAsUpEnabled(false);
             //getActionBar().setTitle("Workout Calendar");
         } catch (NullPointerException e) {
-            // TODO
+            // Do nothing
         }
 
         // Get the calendar data right away!! We need this for the pager adapter
@@ -221,6 +219,7 @@ public class CalendarActivity extends FragmentActivity {
             } else if (i >= firstDayOfMonth - 1 && i < numberOfDaysInMonth + counter) {
                 // All the days DURING the month
                 arrayList.get(i).setText(Integer.toString(i + 1 - counter));
+                arrayList.get(i).setTextColor(Color.LTGRAY);
                 arrayList.get(i).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {

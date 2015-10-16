@@ -7,34 +7,61 @@
     android:background="@color/primary_dark">
 
     <TextView
-        android:id="@+id/splash_description"
-        android:layout_width="wrap_content"
+        android:id="@+id/splash_welcome"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:layout_centerInParent="true"
+        android:layout_marginTop="48dp"
+        android:layout_marginBottom="48dp"
+        android:text="@string/splash_welcome"
+        android:textSize="36sp"
+        android:textColor="@android:color/white"
+        android:gravity="center" />
+
+    <TextView
+        android:id="@+id/splash_description"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/splash_welcome"
         android:text="@string/splash_description"
         android:textSize="24sp"
+        android:textColor="@android:color/white"
         android:gravity="center"/>
 
-    <ImageView
-        android:id="@+id/splash_icon"
-        android:layout_width="128dp"
-        android:layout_height="128dp"
-        android:layout_marginBottom="48dp"
-        android:src="@drawable/old_icon"
-        android:layout_above="@id/splash_description"
-        android:layout_centerHorizontal="true"/>
+
 
     <Button
-        android:id="@+id/splash_get_started"
-        android:layout_width="wrap_content"
+        android:id="@+id/splash_sign_up_btn"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:text="@string/get_started"
+        android:text="@string/sign_up"
+        android:textColor="@android:color/white"
         style="?android:attr/borderlessButtonStyle"
-        android:textSize="16sp"
+        android:textSize="20sp"
+        android:textAllCaps="false"/>
+
+    <Button
+        android:id="@+id/splash_log_in_btn"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/splash_sign_up_btn"
+        android:text="@string/log_in"
+        android:textColor="@android:color/white"
+        style="?android:attr/borderlessButtonStyle"
+        android:textSize="20sp"
+        android:textAllCaps="false"/>
+
+    <Button
+        android:id="@+id/splash_local_storage_btn"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/splash_log_in_btn"
+        android:text="@string/use_local_storage"
+        android:textColor="@android:color/white"
+        style="?android:attr/borderlessButtonStyle"
+        android:textSize="20sp"
         android:textAllCaps="false"/>
 
 </RelativeLayout>
