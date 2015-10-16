@@ -54,8 +54,7 @@ public class CalendarActivity extends FragmentActivity {
 
         try {
             getActionBar().setElevation(0);
-            ActionBar actionBar = getActionBar();
-            actionBar.setDisplayHomeAsUpEnabled(false);
+            getActionBar().setDisplayHomeAsUpEnabled(false);
             //getActionBar().setTitle("Workout Calendar");
         } catch (NullPointerException e) {
             // Do nothing
