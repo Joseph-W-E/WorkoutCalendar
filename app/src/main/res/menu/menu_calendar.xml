@@ -9,7 +9,7 @@
         android:title="@string/jump_to_today"
         app:showAsAction="ifRoom"
         android:showAsAction="ifRoom"
-        android:icon="@mipmap/ic_today_black_24dp"/>
+        android:icon="@mipmap/ic_today_white_24dp"/>
     <item
         android:id="@+id/action_settings"
         android:orderInCategory="100"

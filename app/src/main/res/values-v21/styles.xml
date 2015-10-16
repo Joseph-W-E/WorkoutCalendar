@@ -1,12 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="AppTheme" parent="android:Theme.Material.Light">
+    <style name="AppTheme" parent="android:Theme.Material.Light.DarkActionBar">
         <item name="android:colorAccent">@color/accent</item>
         <item name="android:colorPrimaryDark">@color/primary_dark</item>
         <item name="android:actionBarStyle">@style/ActionBarTheme</item>
     </style>
 
+    <!-- ActionBar Styles -->
     <style name="ActionBarTheme" parent="@android:style/Widget.Material.Light.ActionBar">
-        <item name="android:background">@color/primary</item>
+        <item name="android:background">@color/primary_dark</item>
+        <item name="android:titleTextStyle">@style/MyActionBarTitleText</item>
+        <item name="actionOverflowButtonStyle">@android:color/white</item>
+        <item name="android:actionOverflowMenuStyle">@android:color/white</item>
+    </style>
+
+    <!-- ActionBar title text -->
+    <style name="MyActionBarTitleText" parent="@android:style/TextAppearance">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">20sp</item>
     </style>
 </resources>

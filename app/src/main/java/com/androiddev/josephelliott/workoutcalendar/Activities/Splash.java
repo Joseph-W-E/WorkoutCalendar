@@ -21,14 +21,15 @@ public class Splash extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.splash_screen);
 
+        setContentView(R.layout.splash_screen);
         try {
             getActionBar().setElevation(0);
             getActionBar().setTitle("");
         } catch (NullPointerException e) {
             // TODO
         }
+
 
         new Handler().postDelayed(new Runnable() {
             @Override
