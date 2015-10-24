@@ -6,6 +6,7 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import android.view.ViewGroup;
 
 import com.androiddev.josephelliott.workoutcalendar.Activities.CalendarFragment;
+import com.androiddev.josephelliott.workoutcalendar.ObjectData.CurrentCalendarData;
 
 import java.util.HashMap;
 
@@ -17,11 +18,13 @@ public class ScreenSlidePagerAdapter extends FragmentStatePagerAdapter {
 
     private int NUM_PAGES;
     private HashMap<Integer, CalendarFragment> map;
+    long timeInMillis;
 
-    public ScreenSlidePagerAdapter(FragmentManager fm, int NUM_PAGES) {
+    public ScreenSlidePagerAdapter(FragmentManager fm, int NUM_PAGES, long timeInMillis) {
         super(fm);
         this.NUM_PAGES = NUM_PAGES;
         map = new HashMap<>();
+        this.timeInMillis = timeInMillis;
     }
 
     @Override
@@ -31,7 +34,25 @@ public class ScreenSlidePagerAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        CalendarFragment cf = new CalendarFragment();
+        // The position refers to what month we are looking at
+        // For example, if the position is 500, then we are at today
+        // If the position is NUM_PAGES / 2 + 2, we are looking at december.
+        CurrentCalendarData ccd = new CurrentCalendarData(timeInMillis);
+
+        // Set the new month for the fragment based off the position in the ViewPager
+        if (position > NUM_PAGES / 2) {
+            // We are traveling forward in time
+            for (int i = NUM_PAGES / 2; i < position; i++) {
+                ccd.addMonth();
+            }
+        } else if (position < NUM_PAGES / 2) {
+            // We are traveling backward in time
+            for (int i = position; i < NUM_PAGES / 2; i++) {
+                ccd.subtractMonth();
+            }
+        }
+
+        CalendarFragment cf = CalendarFragment.newInstance(ccd.getDateObj().getTime());
         map.put(position, cf);
         return cf;
     }

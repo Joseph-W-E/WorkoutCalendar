@@ -1,25 +1,20 @@
 package com.androiddev.josephelliott.workoutcalendar.Activities;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewTreeObserver;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.androiddev.josephelliott.workoutcalendar.ObjectData.CurrentCalendarData;
 import com.androiddev.josephelliott.workoutcalendar.R;
 import com.androiddev.josephelliott.workoutcalendar.Utility.ScreenSlidePagerAdapter;
-import com.androiddev.josephelliott.workoutcalendar.Utility.Utility;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 
 public class CalendarActivity extends FragmentActivity {
@@ -39,7 +34,6 @@ public class CalendarActivity extends FragmentActivity {
      * Variables to be manipulated through the activity's lifetime.
      */
     private CurrentCalendarData calendarData;
-    private CalendarFragment primaryFragment;
     private int vpIndex = NUM_PAGES / 2;
     /**
      * Other variables
@@ -66,21 +60,12 @@ public class CalendarActivity extends FragmentActivity {
         btnNextMonth = (ImageButton) findViewById(R.id.image_button_right);
         btnPrevMonth = (ImageButton) findViewById(R.id.image_button_left);
         mViewPager = (ViewPager) findViewById(R.id.pager);
-        mPagerAdapter = new ScreenSlidePagerAdapter(getSupportFragmentManager(), NUM_PAGES);
+        mPagerAdapter = new ScreenSlidePagerAdapter(getSupportFragmentManager(), NUM_PAGES, calendarData.getDateObj().getTime());
         mViewPager.setAdapter(mPagerAdapter);
 
         // Set up the activity data
         moveViewPagerToMonth();
         setMonthAndYearTextFields(calendarData.getDateObj());
-
-        // This is required to get the first month to update!!!
-        mViewPager.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
-            @Override
-            public void onGlobalLayout() {
-                primaryFragment = mPagerAdapter.getFragment(vpIndex);
-                updateFragment();
-            }
-        });
 
         // Add all component listeners
         mViewPager.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
@@ -92,17 +77,11 @@ public class CalendarActivity extends FragmentActivity {
                     calendarData.addMonth();
                     vpIndex++;
                     setMonthAndYearTextFields(calendarData.getDateObj());
-                    primaryFragment = mPagerAdapter.getFragment(vpIndex);
-                    updateFragment();
-                    // Update the fragment that is off the screen to the right
-
                 } else if (position < vpIndex) {
                     // Then we scrolled to the left
                     calendarData.subtractMonth();
                     vpIndex--;
                     setMonthAndYearTextFields(calendarData.getDateObj());
-                    primaryFragment = mPagerAdapter.getFragment(vpIndex);
-                    updateFragment();
                 }
             }
         });
@@ -114,8 +93,6 @@ public class CalendarActivity extends FragmentActivity {
                 vpIndex++;
                 moveViewPagerToMonth();
                 setMonthAndYearTextFields(calendarData.getDateObj());
-                primaryFragment = mPagerAdapter.getFragment(vpIndex);
-                updateFragment();
             }
         });
         btnPrevMonth.setOnClickListener(new View.OnClickListener() {
@@ -126,8 +103,6 @@ public class CalendarActivity extends FragmentActivity {
                 vpIndex--;
                 moveViewPagerToMonth();
                 setMonthAndYearTextFields(calendarData.getDateObj());
-                primaryFragment = mPagerAdapter.getFragment(vpIndex);
-                updateFragment();
             }
         });
     }
@@ -152,8 +127,6 @@ public class CalendarActivity extends FragmentActivity {
             vpIndex = NUM_PAGES / 2;
             moveViewPagerToMonth();
             setMonthAndYearTextFields(calendarData.getDateObj());
-            primaryFragment = mPagerAdapter.getFragment(vpIndex);
-            updateFragment();
             return true;
         } else if (id == R.id.action_settings) {
             return true;
@@ -193,43 +166,6 @@ public class CalendarActivity extends FragmentActivity {
     private void moveViewPagerToMonth() {
         // Go to the current view pager index
         mViewPager.setCurrentItem(vpIndex, true);
-    }
-
-    /**
-     * This method updates the fragment.
-     * Adds:
-     * * days of the month
-     * * on touch listeners to buttons
-     * * disables unused buttons
-     * * allows access to workouts
-     */
-    private void updateFragment() {
-        int firstDayOfMonth = calendarData.getFirstDayOfMonth();
-        int numberOfDaysInMonth = calendarData.getNumberOfDaysInMonth();
-        ArrayList<Button> arrayList = Utility.getCellsFromCalendarFragment(primaryFragment.getView());
-        int counter = 0;
-        for (int i = 0; i < 42; i++) {
-            if (i < firstDayOfMonth - 1) {
-                // All the days BEFORE the month starts
-                counter++;
-                arrayList.get(i).setEnabled(false);
-                arrayList.get(i).setVisibility(View.INVISIBLE);
-            } else if (i >= firstDayOfMonth - 1 && i < numberOfDaysInMonth + counter) {
-                // All the days DURING the month
-                arrayList.get(i).setText(Integer.toString(i + 1 - counter));
-                arrayList.get(i).setTextColor(Color.LTGRAY);
-                arrayList.get(i).setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        // TODO Set the intent to open up the AddWorkoutActivity with info
-                        goToAddWorkoutActivity(v);
-                    }
-                });
-            } else {
-                // All the days AFTER the month ends
-                arrayList.get(i).setVisibility(View.INVISIBLE);
-            }
-        }
     }
 
 }
