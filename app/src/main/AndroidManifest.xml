@@ -34,6 +34,30 @@
         </activity>
 
 
+        <activity
+            android:name=".Activities.TimerActivity"
+            android:label="@string/timer_name"
+            android:parentActivityName=".Activities.CalendarActivity"
+            android:screenOrientation="portrait">
+        </activity>
+
+
+        <activity
+            android:name=".Activities.HelpActivity"
+            android:label="@string/timer_name"
+            android:parentActivityName=".Activities.CalendarActivity"
+            android:screenOrientation="portrait">
+        </activity>
+
+
+        <activity
+            android:name=".Activities.SettingsActivity"
+            android:label="@string/timer_name"
+            android:parentActivityName=".Activities.CalendarActivity"
+            android:screenOrientation="portrait">
+        </activity>
+
+
     </application>
 
 </manifest>

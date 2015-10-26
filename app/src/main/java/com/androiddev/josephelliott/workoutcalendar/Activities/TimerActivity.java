@@ -8,14 +8,14 @@ import android.view.MenuItem;
 import com.androiddev.josephelliott.workoutcalendar.R;
 
 /**
- * Created by Joseph Elliott on 10/12/2015.
+ * Created by Joseph Elliott on 10/25/2015.
  */
-public class AddWorkoutActivity extends Activity {
+public class TimerActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_workout);
+        setContentView(R.layout.activity_timer);
 
         try {
             getActionBar().setElevation(0);
@@ -44,8 +44,11 @@ public class AddWorkoutActivity extends Activity {
             return true;
         } else if (id == R.id.action_settings) {
             return true;
+        } else if (id == R.id.action_help) {
+            return true;
         }
 
         return super.onOptionsItemSelected(item);
     }
+
 }

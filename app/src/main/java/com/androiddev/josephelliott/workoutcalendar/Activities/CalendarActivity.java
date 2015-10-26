@@ -1,6 +1,8 @@
 package com.androiddev.josephelliott.workoutcalendar.Activities;
 
+import android.content.Context;
 import android.content.Intent;
+import android.media.audiofx.BassBoost;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.FragmentActivity;
@@ -39,6 +41,7 @@ public class CalendarActivity extends FragmentActivity {
     /**
      * Other variables
      */
+    private Context context;
 
 
     @Override
@@ -56,6 +59,7 @@ public class CalendarActivity extends FragmentActivity {
 
         // Get the calendar data right away!! We need this for the pager adapter
         calendarData = new CurrentCalendarData();
+        context = this.getApplicationContext();
 
         // Initialize all components in this activity
         btnNextMonth = (ImageButton) findViewById(R.id.image_button_right);
@@ -109,20 +113,39 @@ public class CalendarActivity extends FragmentActivity {
 
         final FloatingActionButton fabMain = (FloatingActionButton) findViewById(R.id.fab_main);
         final FloatingActionButton fabCust = (FloatingActionButton) findViewById(R.id.fab_custom_workout);
+        fabCust.setVisibility(View.INVISIBLE);
         final FloatingActionButton fabPres = (FloatingActionButton) findViewById(R.id.fab_preset_workout);
+        fabPres.setVisibility(View.INVISIBLE);
         final FloatingActionButton fabTime = (FloatingActionButton) findViewById(R.id.fab_timer);
+        fabTime.setVisibility(View.INVISIBLE);
+
         fabMain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                fabCust.setVisibility(View.VISIBLE);
-                fabPres.setVisibility(View.VISIBLE);
-                fabTime.setVisibility(View.VISIBLE);
+                if (fabCust.getVisibility() == View.VISIBLE) {
+                    fabCust.setVisibility(View.INVISIBLE);
+                } else {
+                    fabCust.setVisibility(View.VISIBLE);
+                }
+                if (fabPres.getVisibility() == View.VISIBLE) {
+                    fabPres.setVisibility(View.INVISIBLE);
+                } else {
+                    fabPres.setVisibility(View.VISIBLE);
+                }
+                if (fabTime.getVisibility() == View.VISIBLE) {
+                    fabTime.setVisibility(View.INVISIBLE);
+                } else {
+                    fabTime.setVisibility(View.VISIBLE);
+                }
+                fabMain.setRotation(fabMain.getRotation() + 45);
             }
         });
+
         fabCust.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(context, AddWorkoutActivity.class);
+                startActivity(intent);
             }
         });
         fabPres.setOnClickListener(new View.OnClickListener() {
@@ -134,7 +157,8 @@ public class CalendarActivity extends FragmentActivity {
         fabTime.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(context, TimerActivity.class);
+                startActivity(intent);
             }
         });
     }
@@ -161,6 +185,12 @@ public class CalendarActivity extends FragmentActivity {
             setMonthAndYearTextFields(calendarData.getDateObj());
             return true;
         } else if (id == R.id.action_settings) {
+            Intent intent = new Intent(context, SettingsActivity.class);
+            startActivity(intent);
+            return true;
+        } else if (id == R.id.action_help) {
+            Intent intent = new Intent(context, HelpActivity.class);
+            startActivity(intent);
             return true;
         }
 

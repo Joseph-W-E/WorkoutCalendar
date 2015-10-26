@@ -6,7 +6,7 @@
     android:thickness="0dp"
     android:useLevel="false">
 
-    <stroke android:width="6dp" android:color="@color/accent" />
+    <stroke android:width="4dp" android:color="@color/accent" />
 
     <size
         android:height="256dp"
