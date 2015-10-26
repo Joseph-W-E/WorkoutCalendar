@@ -2,8 +2,12 @@ package com.androiddev.josephelliott.workoutcalendar.Activities;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.Chronometer;
 
 import com.androiddev.josephelliott.workoutcalendar.R;
 
@@ -11,6 +15,9 @@ import com.androiddev.josephelliott.workoutcalendar.R;
  * Created by Joseph Elliott on 10/25/2015.
  */
 public class TimerActivity extends Activity {
+
+    private boolean isRunning;
+    private long time;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +30,61 @@ public class TimerActivity extends Activity {
         } catch (NullPointerException e) {
             // TODO
         }
+
+        isRunning = false;
+
+        final Chronometer chronometer = (Chronometer) findViewById(R.id.timer_chronometer);
+        chronometer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (isRunning) {
+                    time = chronometer.getBase() - SystemClock.elapsedRealtime();
+                    chronometer.stop();
+                    //chronometer.setTextColor(getResources().getColor(R.color.accent, null));
+                    isRunning = false;
+                } else {
+                    chronometer.setBase(SystemClock.elapsedRealtime() + time);
+                    chronometer.start();
+                    //chronometer.setTextColor(getResources().getColor(R.color.primary, null));
+                    isRunning = true;
+                }
+            }
+        });
+
+        final Button resetTimer = (Button) findViewById(R.id.timer_reset_timer);
+        resetTimer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                time = 0;
+                chronometer.stop();
+                chronometer.setText("00:00");
+                isRunning = false;
+            }
+        });
+
+        final Button choosePicture = (Button) findViewById(R.id.timer_change_image);
+        choosePicture.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+        final Button chooseDate = (Button) findViewById(R.id.timer_change_date);
+        chooseDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+        final Button confirm = (Button) findViewById(R.id.timer_save);
+        confirm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 
     @Override
