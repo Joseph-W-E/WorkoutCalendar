@@ -10,11 +10,12 @@
         android:id="@+id/timer_chronometer"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:textSize="40sp"
+        android:textSize="60sp"
         android:textColor="@color/accent"
         android:background="@drawable/circle"
         android:gravity="center"
-        android:layout_marginTop="48dp"/>
+        android:layout_marginTop="48dp"
+        android:textColorHighlight="@color/primary"/>
 
     <CheckBox
         android:id="@+id/timer_toggle_running"

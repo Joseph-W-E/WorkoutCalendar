@@ -1,10 +1,13 @@
 package com.androiddev.josephelliott.workoutcalendar.Activities;
 
 import android.app.Activity;
+import android.content.Context;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Chronometer;
@@ -32,22 +35,42 @@ public class TimerActivity extends Activity {
         }
 
         isRunning = false;
-
         final Chronometer chronometer = (Chronometer) findViewById(R.id.timer_chronometer);
-        chronometer.setOnClickListener(new View.OnClickListener() {
+
+        chronometer.setOnTouchListener(new View.OnTouchListener() {
             @Override
-            public void onClick(View v) {
-                if (isRunning) {
-                    time = chronometer.getBase() - SystemClock.elapsedRealtime();
-                    chronometer.stop();
-                    //chronometer.setTextColor(getResources().getColor(R.color.accent, null));
-                    isRunning = false;
-                } else {
-                    chronometer.setBase(SystemClock.elapsedRealtime() + time);
-                    chronometer.start();
-                    //chronometer.setTextColor(getResources().getColor(R.color.primary, null));
-                    isRunning = true;
+            public boolean onTouch(View v, MotionEvent event) {
+                final int version = Build.VERSION.SDK_INT;
+                switch(event.getAction()) {
+                    case MotionEvent.ACTION_DOWN:
+                        // Change the color to the primary for the 'highlight' feel
+                        if (version >= 23) {
+                            chronometer.setTextColor(getResources().getColor(R.color.primary, null));
+                        } else {
+                            chronometer.setTextColor(getResources().getColor(R.color.primary));
+                        }
+                        //chronometer.setTextColor(getResources().getColor(R.color.primary, null));
+                        return true;
+                    case MotionEvent.ACTION_UP:
+                        // Change the color back to normal
+                        if (version >= 23) {
+                            chronometer.setTextColor(getResources().getColor(R.color.accent, null));
+                        } else {
+                            chronometer.setTextColor(getResources().getColor(R.color.accent));
+                        }
+                        // Toggle the chronometer
+                        if (isRunning) {
+                            time = chronometer.getBase() - SystemClock.elapsedRealtime();
+                            chronometer.stop();
+                            isRunning = false;
+                        } else {
+                            chronometer.setBase(SystemClock.elapsedRealtime() + time);
+                            chronometer.start();
+                            isRunning = true;
+                        }
+                        return true;
                 }
+                return false;
             }
         });
 

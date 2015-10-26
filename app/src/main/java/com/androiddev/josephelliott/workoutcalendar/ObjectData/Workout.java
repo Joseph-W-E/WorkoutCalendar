@@ -15,6 +15,7 @@ public class Workout {
     private String location;
     private Date date;
     private Image image;
+    private int distance;
 
     public Workout() {
         title = "";
