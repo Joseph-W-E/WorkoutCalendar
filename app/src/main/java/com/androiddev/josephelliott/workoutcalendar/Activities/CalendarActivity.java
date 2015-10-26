@@ -2,6 +2,7 @@ package com.androiddev.josephelliott.workoutcalendar.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 import android.view.Menu;
@@ -103,6 +104,37 @@ public class CalendarActivity extends FragmentActivity {
                 vpIndex--;
                 moveViewPagerToMonth();
                 setMonthAndYearTextFields(calendarData.getDateObj());
+            }
+        });
+
+        final FloatingActionButton fabMain = (FloatingActionButton) findViewById(R.id.fab_main);
+        final FloatingActionButton fabCust = (FloatingActionButton) findViewById(R.id.fab_custom_workout);
+        final FloatingActionButton fabPres = (FloatingActionButton) findViewById(R.id.fab_preset_workout);
+        final FloatingActionButton fabTime = (FloatingActionButton) findViewById(R.id.fab_timer);
+        fabMain.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                fabCust.setVisibility(View.VISIBLE);
+                fabPres.setVisibility(View.VISIBLE);
+                fabTime.setVisibility(View.VISIBLE);
+            }
+        });
+        fabCust.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+        fabPres.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+        fabTime.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
             }
         });
     }
