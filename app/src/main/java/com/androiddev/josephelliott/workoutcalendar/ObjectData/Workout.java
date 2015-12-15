@@ -15,7 +15,7 @@ public class Workout {
     private String location;
     private Date date;
     private Image image;
-    private int distance;
+    private double distance;
 
     public Workout() {
         title = "";
@@ -23,16 +23,66 @@ public class Workout {
         location = "";
         date = new Date();
         image = null;
+        distance = 0.0;
     }
 
-    public Workout(String title, String description, String location, Date date, Image image) {
+    public long getID() {
+        return ID;
+    }
+
+    public void setID(long ID) {
+        this.ID = ID;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
         this.location = location;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
         this.date = date;
+    }
+
+    public void setDate(long ms) {
+        this.date = new Date(ms);
+    }
+
+    public Image getImage() {
+        return image;
+    }
+
+    public void setImage(Image image) {
         this.image = image;
     }
 
+    public double getDistance() {
+        return distance;
+    }
 
-
+    public void setDistance(double distance) {
+        this.distance = distance;
+    }
 }

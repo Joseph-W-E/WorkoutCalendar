@@ -2,6 +2,7 @@ package com.androiddev.josephelliott.workoutcalendar.ObjectData;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 
 /**
  * Created by Joseph Elliott on 10/9/2015.
@@ -24,9 +25,7 @@ public class CurrentCalendarData {
     }
 
     public Date getDateObj() {
-        Date date = new Date();
-        date.setTime(calendar.getTimeInMillis());
-        return date;
+        return calendar.getTime();
     }
 
     public void setTodaysDate() {
@@ -45,8 +44,20 @@ public class CurrentCalendarData {
         calendar.add(Calendar.MONTH, -1);
     }
 
+    public void setDay(int day) {
+        calendar.set(Calendar.DAY_OF_MONTH, day);
+    }
+
+    public int getDay() {
+        return calendar.get(Calendar.DAY_OF_MONTH);
+    }
+
     public int getMonth() {
         return calendar.get(Calendar.MONTH);
+    }
+
+    public String getMonthText() {
+        return calendar.getDisplayName(Calendar.MONTH, Calendar.LONG, Locale.US);
     }
 
     public int getYear() {

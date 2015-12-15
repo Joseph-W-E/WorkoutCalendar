@@ -103,7 +103,7 @@
             android:layout_height="48dp"
             android:layout_centerHorizontal="true"
             android:layout_margin="2dp"
-            android:background="@color/icons" />
+            android:background="@drawable/ripple_cell" />
 
         <Button
             android:id="@+id/cell02"
@@ -112,7 +112,7 @@
             android:layout_height="48dp"
             android:layout_margin="2dp"
             android:layout_toStartOf="@id/cell03"
-            android:background="@color/icons" />
+            android:background="@drawable/ripple_cell" />
 
         <Button
             android:id="@+id/cell01"
@@ -121,7 +121,7 @@
             android:layout_height="48dp"
             android:layout_margin="2dp"
             android:layout_toStartOf="@id/cell02"
-            android:background="@color/icons" />
+            android:background="@drawable/ripple_cell" />
 
         <Button
             android:id="@+id/cell00"
@@ -130,7 +130,7 @@
             android:layout_height="48dp"
             android:layout_margin="2dp"
             android:layout_toStartOf="@id/cell01"
-            android:background="@color/icons" />
+            android:background="@drawable/ripple_cell" />
 
 
         <Button
@@ -140,7 +140,7 @@
             android:layout_height="48dp"
             android:layout_margin="2dp"
             android:layout_toEndOf="@id/cell03"
-            android:background="@color/icons" />
+            android:background="@drawable/ripple_cell" />
 
         <Button
             android:id="@+id/cell05"
@@ -149,7 +149,7 @@
             android:layout_height="48dp"
             android:layout_margin="2dp"
             android:layout_toEndOf="@id/cell04"
-            android:background="@color/icons" />
+            android:background="@drawable/ripple_cell" />
 
         <Button
             android:id="@+id/cell06"
@@ -158,7 +158,7 @@
             android:layout_height="48dp"
             android:layout_margin="2dp"
             android:layout_toEndOf="@id/cell05"
-            android:background="@color/icons" />
+            android:background="@drawable/ripple_cell" />
     </RelativeLayout>
 
     <RelativeLayout
@@ -174,7 +174,7 @@
             android:layout_height="48dp"
             android:layout_centerHorizontal="true"
             android:layout_margin="2dp"
-            android:background="@color/icons" />
+            android:background="@drawable/ripple_cell" />
 
         <Button
             android:id="@+id/cell12"
@@ -183,7 +183,7 @@
             android:layout_height="48dp"
             android:layout_margin="2dp"
             android:layout_toStartOf="@id/cell13"
-            android:background="@color/icons" />
+            android:background="@drawable/ripple_cell" />
 
         <Button
             android:id="@+id/cell11"
@@ -192,7 +192,7 @@
             android:layout_height="48dp"
             android:layout_margin="2dp"
             android:layout_toStartOf="@id/cell12"
-            android:background="@color/icons" />
+            android:background="@drawable/ripple_cell" />
 
         <Button
             android:id="@+id/cell10"
@@ -201,7 +201,7 @@
             android:layout_height="48dp"
             android:layout_margin="2dp"
             android:layout_toStartOf="@id/cell11"
-            android:background="@color/icons" />
+            android:background="@drawable/ripple_cell" />
 
 
         <Button
@@ -211,7 +211,7 @@
             android:layout_height="48dp"
             android:layout_margin="2dp"
             android:layout_toEndOf="@id/cell13"
-            android:background="@color/icons" />
+            android:background="@drawable/ripple_cell" />
 
         <Button
             android:id="@+id/cell15"
@@ -220,7 +220,7 @@
             android:layout_height="48dp"
             android:layout_margin="2dp"
             android:layout_toEndOf="@id/cell14"
-            android:background="@color/icons" />
+            android:background="@drawable/ripple_cell" />
 
         <Button
             android:id="@+id/cell16"
@@ -229,7 +229,7 @@
             android:layout_height="48dp"
             android:layout_margin="2dp"
             android:layout_toEndOf="@id/cell15"
-            android:background="@color/icons" />
+            android:background="@drawable/ripple_cell" />
     </RelativeLayout>
 
     <RelativeLayout
@@ -245,7 +245,7 @@
             android:layout_height="48dp"
             android:layout_centerHorizontal="true"
             android:layout_margin="2dp"
-            android:background="@color/icons" />
+            android:background="@drawable/ripple_cell" />
 
         <Button
             android:id="@+id/cell22"
@@ -254,7 +254,7 @@
             android:layout_height="48dp"
             android:layout_margin="2dp"
             android:layout_toStartOf="@id/cell23"
-            android:background="@color/icons" />
+            android:background="@drawable/ripple_cell" />
 
         <Button
             android:id="@+id/cell21"
@@ -263,7 +263,7 @@
             android:layout_height="48dp"
             android:layout_margin="2dp"
             android:layout_toStartOf="@id/cell22"
-            android:background="@color/icons" />
+            android:background="@drawable/ripple_cell" />
 
         <Button
             android:id="@+id/cell20"
@@ -272,7 +272,7 @@
             android:layout_height="48dp"
             android:layout_margin="2dp"
             android:layout_toStartOf="@id/cell21"
-            android:background="@color/icons" />
+            android:background="@drawable/ripple_cell" />
 
 
         <Button
@@ -282,7 +282,7 @@
             android:layout_height="48dp"
             android:layout_margin="2dp"
             android:layout_toEndOf="@id/cell23"
-            android:background="@color/icons" />
+            android:background="@drawable/ripple_cell" />
 
         <Button
             android:id="@+id/cell25"
@@ -291,7 +291,7 @@
             android:layout_height="48dp"
             android:layout_margin="2dp"
             android:layout_toEndOf="@id/cell24"
-            android:background="@color/icons" />
+            android:background="@drawable/ripple_cell" />
 
         <Button
             android:id="@+id/cell26"
@@ -300,7 +300,7 @@
             android:layout_height="48dp"
             android:layout_margin="2dp"
             android:layout_toEndOf="@id/cell25"
-            android:background="@color/icons" />
+            android:background="@drawable/ripple_cell" />
     </RelativeLayout>
 
     <RelativeLayout
@@ -317,7 +317,7 @@
             android:layout_height="48dp"
             android:layout_centerHorizontal="true"
             android:layout_margin="2dp"
-            android:background="@color/icons" />
+            android:background="@drawable/ripple_cell" />
 
         <Button
             android:id="@+id/cell32"
@@ -326,7 +326,7 @@
             android:layout_height="48dp"
             android:layout_margin="2dp"
             android:layout_toStartOf="@id/cell33"
-            android:background="@color/icons" />
+            android:background="@drawable/ripple_cell" />
 
         <Button
             android:id="@+id/cell31"
@@ -335,7 +335,7 @@
             android:layout_height="48dp"
             android:layout_margin="2dp"
             android:layout_toStartOf="@id/cell32"
-            android:background="@color/icons" />
+            android:background="@drawable/ripple_cell" />
 
         <Button
             android:id="@+id/cell30"
@@ -344,7 +344,7 @@
             android:layout_height="48dp"
             android:layout_margin="2dp"
             android:layout_toStartOf="@id/cell31"
-            android:background="@color/icons" />
+            android:background="@drawable/ripple_cell" />
 
 
         <Button
@@ -354,7 +354,7 @@
             android:layout_height="48dp"
             android:layout_margin="2dp"
             android:layout_toEndOf="@id/cell33"
-            android:background="@color/icons" />
+            android:background="@drawable/ripple_cell" />
 
         <Button
             android:id="@+id/cell35"
@@ -363,7 +363,7 @@
             android:layout_height="48dp"
             android:layout_margin="2dp"
             android:layout_toEndOf="@id/cell34"
-            android:background="@color/icons" />
+            android:background="@drawable/ripple_cell" />
 
         <Button
             android:id="@+id/cell36"
@@ -372,7 +372,7 @@
             android:layout_height="48dp"
             android:layout_margin="2dp"
             android:layout_toEndOf="@id/cell35"
-            android:background="@color/icons" />
+            android:background="@drawable/ripple_cell" />
     </RelativeLayout>
 
     <RelativeLayout
@@ -389,7 +389,7 @@
             android:layout_height="48dp"
             android:layout_centerHorizontal="true"
             android:layout_margin="2dp"
-            android:background="@color/icons" />
+            android:background="@drawable/ripple_cell" />
 
         <Button
             android:id="@+id/cell42"
@@ -398,7 +398,7 @@
             android:layout_height="48dp"
             android:layout_margin="2dp"
             android:layout_toStartOf="@id/cell43"
-            android:background="@color/icons" />
+            android:background="@drawable/ripple_cell" />
 
         <Button
             android:id="@+id/cell41"
@@ -407,7 +407,7 @@
             android:layout_height="48dp"
             android:layout_margin="2dp"
             android:layout_toStartOf="@id/cell42"
-            android:background="@color/icons" />
+            android:background="@drawable/ripple_cell" />
 
         <Button
             android:id="@+id/cell40"
@@ -416,7 +416,7 @@
             android:layout_height="48dp"
             android:layout_margin="2dp"
             android:layout_toStartOf="@id/cell41"
-            android:background="@color/icons" />
+            android:background="@drawable/ripple_cell" />
 
 
         <Button
@@ -426,7 +426,7 @@
             android:layout_height="48dp"
             android:layout_margin="2dp"
             android:layout_toEndOf="@id/cell43"
-            android:background="@color/icons" />
+            android:background="@drawable/ripple_cell" />
 
         <Button
             android:id="@+id/cell45"
@@ -435,7 +435,7 @@
             android:layout_height="48dp"
             android:layout_margin="2dp"
             android:layout_toEndOf="@id/cell44"
-            android:background="@color/icons" />
+            android:background="@drawable/ripple_cell" />
 
         <Button
             android:id="@+id/cell46"
@@ -444,7 +444,7 @@
             android:layout_height="48dp"
             android:layout_margin="2dp"
             android:layout_toEndOf="@id/cell45"
-            android:background="@color/icons" />
+            android:background="@drawable/ripple_cell" />
     </RelativeLayout>
 
     <RelativeLayout
@@ -461,7 +461,7 @@
             android:layout_height="48dp"
             android:layout_centerHorizontal="true"
             android:layout_margin="2dp"
-            android:background="@color/icons" />
+            android:background="@drawable/ripple_cell" />
 
         <Button
             android:id="@+id/cell52"
@@ -470,7 +470,7 @@
             android:layout_height="48dp"
             android:layout_margin="2dp"
             android:layout_toStartOf="@id/cell53"
-            android:background="@color/icons" />
+            android:background="@drawable/ripple_cell" />
 
         <Button
             android:id="@+id/cell51"
@@ -479,7 +479,7 @@
             android:layout_height="48dp"
             android:layout_margin="2dp"
             android:layout_toStartOf="@id/cell52"
-            android:background="@color/icons" />
+            android:background="@drawable/ripple_cell" />
 
         <Button
             android:id="@+id/cell50"
@@ -488,7 +488,7 @@
             android:layout_height="48dp"
             android:layout_margin="2dp"
             android:layout_toStartOf="@id/cell51"
-            android:background="@color/icons" />
+            android:background="@drawable/ripple_cell" />
 
 
         <Button
@@ -498,7 +498,7 @@
             android:layout_height="48dp"
             android:layout_margin="2dp"
             android:layout_toEndOf="@id/cell53"
-            android:background="@color/icons" />
+            android:background="@drawable/ripple_cell" />
 
         <Button
             android:id="@+id/cell55"
@@ -507,7 +507,7 @@
             android:layout_height="48dp"
             android:layout_margin="2dp"
             android:layout_toEndOf="@id/cell54"
-            android:background="@color/icons" />
+            android:background="@drawable/ripple_cell" />
 
         <Button
             android:id="@+id/cell56"
@@ -516,7 +516,7 @@
             android:layout_height="48dp"
             android:layout_margin="2dp"
             android:layout_toEndOf="@id/cell55"
-            android:background="@color/icons" />
+            android:background="@drawable/ripple_cell" />
     </RelativeLayout>
 
 </RelativeLayout>
