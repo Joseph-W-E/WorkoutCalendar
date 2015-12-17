@@ -35,50 +35,50 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"/>
 
-    <Button
+    <ImageButton
         android:id="@+id/timer_reset_timer"
-        android:layout_width="36dp"
-        android:layout_height="36dp"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
         android:layout_marginStart="16dp"
         android:layout_marginBottom="16dp"
-        android:background="@mipmap/ic_refresh_black_24dp"
-        android:backgroundTint="@color/accent"
-        style="?android:attr/borderlessButtonStyle"/>
+        android:src="@mipmap/ic_refresh_black_24dp"
+        android:background="@drawable/ripple"
+        android:alpha="0.5"/>
 
-    <Button
+    <ImageButton
         android:id="@+id/timer_save"
-        android:layout_width="36dp"
-        android:layout_height="36dp"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
-        android:background="@mipmap/ic_done_black_24dp"
-        android:backgroundTint="@color/accent"
-        style="?android:attr/borderlessButtonStyle"/>
+        android:src="@mipmap/ic_done_black_24dp"
+        android:background="@drawable/ripple"
+        android:alpha="0.5"/>
 
-    <Button
+    <ImageButton
         android:id="@+id/timer_change_image"
-        android:layout_width="36dp"
-        android:layout_height="36dp"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
         android:layout_alignParentBottom="true"
-       android:layout_toStartOf="@id/timer_space"
+        android:layout_toStartOf="@id/timer_space"
         android:layout_marginBottom="16dp"
-        android:background="@mipmap/ic_image_black_24dp"
-        android:backgroundTint="@color/accent"
-        style="?android:attr/borderlessButtonStyle"/>
+        android:src="@mipmap/ic_image_black_24dp"
+        android:background="@drawable/ripple"
+        android:alpha="0.5"/>
 
-    <Button
+    <ImageButton
         android:id="@+id/timer_change_date"
-        android:layout_width="36dp"
-        android:layout_height="36dp"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
         android:layout_alignParentBottom="true"
         android:layout_toEndOf="@id/timer_space"
         android:layout_marginBottom="16dp"
-        android:background="@mipmap/ic_today_black_24dp"
-        android:backgroundTint="@color/accent"
-        style="?android:attr/borderlessButtonStyle"/>
+        android:src="@mipmap/ic_today_black_24dp"
+        android:background="@drawable/ripple"
+        android:alpha="0.5"/>
 
 </RelativeLayout>

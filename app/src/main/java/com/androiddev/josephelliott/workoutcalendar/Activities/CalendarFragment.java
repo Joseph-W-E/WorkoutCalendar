@@ -149,6 +149,7 @@ public class CalendarFragment extends Fragment {
 
             // The DELETE WORKOUT feature
             final Workout deleteWorkout = workouts.get(i);
+            //final CalendarFragment calendarFragment = this;
             btnDelete.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -162,8 +163,8 @@ public class CalendarFragment extends Fragment {
 
                     // Close the dialog
                     dialog.cancel();
-                    // TODO Refresh the cell inside the fragment
-
+                    // Refresh the cell inside the fragment
+                    refresh();
                 }
             });
             // End DELETE WORKOUT feature
@@ -177,6 +178,11 @@ public class CalendarFragment extends Fragment {
             ((ViewGroup) outerView.findViewById(R.id.dialog_view_workout_relative_layout)).addView(tempView);
         }
 
+    }
+
+    public void refresh() {
+        FragmentTransaction ft = getFragmentManager().beginTransaction();
+        ft.detach(this).attach(this).commit();
     }
 
 }

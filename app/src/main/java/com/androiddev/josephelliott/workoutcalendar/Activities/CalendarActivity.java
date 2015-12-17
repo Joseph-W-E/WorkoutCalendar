@@ -6,6 +6,7 @@ import android.media.audiofx.BassBoost;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -33,6 +34,10 @@ public class CalendarActivity extends FragmentActivity {
     private ScreenSlidePagerAdapter mPagerAdapter;
     private ImageButton btnNextMonth;
     private ImageButton btnPrevMonth;
+    private FloatingActionButton fabMain;
+    private FloatingActionButton fabCust;
+    private FloatingActionButton fabPres;
+    private FloatingActionButton fabTime;
     /**
      * Variables to be manipulated through the activity's lifetime.
      */
@@ -90,82 +95,26 @@ public class CalendarActivity extends FragmentActivity {
                 }
             }
         });
-        btnNextMonth.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // We are moving to the right
-                calendarData.addMonth();
-                vpIndex++;
-                moveViewPagerToMonth();
-                setMonthAndYearTextFields(calendarData.getDateObj());
-            }
-        });
-        btnPrevMonth.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // We are moving to the left
-                calendarData.subtractMonth();
-                vpIndex--;
-                moveViewPagerToMonth();
-                setMonthAndYearTextFields(calendarData.getDateObj());
-            }
-        });
 
-        final FloatingActionButton fabMain = (FloatingActionButton) findViewById(R.id.fab_main);
-        final FloatingActionButton fabCust = (FloatingActionButton) findViewById(R.id.fab_custom_workout);
-        fabCust.setVisibility(View.INVISIBLE);
-        final FloatingActionButton fabPres = (FloatingActionButton) findViewById(R.id.fab_preset_workout);
-        fabPres.setVisibility(View.INVISIBLE);
-        final FloatingActionButton fabTime = (FloatingActionButton) findViewById(R.id.fab_timer);
-        fabTime.setVisibility(View.INVISIBLE);
-
-        fabMain.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (fabCust.getVisibility() == View.VISIBLE) {
-                    fabCust.setVisibility(View.INVISIBLE);
-                } else {
-                    fabCust.setVisibility(View.VISIBLE);
-                }
-                if (fabPres.getVisibility() == View.VISIBLE) {
-                    fabPres.setVisibility(View.INVISIBLE);
-                } else {
-                    fabPres.setVisibility(View.VISIBLE);
-                }
-                if (fabTime.getVisibility() == View.VISIBLE) {
-                    fabTime.setVisibility(View.INVISIBLE);
-                } else {
-                    fabTime.setVisibility(View.VISIBLE);
-                }
-                fabMain.setRotation(fabMain.getRotation() + 45);
-            }
-        });
-
-        fabCust.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(context, AddWorkoutActivity.class);
-                startActivity(intent);
-            }
-        });
-        fabPres.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
-        fabTime.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(context, TimerActivity.class);
-                startActivity(intent);
-            }
-        });
+        initializeImageButtons();
+        initializeFABs();
     }
 
     @Override
-    public void onResume() {
-        super.onResume(); // TODO
+    protected void onRestart() {
+        super.onRestart();
+        // Refresh the views inside the fragments for left, center, and right
+        if (mPagerAdapter.getFragment(vpIndex - 1) != null) {
+            mPagerAdapter.getFragment(vpIndex - 1).refresh();
+        }
+        if (mPagerAdapter.getFragment(vpIndex) != null) {
+            mPagerAdapter.getFragment(vpIndex).refresh();
+        }
+        if (mPagerAdapter.getFragment(vpIndex + 1) != null) {
+            mPagerAdapter.getFragment(vpIndex + 1).refresh();
+        }
+        // TODO Make the FABs back to default
+
     }
 
     @Override
@@ -211,7 +160,7 @@ public class CalendarActivity extends FragmentActivity {
     }
 
     /**
-     * This method updates the Month and Year textfields.
+     * This method updates the Month and Year text fields.
      * Call this method when there is a change to currentMonth
      */
     private void setMonthAndYearTextFields(Date date) {
@@ -233,6 +182,95 @@ public class CalendarActivity extends FragmentActivity {
     private void moveViewPagerToMonth() {
         // Go to the current view pager index
         mViewPager.setCurrentItem(vpIndex, true);
+    }
+
+    /**
+     * Initializes the Image Buttons (the arrows).
+     * this was taken out of the onCreate method ot make things nicer to look at.
+     * */
+    private void initializeImageButtons() {
+        btnNextMonth.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // We are moving to the right
+                calendarData.addMonth();
+                vpIndex++;
+                moveViewPagerToMonth();
+                setMonthAndYearTextFields(calendarData.getDateObj());
+            }
+        });
+        btnPrevMonth.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // We are moving to the left
+                calendarData.subtractMonth();
+                vpIndex--;
+                moveViewPagerToMonth();
+                setMonthAndYearTextFields(calendarData.getDateObj());
+            }
+        });
+    }
+
+    /**
+     * Initializes the Floating Action Buttons.
+     * This was taken out of the onCreate method to make things nicer to look at.
+     * */
+    private void initializeFABs() {
+        // Get all the FABs we will be working with
+        fabMain = (FloatingActionButton) findViewById(R.id.fab_main);
+        fabCust = (FloatingActionButton) findViewById(R.id.fab_custom_workout);
+        fabPres = (FloatingActionButton) findViewById(R.id.fab_preset_workout);
+        fabTime = (FloatingActionButton) findViewById(R.id.fab_timer);
+        // Set all but MAIN to invisible (we will do animations later)
+        fabCust.setVisibility(View.INVISIBLE);
+        fabPres.setVisibility(View.INVISIBLE);
+        fabTime.setVisibility(View.INVISIBLE);
+
+        // Make the MAIN FAB toggle the visibility of the other buttons.
+        fabMain.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (fabCust.getVisibility() == View.VISIBLE) {
+                    fabCust.setVisibility(View.INVISIBLE);
+                } else {
+                    fabCust.setVisibility(View.VISIBLE);
+                }
+                if (fabPres.getVisibility() == View.VISIBLE) {
+                    fabPres.setVisibility(View.INVISIBLE);
+                } else {
+                    fabPres.setVisibility(View.VISIBLE);
+                }
+                if (fabTime.getVisibility() == View.VISIBLE) {
+                    fabTime.setVisibility(View.INVISIBLE);
+                } else {
+                    fabTime.setVisibility(View.VISIBLE);
+                }
+                fabMain.setRotation(fabMain.getRotation() + 45);
+            }
+        });
+        // Start the AddWorkoutActivity
+        fabCust.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, AddWorkoutActivity.class);
+                startActivity(intent);
+            }
+        });
+        // Start the PresetWorkoutActivity
+        fabPres.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+        // Start the TimerActivity
+        fabTime.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, TimerActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
 }

@@ -11,6 +11,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Chronometer;
+import android.widget.ImageButton;
 
 import com.androiddev.josephelliott.workoutcalendar.R;
 
@@ -74,7 +75,7 @@ public class TimerActivity extends Activity {
             }
         });
 
-        final Button resetTimer = (Button) findViewById(R.id.timer_reset_timer);
+        final ImageButton resetTimer = (ImageButton) findViewById(R.id.timer_reset_timer);
         resetTimer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -85,7 +86,7 @@ public class TimerActivity extends Activity {
             }
         });
 
-        final Button choosePicture = (Button) findViewById(R.id.timer_change_image);
+        final ImageButton choosePicture = (ImageButton) findViewById(R.id.timer_change_image);
         choosePicture.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -93,7 +94,7 @@ public class TimerActivity extends Activity {
             }
         });
 
-        final Button chooseDate = (Button) findViewById(R.id.timer_change_date);
+        final ImageButton chooseDate = (ImageButton) findViewById(R.id.timer_change_date);
         chooseDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -101,7 +102,7 @@ public class TimerActivity extends Activity {
             }
         });
 
-        final Button confirm = (Button) findViewById(R.id.timer_save);
+        final ImageButton confirm = (ImageButton) findViewById(R.id.timer_save);
         confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
