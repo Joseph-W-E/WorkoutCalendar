@@ -1,6 +1,7 @@
 package com.androiddev.josephelliott.workoutcalendar.Activities;
 
 import android.app.Activity;
+import android.app.DatePickerDialog;
 import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
@@ -11,9 +12,12 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Chronometer;
+import android.widget.DatePicker;
 import android.widget.ImageButton;
 
 import com.androiddev.josephelliott.workoutcalendar.R;
+
+import java.util.Calendar;
 
 /**
  * Created by Joseph Elliott on 10/25/2015.
@@ -21,7 +25,11 @@ import com.androiddev.josephelliott.workoutcalendar.R;
 public class TimerActivity extends Activity {
 
     private boolean isRunning;
-    private long time;
+    private long timeElapsed;
+    private long startTime;
+    private Chronometer chronometer;
+    private Calendar calendarDatePicked;
+    private Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,80 +43,13 @@ public class TimerActivity extends Activity {
             // TODO
         }
 
+        context = TimerActivity.this;
+
         isRunning = false;
-        final Chronometer chronometer = (Chronometer) findViewById(R.id.timer_chronometer);
+        chronometer = (Chronometer) findViewById(R.id.timer_chronometer);
 
-        chronometer.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                final int version = Build.VERSION.SDK_INT;
-                switch(event.getAction()) {
-                    case MotionEvent.ACTION_DOWN:
-                        // Change the color to the primary for the 'highlight' feel
-                        if (version >= 23) {
-                            chronometer.setTextColor(getResources().getColor(R.color.primary, null));
-                        } else {
-                            chronometer.setTextColor(getResources().getColor(R.color.primary));
-                        }
-                        //chronometer.setTextColor(getResources().getColor(R.color.primary, null));
-                        return true;
-                    case MotionEvent.ACTION_UP:
-                        // Change the color back to normal
-                        if (version >= 23) {
-                            chronometer.setTextColor(getResources().getColor(R.color.accent, null));
-                        } else {
-                            chronometer.setTextColor(getResources().getColor(R.color.accent));
-                        }
-                        // Toggle the chronometer
-                        if (isRunning) {
-                            time = chronometer.getBase() - SystemClock.elapsedRealtime();
-                            chronometer.stop();
-                            isRunning = false;
-                        } else {
-                            chronometer.setBase(SystemClock.elapsedRealtime() + time);
-                            chronometer.start();
-                            isRunning = true;
-                        }
-                        return true;
-                }
-                return false;
-            }
-        });
-
-        final ImageButton resetTimer = (ImageButton) findViewById(R.id.timer_reset_timer);
-        resetTimer.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                time = 0;
-                chronometer.stop();
-                chronometer.setText("00:00");
-                isRunning = false;
-            }
-        });
-
-        final ImageButton choosePicture = (ImageButton) findViewById(R.id.timer_change_image);
-        choosePicture.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
-
-        final ImageButton chooseDate = (ImageButton) findViewById(R.id.timer_change_date);
-        chooseDate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
-
-        final ImageButton confirm = (ImageButton) findViewById(R.id.timer_save);
-        confirm.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
+        initializeChronometer();
+        initializeButtons();
     }
 
     @Override
@@ -135,6 +76,95 @@ public class TimerActivity extends Activity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    /**
+     * Set the on touch listener for the chronometer
+     * */
+    private void initializeChronometer() {
+        chronometer.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                final int version = Build.VERSION.SDK_INT;
+                switch(event.getAction()) {
+                    case MotionEvent.ACTION_DOWN:
+                        // Change the color to the primary for the 'highlight' feel
+                        if (version >= 23) {
+                            chronometer.setTextColor(getResources().getColor(R.color.primary, null));
+                        } else {
+                            chronometer.setTextColor(getResources().getColor(R.color.primary));
+                        }
+                        return true;
+                    case MotionEvent.ACTION_UP:
+                        // Change the color back to normal
+                        if (version >= 23) {
+                            chronometer.setTextColor(getResources().getColor(R.color.accent, null));
+                        } else {
+                            chronometer.setTextColor(getResources().getColor(R.color.accent));
+                        }
+                        // Toggle the chronometer
+                        if (isRunning) {
+                            timeElapsed = chronometer.getBase() - SystemClock.elapsedRealtime();
+                            chronometer.stop();
+                            isRunning = false;
+                        } else {
+                            chronometer.setBase(SystemClock.elapsedRealtime() + timeElapsed);
+                            chronometer.start();
+                            isRunning = true;
+                        }
+                        return true;
+                }
+                return false;
+            }
+        });
+    }
+
+    /**
+     * Set up the buttons.
+     * */
+    private void initializeButtons() {
+        final ImageButton resetTimer = (ImageButton) findViewById(R.id.timer_reset_timer);
+        resetTimer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                timeElapsed = 0;
+                chronometer.stop();
+                chronometer.setText("00:00");
+                isRunning = false;
+            }
+        });
+
+        final ImageButton choosePicture = (ImageButton) findViewById(R.id.timer_change_image);
+        choosePicture.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+        final ImageButton chooseDate = (ImageButton) findViewById(R.id.timer_change_date);
+        chooseDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Calendar c = Calendar.getInstance();
+                DatePickerDialog dpd = new DatePickerDialog(context, new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                        // They picked a new date! Store it.
+                        calendarDatePicked.set(year, monthOfYear, dayOfMonth);
+                    }
+                }, c.get(Calendar.YEAR), c.get(Calendar.MONTH), c.get(Calendar.DAY_OF_MONTH));
+                dpd.show();
+            }
+        });
+
+        final ImageButton confirm = (ImageButton) findViewById(R.id.timer_save);
+        confirm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 
 }
