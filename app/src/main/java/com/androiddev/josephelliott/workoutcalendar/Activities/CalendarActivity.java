@@ -214,6 +214,7 @@ public class CalendarActivity extends FragmentActivity {
     /**
      * Initializes the Floating Action Buttons.
      * This was taken out of the onCreate method to make things nicer to look at.
+     * // TODO Add animations to the FABs so that they slide in and out of visibility
      * */
     private void initializeFABs() {
         // Get all the FABs we will be working with

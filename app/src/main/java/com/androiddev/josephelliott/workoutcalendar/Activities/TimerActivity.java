@@ -3,6 +3,7 @@ package com.androiddev.josephelliott.workoutcalendar.Activities;
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.content.Context;
+import android.location.Location;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.SystemClock;
@@ -11,12 +12,14 @@ import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.Chronometer;
 import android.widget.DatePicker;
 import android.widget.ImageButton;
 
 import com.androiddev.josephelliott.workoutcalendar.R;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 
 /**
@@ -24,11 +27,20 @@ import java.util.Calendar;
  */
 public class TimerActivity extends Activity {
 
-    private boolean isRunning;
+    // Used to determine if the user is recording the distance
+    private boolean isRecordingDistance; // TODO add recording distance feature
+    // Holds the different locations they've been to for each ping
+    private ArrayList<Location> locations;
+    // Holds the amount of time elapsed in milliseconds
     private long timeElapsed;
-    private long startTime;
-    private Chronometer chronometer;
+    // Used to determine if the user has toggled the timer
+    private boolean isRunning;
+    // Holds the date that they are doing the workout
     private Calendar calendarDatePicked;
+    // GUI Object variables
+    private Chronometer chronometer;
+    private CheckBox checkbox;
+    // You never know when you need access to the context
     private Context context;
 
     @Override
@@ -40,14 +52,18 @@ public class TimerActivity extends Activity {
             getActionBar().setElevation(0);
             getActionBar().setTitle("Add Your Workout");
         } catch (NullPointerException e) {
-            // TODO
+
         }
 
-        context = TimerActivity.this;
-
-        isRunning = false;
+        // Initialize our layout objects
         chronometer = (Chronometer) findViewById(R.id.timer_chronometer);
+        checkbox = (CheckBox) findViewById(R.id.timer_toggle_running);
+        // Initialize our variables
+        context = TimerActivity.this;
+        isRunning = false;
+        isRecordingDistance = false;
 
+        // Get all the usable objects running
         initializeChronometer();
         initializeButtons();
     }
@@ -80,6 +96,7 @@ public class TimerActivity extends Activity {
 
     /**
      * Set the on touch listener for the chronometer
+     * // TODO Make chronometer also record milliseconds
      * */
     private void initializeChronometer() {
         chronometer.setOnTouchListener(new View.OnTouchListener() {
@@ -138,7 +155,7 @@ public class TimerActivity extends Activity {
         choosePicture.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                // TODO set up the choose picture functionality LAST
             }
         });
 
@@ -162,9 +179,14 @@ public class TimerActivity extends Activity {
         confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // TODO get the data gathered from the activity, send it to the database (maybe dialog confirm?)
                 finish();
             }
         });
+    }
+
+    private void recordDistance() {
+
     }
 
 }
