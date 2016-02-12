@@ -114,7 +114,6 @@ public class CalendarActivity extends FragmentActivity {
             mPagerAdapter.getFragment(vpIndex + 1).refresh();
         }
         // TODO Make the FABs back to default
-
     }
 
     @Override

@@ -5,9 +5,12 @@ import android.app.DatePickerDialog;
 import android.content.Context;
 import android.media.Image;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.DatePicker;
@@ -41,8 +44,10 @@ public class AddWorkoutActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_workout);
 
+
         context = AddWorkoutActivity.this;
         calendarDatePicked = Calendar.getInstance();
+        // Get all the usable views
         etLbs = (EditText) findViewById(R.id.custom_workout_lbs_edit_text);
         etSets = (EditText) findViewById(R.id.custom_workout_sets_edit_text);
         etReps = (EditText) findViewById(R.id.custom_workout_reps_edit_text);
@@ -68,8 +73,9 @@ public class AddWorkoutActivity extends Activity {
         initializeImageButton();
         initializeDateButton();
         initializeAddButton();
-        initializeAutoCompleteTextFields();
         initializeSaveButton();
+        initializeAutoCompleteTextFields();
+        initializeEditTexts();
     }
 
     @Override
@@ -110,6 +116,7 @@ public class AddWorkoutActivity extends Activity {
 
     /**
      * Initializes the image button.
+     * // TODO
      * */
     private void initializeImageButton() {
         btnImage.setOnClickListener(new View.OnClickListener() {
@@ -152,35 +159,7 @@ public class AddWorkoutActivity extends Activity {
         btnAddExercise.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // We want to get the workout and add it to the description
-                String result = "";
-                // Only add text if it isn't empty
-                if (!actvWorkout.getText().toString().isEmpty()) {
-                    result += actvWorkout.getText().toString();
-                }
-                if (!etLbs.getText().toString().isEmpty()) {
-                    result += " " + etLbs.getText().toString() + "lbs";
-                }
-                if (!etSets.getText().toString().isEmpty()) {
-                    result += ", " + etSets.getText().toString();
-                }
-                if (!etReps.getText().toString().isEmpty()) {
-                    result += " x " + etReps.getText().toString();
-                }
-                // If result isn't empty, then we can add it to the description
-                if (result.compareTo("") != 0) {
-                    // If description is empty, don't add a new line character
-                    if (etDesc.getText().toString().isEmpty()) {
-                        etDesc.setText(etDesc.getText().toString() + result);
-                    } else {
-                        etDesc.setText(etDesc.getText().toString() + "\n" + result);
-                    }
-                }
-                // Reset everything
-                etLbs.setText("");
-                etSets.setText("");
-                etReps.setText("");
-                actvWorkout.setText("");
+                addButtonFunctionality();
             }
         });
     }
@@ -251,5 +230,125 @@ public class AddWorkoutActivity extends Activity {
                 finish();
             }
         });
+    }
+
+    /**
+     * Initializes the edit texts.
+     * Lets one edit text 'enter press' go to the next edit text.
+     * */
+    private void initializeEditTexts() {
+        //private EditText etLbs, etSets, etReps, etLoc, etDesc;
+        // Title -> Location -> Workout -> Lbs -> Sets -> Reps -> Workout
+        actvTitle.setFocusable(true);
+        etLoc.setFocusable(true);
+        actvWorkout.setFocusable(true);
+        etLbs.setFocusable(true);
+        etSets.setFocusable(true);
+        etReps.setFocusable(true);
+        actvTitle.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if (keyCode == KeyEvent.KEYCODE_ENTER && event.getAction() == KeyEvent.ACTION_UP) {
+                    actvTitle.clearFocus();
+                    etLoc.requestFocus();
+                    return true;
+                }
+                return false;
+            }
+        });
+        etLoc.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if (keyCode == KeyEvent.KEYCODE_ENTER && event.getAction() == KeyEvent.ACTION_UP) {
+                    etLoc.clearFocus();
+                    actvWorkout.requestFocus();
+                    return true;
+                }
+                return false;
+            }
+        });
+        actvWorkout.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if (keyCode == KeyEvent.KEYCODE_ENTER && event.getAction() == KeyEvent.ACTION_UP) {
+                    actvWorkout.clearFocus();
+                    etLbs.requestFocus();
+                    return true;
+                }
+                return false;
+            }
+        });
+        etLbs.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if (keyCode == KeyEvent.KEYCODE_ENTER && event.getAction() == KeyEvent.ACTION_UP) {
+                    etLbs.clearFocus();
+                    etSets.requestFocus();
+                    return true;
+                }
+                return false;
+            }
+        });
+        etSets.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if (keyCode == KeyEvent.KEYCODE_ENTER && event.getAction() == KeyEvent.ACTION_UP) {
+                    etSets.clearFocus();
+                    etReps.requestFocus();
+                    return true;
+                }
+                return false;
+            }
+        });
+        etReps.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if (keyCode == KeyEvent.KEYCODE_ENTER && event.getAction() == KeyEvent.ACTION_UP) {
+                    etReps.clearFocus();
+                    actvWorkout.requestFocus();
+
+                    // Here is where we will mimic the + button.
+                    addButtonFunctionality();
+
+                    return true;
+                }
+                return false;
+            }
+        });
+    }
+
+    /**
+     * Add button functionality
+     * */
+    private void addButtonFunctionality() {
+        // We want to get the workout and add it to the description
+        String result = "";
+        // Only add text if it isn't empty
+        if (!actvWorkout.getText().toString().isEmpty()) {
+            result += actvWorkout.getText().toString();
+        }
+        if (!etLbs.getText().toString().isEmpty()) {
+            result += " " + etLbs.getText().toString() + "lbs";
+        }
+        if (!etSets.getText().toString().isEmpty()) {
+            result += ", " + etSets.getText().toString();
+        }
+        if (!etReps.getText().toString().isEmpty()) {
+            result += " x " + etReps.getText().toString();
+        }
+        // If result isn't empty, then we can add it to the description
+        if (result.compareTo("") != 0) {
+            // If description is empty, don't add a new line character
+            if (etDesc.getText().toString().isEmpty()) {
+                etDesc.setText(etDesc.getText().toString() + result);
+            } else {
+                etDesc.setText(etDesc.getText().toString() + "\n" + result);
+            }
+        }
+        // Reset everything
+        etLbs.setText("");
+        etSets.setText("");
+        etReps.setText("");
+        actvWorkout.setText("");
     }
 }

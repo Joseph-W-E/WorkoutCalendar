@@ -30,7 +30,8 @@
             android:name=".Activities.AddWorkoutActivity"
             android:label="@string/add_workout_activity_name"
             android:parentActivityName=".Activities.CalendarActivity"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode = "stateVisible">
         </activity>
 
 

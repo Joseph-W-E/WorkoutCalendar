@@ -29,7 +29,8 @@
             android:layout_marginTop="3dp"
             android:layout_toEndOf="@id/title_image"
             android:hint="@string/title_hint"
-            android:singleLine="true"/>
+            android:singleLine="true"
+            android:inputType="textCapSentences"/>
     </RelativeLayout>
 
 
@@ -59,7 +60,8 @@
             android:layout_marginTop="3dp"
             android:layout_toEndOf="@id/location_image"
             android:hint="@string/location_hint"
-            android:singleLine="true"/>
+            android:singleLine="true"
+            android:inputType="textCapSentences"/>
     </RelativeLayout>
 
     <RelativeLayout
@@ -73,7 +75,8 @@
             android:id="@+id/custom_workout_exercise_actv"
             android:layout_width="88dp"
             android:layout_height="48dp"
-            android:singleLine="true"/>
+            android:singleLine="true"
+            android:inputType="textCapSentences"/>
 
         <EditText
             android:id="@+id/custom_workout_lbs_edit_text"
@@ -161,7 +164,7 @@
             android:layout_marginEnd="32dp"
             android:layout_marginTop="3dp"
             android:layout_toEndOf="@id/description_image"
-            android:hint="@string/description_hint" />
+            android:hint="@string/description_hint"/>
     </RelativeLayout>
 
     <Space
