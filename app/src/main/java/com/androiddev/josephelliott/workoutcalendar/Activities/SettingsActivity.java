@@ -40,9 +40,9 @@ public class SettingsActivity extends Activity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.go_to_current_date) {
+        if (id == R.id.menu_addworkout_settings) {
             return true;
-        } else if (id == R.id.action_settings) {
+        } else if (id == R.id.menu_addworkout_help) {
             return true;
         }
 

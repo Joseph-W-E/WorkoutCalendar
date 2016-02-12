@@ -71,7 +71,7 @@ public class TimerActivity extends Activity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_calendar, menu);
+        getMenuInflater().inflate(R.menu.menu_addworkout, menu);
         return true;
     }
 
@@ -83,11 +83,9 @@ public class TimerActivity extends Activity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.go_to_current_date) {
+        if (id == R.id.menu_addworkout_settings) {
             return true;
-        } else if (id == R.id.action_settings) {
-            return true;
-        } else if (id == R.id.action_help) {
+        } else if (id == R.id.menu_addworkout_help) {
             return true;
         }
 

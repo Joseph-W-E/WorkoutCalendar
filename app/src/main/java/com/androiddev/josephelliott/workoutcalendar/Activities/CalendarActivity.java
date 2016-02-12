@@ -103,17 +103,10 @@ public class CalendarActivity extends FragmentActivity {
     @Override
     protected void onRestart() {
         super.onRestart();
-        // Refresh the views inside the fragments for left, center, and right
-        if (mPagerAdapter.getFragment(vpIndex - 1) != null) {
-            mPagerAdapter.getFragment(vpIndex - 1).refresh();
-        }
-        if (mPagerAdapter.getFragment(vpIndex) != null) {
-            mPagerAdapter.getFragment(vpIndex).refresh();
-        }
-        if (mPagerAdapter.getFragment(vpIndex + 1) != null) {
-            mPagerAdapter.getFragment(vpIndex + 1).refresh();
-        }
-        // TODO Make the FABs back to default
+        // Refresh the viewpager
+        mViewPager.setAdapter(mPagerAdapter);
+        moveViewPagerToMonth();
+        setMonthAndYearTextFields(calendarData.getDateObj());
     }
 
     @Override
@@ -131,17 +124,17 @@ public class CalendarActivity extends FragmentActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.go_to_current_date) {
+        if (id == R.id.menu_calendar_go_to_current_date) {
             calendarData.setTodaysDate();
             vpIndex = NUM_PAGES / 2;
             moveViewPagerToMonth();
             setMonthAndYearTextFields(calendarData.getDateObj());
             return true;
-        } else if (id == R.id.action_settings) {
+        } else if (id == R.id.menu_calendar_settings) {
             Intent intent = new Intent(context, SettingsActivity.class);
             startActivity(intent);
             return true;
-        } else if (id == R.id.action_help) {
+        } else if (id == R.id.menu_calendar_help) {
             Intent intent = new Intent(context, HelpActivity.class);
             startActivity(intent);
             return true;
