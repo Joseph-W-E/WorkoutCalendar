@@ -9,7 +9,7 @@ import java.util.Locale;
  */
 public class CurrentCalendarData {
 
-    Calendar calendar;
+    private Calendar calendar;
 
     /**
      * Creates the calendar.
