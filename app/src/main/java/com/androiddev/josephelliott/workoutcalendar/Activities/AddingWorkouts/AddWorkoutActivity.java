@@ -31,15 +31,14 @@ public class AddWorkoutActivity extends Activity {
 
     private Calendar calendarDatePicked;
 
-    private ArrayList<String> workoutList, titleList;
+    /*** Variables needed for recording the workout ***/
+    private Image image;
+    private Workout workout;
 
+    /*** Variables for views ***/
     private AutoCompleteTextView actvWorkout, actvTitle;
     private EditText etLbs, etSets, etReps, etLoc, etDesc;
     private ImageButton btnDate, btnImage, btnAddExercise, btnCancel, btnSave;
-
-    private Image image;
-
-    private Workout workout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,10 +76,7 @@ public class AddWorkoutActivity extends Activity {
         }
 
         /*** Set the logic for the views ***/
-        initializeCancelButton();
-        initializeImageButton();
-        initializeDateButton();
-        initializeAddButton();
+        initializeButtions();
         initializeSaveButton();
         initializeAutoCompleteTextFields();
         initializeEditTexts();
@@ -111,22 +107,16 @@ public class AddWorkoutActivity extends Activity {
     }
 
     /**
-     * Initializes the cancel button.
-     * */
-    private void initializeCancelButton() {
+     * Set up the buttons.
+     */
+    private void initializeButtions() {
         btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
             }
         });
-    }
 
-    /**
-     * Initializes the image button.
-     * // TODO
-     * */
-    private void initializeImageButton() {
         btnImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -138,12 +128,7 @@ public class AddWorkoutActivity extends Activity {
                 image = null;
             }
         });
-    }
 
-    /**
-     * Initializes the date picker dialog. Basically sets an on click listener for the Date Button.
-     * */
-    private void initializeDateButton() {
         btnDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -158,12 +143,7 @@ public class AddWorkoutActivity extends Activity {
                 dpd.show();
             }
         });
-    }
 
-    /**
-     * Initializes the add button. Basically, it rips the text from the edit texts and stuffs it into the description box.
-     * */
-    private void initializeAddButton() {
         btnAddExercise.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -177,34 +157,26 @@ public class AddWorkoutActivity extends Activity {
      * This is for the workout list and the title list.
      * */
     private void initializeAutoCompleteTextFields() {
-        // workoutList is the list of workouts for the drop down
-        workoutList = new ArrayList<>();
-        // Generate the list of workouts to be AutoCompleted
-        workoutList.add("Bench");
-        workoutList.add("Squat");
-        workoutList.add("Press");
-        workoutList.add("DB Curl");
-        workoutList.add("Pushups");
-        // Set up the adapter
-        ArrayAdapter<String> adapterWorkouts = new ArrayAdapter<>(this, android.R.layout.simple_dropdown_item_1line, workoutList);
-        // Set the threshold (number of characters the user must type before results are shown)
-        actvWorkout.setThreshold(1);
-        // Set the adapter
-        actvWorkout.setAdapter(adapterWorkouts);
-        // Profit $$$
+        String[] workoutTypes = {
+                "Bench", "Squat", "Press", "DB Curl", "Pushups"
+        };
+        String[] titleTypes = {
+                "Head", "Neck",
+                "Arms", "Biceps", "Triceps", "Forearms",
+                "Chest", "Pecs", "Abs", "Waist",
+                "Back", "Back-Upper", "Back-Lower",
+                "Legs", "Quads", "Calves", "Hamstrings"
+        };
 
-        // titleList is the list of titles for the drop down
-        titleList = new ArrayList<>();
-        // Generate the list of workouts to be AutoCompleted
-        titleList.add("Arms");
-        titleList.add("Legs");
-        // Set up the adapter
-        ArrayAdapter<String> adapterTitles = new ArrayAdapter<>(this, android.R.layout.simple_dropdown_item_1line, titleList);
-        // Set the threshold (number of characters the user must type before results are shown)
+        ArrayAdapter<String> adapterWorkouts = new ArrayAdapter<>(this,
+                android.R.layout.simple_dropdown_item_1line, workoutTypes);
+        actvWorkout.setThreshold(1);
+        actvWorkout.setAdapter(adapterWorkouts);
+
+        ArrayAdapter<String> adapterTitles = new ArrayAdapter<>(this,
+                android.R.layout.simple_dropdown_item_1line, titleTypes);
         actvTitle.setThreshold(1);
-        // Set the adapter
         actvTitle.setAdapter(adapterTitles);
-        // Profit $$$
     }
 
     /**

@@ -26,27 +26,46 @@ import java.util.Calendar;
  */
 public class TimerActivity extends Activity {
 
-    // Used to determine if the user is recording the distance
-    private boolean isRecordingDistance; // TODO add recording distance feature
-    // Holds the different locations they've been to for each ping
-    private ArrayList<Location> locations;
-    // Holds the amount of time elapsed in milliseconds
-    private long timeElapsed;
-    // Used to determine if the user has toggled the timer
-    private boolean isRunning;
-    // Holds the date that they are doing the workout
+    private Context context;
+
     private Calendar calendarDatePicked;
-    // GUI Object variables
+
+    /*** Variables needed for recording distance ***/
+    private boolean isRecordingDistance;
+    private ArrayList<Location> locations;
+
+    /*** Variables needed for recording time ***/
+    private boolean isRunning;
+    private long timeElapsed;
+
+    /*** Variables for views ***/
+    private ImageButton btnTimer, btnImage, btnDate, btnConfirm;
     private Chronometer chronometer;
     private CheckBox checkbox;
-    // You never know when you need access to the context
-    private Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_timer);
 
+        /*** Get the context ***/
+        context = TimerActivity.this;
+        /*** Get the current time ***/
+        calendarDatePicked = Calendar.getInstance();
+
+        /*** Get all the used views ***/
+        btnTimer   = (ImageButton) findViewById(R.id.timer_reset_timer);
+        btnImage   = (ImageButton) findViewById(R.id.timer_change_image);
+        btnDate    = (ImageButton) findViewById(R.id.timer_change_date);
+        btnConfirm = (ImageButton) findViewById(R.id.timer_save);
+        chronometer = (Chronometer) findViewById(R.id.timer_chronometer);
+        checkbox = (CheckBox) findViewById(R.id.timer_toggle_running);
+
+        /*** Initialize needed variables ready ***/
+        isRunning = false;
+        isRecordingDistance = false;
+
+        /*** Perform layout operations ***/
         try {
             getActionBar().setElevation(0);
             getActionBar().setTitle("Add Your Workout");
@@ -54,15 +73,7 @@ public class TimerActivity extends Activity {
 
         }
 
-        // Initialize our layout objects
-        chronometer = (Chronometer) findViewById(R.id.timer_chronometer);
-        checkbox = (CheckBox) findViewById(R.id.timer_toggle_running);
-        // Initialize our variables
-        context = TimerActivity.this;
-        isRunning = false;
-        isRecordingDistance = false;
-
-        // Get all the usable objects running
+        /*** Set the logic for the views ***/
         initializeChronometer();
         initializeButtons();
     }
@@ -99,34 +110,32 @@ public class TimerActivity extends Activity {
         chronometer.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                final int version = Build.VERSION.SDK_INT;
                 switch(event.getAction()) {
                     case MotionEvent.ACTION_DOWN:
                         // Change the color to the primary for the 'highlight' feel
-                        if (version >= 23) {
-                            chronometer.setTextColor(getResources().getColor(R.color.primary, null));
-                        } else {
-                            chronometer.setTextColor(getResources().getColor(R.color.primary));
-                        }
+                        chronometer.setTextColor(getResources().getColor(R.color.primary, null));
                         return true;
                     case MotionEvent.ACTION_UP:
                         // Change the color back to normal
-                        if (version >= 23) {
-                            chronometer.setTextColor(getResources().getColor(R.color.accent, null));
-                        } else {
-                            chronometer.setTextColor(getResources().getColor(R.color.accent));
-                        }
-                        // Toggle the chronometer
+                        chronometer.setTextColor(getResources().getColor(R.color.accent, null));
                         if (isRunning) {
+                            // If we were running, record the elapsed time and calculate distance.
                             timeElapsed = chronometer.getBase() - SystemClock.elapsedRealtime();
                             chronometer.stop();
                             isRunning = false;
                         } else {
+                            // If we start running, set the start time and start getting locations.
                             chronometer.setBase(SystemClock.elapsedRealtime() + timeElapsed);
                             chronometer.start();
+                            if (checkbox.isChecked()) {
+                                startGatheringLocations();
+                            }
+                            // The user cannot start recording distances part way through. Not yet.
+                            checkbox.setVisibility(View.INVISIBLE);
                             isRunning = true;
                         }
                         return true;
+
                 }
                 return false;
             }
@@ -137,8 +146,7 @@ public class TimerActivity extends Activity {
      * Set up the buttons.
      * */
     private void initializeButtons() {
-        final ImageButton resetTimer = (ImageButton) findViewById(R.id.timer_reset_timer);
-        resetTimer.setOnClickListener(new View.OnClickListener() {
+        btnTimer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 timeElapsed = 0;
@@ -148,16 +156,14 @@ public class TimerActivity extends Activity {
             }
         });
 
-        final ImageButton choosePicture = (ImageButton) findViewById(R.id.timer_change_image);
-        choosePicture.setOnClickListener(new View.OnClickListener() {
+        btnImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // TODO set up the choose picture functionality LAST
             }
         });
 
-        final ImageButton chooseDate = (ImageButton) findViewById(R.id.timer_change_date);
-        chooseDate.setOnClickListener(new View.OnClickListener() {
+        btnDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Calendar c = Calendar.getInstance();
@@ -172,8 +178,7 @@ public class TimerActivity extends Activity {
             }
         });
 
-        final ImageButton confirm = (ImageButton) findViewById(R.id.timer_save);
-        confirm.setOnClickListener(new View.OnClickListener() {
+        btnConfirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // TODO get the data gathered from the activity, send it to the database (maybe dialog confirm?)
@@ -182,7 +187,7 @@ public class TimerActivity extends Activity {
         });
     }
 
-    private void recordDistance() {
+    private void startGatheringLocations() {
 
     }
 
