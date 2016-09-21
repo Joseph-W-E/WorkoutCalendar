@@ -28,12 +28,17 @@ import java.util.Calendar;
 public class AddWorkoutActivity extends Activity {
 
     private Context context;
+
     private Calendar calendarDatePicked;
+
     private ArrayList<String> workoutList, titleList;
+
     private AutoCompleteTextView actvWorkout, actvTitle;
     private EditText etLbs, etSets, etReps, etLoc, etDesc;
     private ImageButton btnDate, btnImage, btnAddExercise, btnCancel, btnSave;
+
     private Image image;
+
     private Workout workout;
 
     @Override
@@ -41,24 +46,29 @@ public class AddWorkoutActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_workout);
 
-
+        /*** Get the context ***/
         context = AddWorkoutActivity.this;
+        /*** Get the current time ***/
         calendarDatePicked = Calendar.getInstance();
-        // Get all the usable views
-        etLbs = (EditText) findViewById(R.id.custom_workout_lbs_edit_text);
+
+        /*** Get all the used views ***/
+        etLbs  = (EditText) findViewById(R.id.custom_workout_lbs_edit_text);
         etSets = (EditText) findViewById(R.id.custom_workout_sets_edit_text);
         etReps = (EditText) findViewById(R.id.custom_workout_reps_edit_text);
-        etLoc = (EditText) findViewById(R.id.workout_location_txt);
+        etLoc  = (EditText) findViewById(R.id.workout_location_txt);
         etDesc = (EditText) findViewById(R.id.workout_description_txt);
         actvWorkout = (AutoCompleteTextView) findViewById(R.id.custom_workout_exercise_actv);
-        actvTitle = (AutoCompleteTextView) findViewById(R.id.workout_title_txt);
-        btnDate = (ImageButton) findViewById(R.id.custom_workout_change_date);
-        btnImage = (ImageButton) findViewById(R.id.custom_workout_change_image);
+        actvTitle   = (AutoCompleteTextView) findViewById(R.id.workout_title_txt);
+        btnDate        = (ImageButton) findViewById(R.id.custom_workout_change_date);
+        btnImage       = (ImageButton) findViewById(R.id.custom_workout_change_image);
         btnAddExercise = (ImageButton) findViewById(R.id.custom_workout_add_exercise_btn);
-        btnCancel = (ImageButton) findViewById(R.id.custom_workout_cancel);
-        btnSave = (ImageButton) findViewById(R.id.custom_workout_save);
+        btnCancel      = (ImageButton) findViewById(R.id.custom_workout_cancel);
+        btnSave        = (ImageButton) findViewById(R.id.custom_workout_save);
+
+        /*** Get the to-be-created workout object ready ***/
         workout = new Workout();
 
+        /*** Perform layout operations ***/
         try {
             getActionBar().setElevation(0);
             getActionBar().setTitle("Add Your Workout");
@@ -66,6 +76,7 @@ public class AddWorkoutActivity extends Activity {
             // TODO
         }
 
+        /*** Set the logic for the views ***/
         initializeCancelButton();
         initializeImageButton();
         initializeDateButton();
