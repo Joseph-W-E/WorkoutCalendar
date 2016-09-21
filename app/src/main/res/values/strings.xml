@@ -1,7 +1,10 @@
 <resources>
     <string name="app_name">Workout Calendar</string>
     <string name="add_workout_activity_name">Add Workout Activity</string>
-    <string name="timer_name">Timer</string>
+    <string name="timer_activity_name">Timer</string>
+    <string name="preset_activity_name">Presets</string>
+    <string name="help_activity_name">Help</string>
+    <string name="settings_activity_name">Settings</string>
 
     <string name="splash_description">Keeping track of your workouts\nhas never been easier.</string>
     <string name="get_started">Get Started</string>

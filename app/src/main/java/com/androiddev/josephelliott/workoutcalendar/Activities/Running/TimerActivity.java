@@ -1,4 +1,4 @@
-package com.androiddev.josephelliott.workoutcalendar.Activities;
+package com.androiddev.josephelliott.workoutcalendar.Activities.Running;
 
 import android.app.Activity;
 import android.app.DatePickerDialog;
@@ -11,7 +11,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.Chronometer;
 import android.widget.DatePicker;

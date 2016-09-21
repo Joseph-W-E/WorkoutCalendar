@@ -1,4 +1,4 @@
-package com.androiddev.josephelliott.workoutcalendar.Activities;
+package com.androiddev.josephelliott.workoutcalendar.Activities.AddingWorkouts;
 
 import android.app.Activity;
 import android.app.DatePickerDialog;
@@ -9,15 +9,12 @@ import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.WindowManager;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
-import com.androiddev.josephelliott.workoutcalendar.ObjectData.CurrentCalendarData;
 import com.androiddev.josephelliott.workoutcalendar.ObjectData.Workout;
 import com.androiddev.josephelliott.workoutcalendar.ObjectData.WorkoutDataSource;
 import com.androiddev.josephelliott.workoutcalendar.R;

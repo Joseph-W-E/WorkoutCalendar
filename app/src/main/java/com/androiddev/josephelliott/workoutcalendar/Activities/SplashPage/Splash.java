@@ -1,4 +1,4 @@
-package com.androiddev.josephelliott.workoutcalendar.Activities;
+package com.androiddev.josephelliott.workoutcalendar.Activities.SplashPage;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.androiddev.josephelliott.workoutcalendar.Activities.HomePage.CalendarActivity;
 import com.androiddev.josephelliott.workoutcalendar.R;
 
 /**

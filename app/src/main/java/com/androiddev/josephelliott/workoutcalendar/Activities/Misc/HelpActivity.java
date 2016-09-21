@@ -1,4 +1,4 @@
-package com.androiddev.josephelliott.workoutcalendar.Activities;
+package com.androiddev.josephelliott.workoutcalendar.Activities.Misc;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -10,12 +10,12 @@ import com.androiddev.josephelliott.workoutcalendar.R;
 /**
  * Created by Joseph Elliott on 10/25/2015.
  */
-public class SettingsActivity extends Activity {
+public class HelpActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_settings);
+        setContentView(R.layout.activity_help);
 
         try {
             getActionBar().setElevation(0);

@@ -1,9 +1,8 @@
-package com.androiddev.josephelliott.workoutcalendar.Activities;
+package com.androiddev.josephelliott.workoutcalendar.Activities.HomePage;
 
 import android.app.Dialog;
 import android.content.Context;
 import android.graphics.Color;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -22,8 +21,6 @@ import com.androiddev.josephelliott.workoutcalendar.R;
 import com.androiddev.josephelliott.workoutcalendar.Utility.Utility;
 
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 
 /**
  * Created by Joseph Elliott on 10/4/2015.
