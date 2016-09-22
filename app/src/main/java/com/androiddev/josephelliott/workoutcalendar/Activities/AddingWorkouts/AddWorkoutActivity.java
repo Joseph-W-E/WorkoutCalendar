@@ -67,14 +67,6 @@ public class AddWorkoutActivity extends Activity {
         /*** Get the to-be-created workout object ready ***/
         workout = new Workout();
 
-        /*** Perform layout operations ***/
-        try {
-            getActionBar().setElevation(0);
-            getActionBar().setTitle("Add Your Workout");
-        } catch (NullPointerException e) {
-            // TODO
-        }
-
         /*** Set the logic for the views ***/
         initializeButtions();
         initializeSaveButton();

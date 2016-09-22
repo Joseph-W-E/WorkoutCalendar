@@ -65,59 +65,47 @@
         android:layout_height="match_parent"
         android:layout_below="@id/relative_layout_top"/>
 
-    <android.support.design.widget.FloatingActionButton
+    <com.github.clans.fab.FloatingActionMenu
         android:id="@+id/fab_main"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
-        android:layout_margin="16dp"
-        android:clickable="true"
+        android:layout_margin="8dp"
         android:src="@mipmap/ic_add_white_24dp"
-        app:backgroundTint="@color/accent"
-        app:rippleColor="@color/accent_ripple"
-        android:onClick="goToAddWorkoutActivity"/>
+        app:menu_colorNormal="@color/accent"
+        app:menu_colorRipple="@color/accent_ripple"
+        app:menu_colorPressed="@color/accent" >
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab_custom_workout"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_above="@id/fab_main"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="16dp"
-        android:layout_marginTop="8dp"
-        android:clickable="true"
-        android:src="@mipmap/ic_assignment_white_24dp"
-        app:backgroundTint="@color/accent"
-        app:rippleColor="@color/accent_ripple"
-        android:onClick="goToAddWorkoutActivity"
-        android:visibility="visible"/>
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab_preset_workout"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_above="@id/fab_custom_workout"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="16dp"
-        android:layout_marginTop="8dp"
-        android:clickable="true"
-        android:src="@mipmap/ic_favorite_white_24dp"
-        app:backgroundTint="@color/accent"
-        app:rippleColor="@color/accent_ripple"
-        android:onClick="goToAddWorkoutActivity"
-        android:visibility="visible"/>
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab_timer"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_above="@id/fab_preset_workout"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="16dp"
-        android:clickable="true"
-        android:src="@mipmap/ic_timer_white_24dp"
-        app:backgroundTint="@color/accent"
-        app:rippleColor="@color/accent_ripple"
-        android:onClick="goToAddWorkoutActivity"
-        android:visibility="visible"/>
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/fab_timer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fab_colorNormal="@color/accent"
+            app:fab_colorPressed="@color/accent"
+            app:fab_colorRipple="@color/primary_dark"
+            android:src="@mipmap/ic_timer_white_24dp"
+            app:fab_size="mini"/>
+
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/fab_presets"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fab_colorNormal="@color/accent"
+            app:fab_colorPressed="@color/accent"
+            app:fab_colorRipple="@color/primary_dark"
+            android:src="@mipmap/ic_favorite_white_24dp"
+            app:fab_size="mini"/>
+
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/fab_custom_workout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fab_colorNormal="@color/accent"
+            app:fab_colorPressed="@color/accent"
+            app:fab_colorRipple="@color/primary_dark"
+            android:src="@mipmap/ic_assignment_white_24dp"
+            app:fab_size="mini"/>
+    </com.github.clans.fab.FloatingActionMenu>
 
 </RelativeLayout>

@@ -3,7 +3,6 @@ package com.androiddev.josephelliott.workoutcalendar.Activities.HomePage;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 import android.view.Menu;
@@ -15,10 +14,13 @@ import android.widget.TextView;
 import com.androiddev.josephelliott.workoutcalendar.Activities.AddingWorkouts.AddWorkoutActivity;
 import com.androiddev.josephelliott.workoutcalendar.Activities.Misc.HelpActivity;
 import com.androiddev.josephelliott.workoutcalendar.Activities.Misc.SettingsActivity;
+import com.androiddev.josephelliott.workoutcalendar.Activities.Presets.PresetsActivity;
 import com.androiddev.josephelliott.workoutcalendar.Activities.Running.TimerActivity;
 import com.androiddev.josephelliott.workoutcalendar.ObjectData.CurrentCalendarData;
 import com.androiddev.josephelliott.workoutcalendar.R;
 import com.androiddev.josephelliott.workoutcalendar.Utility.ScreenSlidePagerAdapter;
+import com.github.clans.fab.FloatingActionButton;
+import com.github.clans.fab.FloatingActionMenu;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -36,7 +38,7 @@ public class CalendarActivity extends FragmentActivity {
     private ScreenSlidePagerAdapter mPagerAdapter;
     private ImageButton btnNextMonth;
     private ImageButton btnPrevMonth;
-    private FloatingActionButton fabMain;
+    private FloatingActionMenu fabMain;
     private FloatingActionButton fabCust;
     private FloatingActionButton fabPres;
     private FloatingActionButton fabTime;
@@ -55,16 +57,6 @@ public class CalendarActivity extends FragmentActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        /*
-        try {
-            getActionBar().setElevation(0);
-            getActionBar().setDisplayHomeAsUpEnabled(false);
-            //getActionBar().setTitle("Workout Calendar");
-        } catch (NullPointerException e) {
-            // Do nothing
-        }
-        */
 
         // Get the calendar data right away!! We need this for the pager adapter
         calendarData = new CurrentCalendarData();
@@ -148,14 +140,6 @@ public class CalendarActivity extends FragmentActivity {
     }
 
     /**
-     * Starts the Add Workout Activity
-     */
-    public void goToAddWorkoutActivity(View view) {
-        Intent intent = new Intent(this, AddWorkoutActivity.class);
-        startActivity(intent);
-    }
-
-    /**
      * This method updates the Month and Year text fields.
      * Call this method when there is a change to currentMonth
      */
@@ -214,60 +198,35 @@ public class CalendarActivity extends FragmentActivity {
      * */
     private void initializeFABs() {
         // Get all the FABs we will be working with
-        fabMain = (FloatingActionButton) findViewById(R.id.fab_main);
+
+        fabMain = (FloatingActionMenu) findViewById(R.id.fab_main);
         fabCust = (FloatingActionButton) findViewById(R.id.fab_custom_workout);
-        fabPres = (FloatingActionButton) findViewById(R.id.fab_preset_workout);
+        fabPres = (FloatingActionButton) findViewById(R.id.fab_presets);
         fabTime = (FloatingActionButton) findViewById(R.id.fab_timer);
-        // Set all but MAIN to invisible (we will do animations later)
-        fabCust.setVisibility(View.INVISIBLE);
-        fabPres.setVisibility(View.INVISIBLE);
-        fabTime.setVisibility(View.INVISIBLE);
 
         // Make the MAIN FAB toggle the visibility of the other buttons.
-        fabMain.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (fabCust.getVisibility() == View.VISIBLE) {
-                    fabCust.setVisibility(View.INVISIBLE);
-                } else {
-                    fabCust.setVisibility(View.VISIBLE);
-                }
-                if (fabPres.getVisibility() == View.VISIBLE) {
-                    fabPres.setVisibility(View.INVISIBLE);
-                } else {
-                    fabPres.setVisibility(View.VISIBLE);
-                }
-                if (fabTime.getVisibility() == View.VISIBLE) {
-                    fabTime.setVisibility(View.INVISIBLE);
-                } else {
-                    fabTime.setVisibility(View.VISIBLE);
-                }
-                fabMain.setRotation(fabMain.getRotation() + 45);
-            }
-        });
         // Start the AddWorkoutActivity
         fabCust.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context, AddWorkoutActivity.class);
-                startActivity(intent);
+                startActivity(new Intent(context, AddWorkoutActivity.class));
             }
         });
         // Start the PresetWorkoutActivity
         fabPres.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                startActivity(new Intent(context, PresetsActivity.class));
             }
         });
         // Start the TimerActivity
         fabTime.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context, TimerActivity.class);
-                startActivity(intent);
+                startActivity(new Intent(context, TimerActivity.class));
             }
         });
+
     }
 
 }

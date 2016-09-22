@@ -65,14 +65,6 @@ public class TimerActivity extends Activity {
         isRunning = false;
         isRecordingDistance = false;
 
-        /*** Perform layout operations ***/
-        try {
-            getActionBar().setElevation(0);
-            getActionBar().setTitle("Add Your Workout");
-        } catch (NullPointerException e) {
-
-        }
-
         /*** Set the logic for the views ***/
         initializeChronometer();
         initializeButtons();
