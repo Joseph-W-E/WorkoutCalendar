@@ -5,6 +5,7 @@ import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.location.Location;
+import android.media.Image;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.view.Menu;
@@ -18,6 +19,8 @@ import android.widget.ImageButton;
 
 import com.androiddev.josephelliott.workoutcalendar.Activities.Misc.HelpActivity;
 import com.androiddev.josephelliott.workoutcalendar.Activities.Misc.SettingsActivity;
+import com.androiddev.josephelliott.workoutcalendar.ObjectData.Workout;
+import com.androiddev.josephelliott.workoutcalendar.ObjectData.WorkoutDataSource;
 import com.androiddev.josephelliott.workoutcalendar.R;
 
 import java.util.ArrayList;
@@ -39,6 +42,10 @@ public class TimerActivity extends Activity {
     /*** Variables needed for recording time ***/
     private boolean isRunning;
     private long timeElapsed;
+
+    /*** Variables needed for recording the workout ***/
+    private Image image;
+    private Workout workout;
 
     /*** Variables for views ***/
     private ImageButton btnTimer, btnImage, btnDate, btnConfirm;
@@ -66,6 +73,7 @@ public class TimerActivity extends Activity {
         /*** Initialize needed variables ready ***/
         isRunning = false;
         isRecordingDistance = false;
+        workout = new Workout();
 
         /*** Set the logic for the views ***/
         initializeChronometer();
@@ -177,7 +185,26 @@ public class TimerActivity extends Activity {
         btnConfirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // TODO get the data gathered from the activity, send it to the database (maybe dialog confirm?)
+                // Get the title
+                workout.setTitle("Timed Workout");
+                // Get the location
+                workout.setLocation("Location");
+                // Get the description
+                workout.setDescription("Description");
+                // Get the date
+                workout.setDate(calendarDatePicked.getTime());
+                // Get the distance (shouldn't be one)
+                workout.setDistance(0);
+                // Get the image
+                workout.setImage(image);
+
+                // Now that we have a complete workout, save it to the database
+                WorkoutDataSource dataSource = new WorkoutDataSource(context);
+                dataSource.open();
+                dataSource.createWorkout(workout);
+                dataSource.close();
+
+                // rip in pieces
                 finish();
             }
         });
@@ -185,6 +212,10 @@ public class TimerActivity extends Activity {
 
     private void startGatheringLocations() {
 
+    }
+
+    private double calculateDistance() {
+        return 0;
     }
 
 }
