@@ -3,8 +3,8 @@ package com.androiddev.josephelliott.workoutcalendar.Activities.Running;
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.location.Location;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.view.Menu;
@@ -16,6 +16,8 @@ import android.widget.Chronometer;
 import android.widget.DatePicker;
 import android.widget.ImageButton;
 
+import com.androiddev.josephelliott.workoutcalendar.Activities.Misc.HelpActivity;
+import com.androiddev.josephelliott.workoutcalendar.Activities.Misc.SettingsActivity;
 import com.androiddev.josephelliott.workoutcalendar.R;
 
 import java.util.ArrayList;
@@ -73,7 +75,7 @@ public class TimerActivity extends Activity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_addworkout, menu);
+        getMenuInflater().inflate(R.menu.menu_default, menu);
         return true;
     }
 
@@ -85,9 +87,11 @@ public class TimerActivity extends Activity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.menu_addworkout_settings) {
+        if (id == R.id.menu_default_settings) {
+            startActivity(new Intent(this, SettingsActivity.class));
             return true;
-        } else if (id == R.id.menu_addworkout_help) {
+        } else if (id == R.id.menu_default_help) {
+            startActivity(new Intent(this, HelpActivity.class));
             return true;
         }
 

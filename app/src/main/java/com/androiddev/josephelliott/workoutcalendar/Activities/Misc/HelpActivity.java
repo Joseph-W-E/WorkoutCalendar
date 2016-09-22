@@ -1,6 +1,7 @@
 package com.androiddev.josephelliott.workoutcalendar.Activities.Misc;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -17,18 +18,12 @@ public class HelpActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_help);
 
-        try {
-            getActionBar().setElevation(0);
-            getActionBar().setTitle("Add Your Workout");
-        } catch (NullPointerException e) {
-            // TODO
-        }
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_calendar, menu);
+        getMenuInflater().inflate(R.menu.menu_default, menu);
         return true;
     }
 
@@ -41,6 +36,7 @@ public class HelpActivity extends Activity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.menu_addworkout_settings) {
+            startActivity(new Intent(this, SettingsActivity.class));
             return true;
         } else if (id == R.id.menu_addworkout_help) {
             return true;

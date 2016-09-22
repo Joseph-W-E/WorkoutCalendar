@@ -3,6 +3,7 @@ package com.androiddev.josephelliott.workoutcalendar.Activities.AddingWorkouts;
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.media.Image;
 import android.os.Bundle;
 import android.view.KeyEvent;
@@ -15,11 +16,12 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
+import com.androiddev.josephelliott.workoutcalendar.Activities.Misc.HelpActivity;
+import com.androiddev.josephelliott.workoutcalendar.Activities.Misc.SettingsActivity;
 import com.androiddev.josephelliott.workoutcalendar.ObjectData.Workout;
 import com.androiddev.josephelliott.workoutcalendar.ObjectData.WorkoutDataSource;
 import com.androiddev.josephelliott.workoutcalendar.R;
 
-import java.util.ArrayList;
 import java.util.Calendar;
 
 /**
@@ -68,7 +70,7 @@ public class AddWorkoutActivity extends Activity {
         workout = new Workout();
 
         /*** Set the logic for the views ***/
-        initializeButtions();
+        initializeButtons();
         initializeSaveButton();
         initializeAutoCompleteTextFields();
         initializeEditTexts();
@@ -77,7 +79,7 @@ public class AddWorkoutActivity extends Activity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_addworkout, menu);
+        getMenuInflater().inflate(R.menu.menu_default, menu);
         return true;
     }
 
@@ -89,9 +91,11 @@ public class AddWorkoutActivity extends Activity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.menu_addworkout_settings) {
+        if (id == R.id.menu_default_settings) {
+            startActivity(new Intent(this, SettingsActivity.class));
             return true;
-        } else if (id == R.id.menu_addworkout_help) {
+        } else if (id == R.id.menu_default_help) {
+            startActivity(new Intent(this, HelpActivity.class));
             return true;
         }
 
@@ -101,7 +105,7 @@ public class AddWorkoutActivity extends Activity {
     /**
      * Set up the buttons.
      */
-    private void initializeButtions() {
+    private void initializeButtons() {
         btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

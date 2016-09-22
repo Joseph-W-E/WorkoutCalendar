@@ -4,14 +4,14 @@
     tools:context=".AddWorkoutActivity">
 
     <item
-        android:id="@+id/menu_addworkout_settings"
+        android:id="@+id/menu_default_settings"
         android:orderInCategory="75"
         android:title="@string/action_settings"
         app:showAsAction="never"
         android:showAsAction="never"/>
 
     <item
-        android:id="@+id/menu_addworkout_help"
+        android:id="@+id/menu_default_help"
         android:orderInCategory="100"
         android:title="@string/action_help"
         app:showAsAction="never"
