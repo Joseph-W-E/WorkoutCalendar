@@ -35,9 +35,9 @@ public class SettingsActivity extends Activity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.menu_addworkout_settings) {
+        if (id == R.id.menu_default_settings) {
             return true;
-        } else if (id == R.id.menu_addworkout_help) {
+        } else if (id == R.id.menu_default_help) {
             startActivity(new Intent(this, HelpActivity.class));
             return true;
         }
