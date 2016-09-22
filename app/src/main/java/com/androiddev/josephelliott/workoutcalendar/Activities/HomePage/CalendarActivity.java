@@ -56,6 +56,7 @@ public class CalendarActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        /*
         try {
             getActionBar().setElevation(0);
             getActionBar().setDisplayHomeAsUpEnabled(false);
@@ -63,6 +64,7 @@ public class CalendarActivity extends FragmentActivity {
         } catch (NullPointerException e) {
             // Do nothing
         }
+        */
 
         // Get the calendar data right away!! We need this for the pager adapter
         calendarData = new CurrentCalendarData();
