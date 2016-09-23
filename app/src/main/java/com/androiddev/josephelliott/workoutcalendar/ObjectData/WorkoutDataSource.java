@@ -85,6 +85,7 @@ public class WorkoutDataSource {
 
             cursor.moveToNext();
         }
+        cursor.close();
 
         return workouts;
     }
