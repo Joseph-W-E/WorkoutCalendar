@@ -15,6 +15,7 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.Chronometer;
 import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.ImageButton;
 
 import com.androiddev.josephelliott.workoutcalendar.Activities.Help.HelpActivity;
@@ -51,6 +52,7 @@ public class TimerActivity extends Activity {
     private ImageButton btnTimer, btnImage, btnDate, btnConfirm;
     private Chronometer chronometer;
     private CheckBox checkbox;
+    private EditText etTitle, etDesc;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,6 +71,8 @@ public class TimerActivity extends Activity {
         btnConfirm = (ImageButton) findViewById(R.id.timer_save);
         chronometer = (Chronometer) findViewById(R.id.timer_chronometer);
         checkbox = (CheckBox) findViewById(R.id.timer_toggle_running);
+        etTitle  = (EditText) findViewById(R.id.timer_edit_text_title);
+        etDesc   = (EditText) findViewById(R.id.timer_edit_text_description);
 
         /*** Initialize needed variables ready ***/
         isRunning = false;
@@ -186,15 +190,15 @@ public class TimerActivity extends Activity {
             @Override
             public void onClick(View v) {
                 // Get the title
-                workout.setTitle("Timed Workout");
+                workout.setTitle(etTitle.getText().toString());
                 // Get the location
-                workout.setLocation("Location");
+                workout.setLocation("");
                 // Get the description
-                workout.setDescription("Description");
+                workout.setDescription(etDesc.getText().toString());
                 // Get the date
                 workout.setDate(calendarDatePicked.getTime());
                 // Get the distance (shouldn't be one)
-                workout.setDistance(0);
+                workout.setDistance(calculateDistance());
                 // Get the image
                 workout.setImage(image);
 
