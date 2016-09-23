@@ -41,8 +41,9 @@
     <string name="cancel">Cancel</string>
     <string name="location_hint">Location</string>
     <string name="date_hint">Date</string>
-    <string name="title_hint">Workout title</string>
-    <string name="description_hint">Workout details</string>
+    <string name="title_hint">Title</string>
+    <string name="description_hint">Description</string>
+    <string name="lift_hint">Lift</string>
     <string name="jump_to_today">Jump To Today</string>
     <string name="change">Change</string>
 

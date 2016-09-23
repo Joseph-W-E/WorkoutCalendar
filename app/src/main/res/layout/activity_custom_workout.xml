@@ -1,128 +1,112 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-    <RelativeLayout
-        android:id="@+id/aaw_rl_01"
-        android:layout_width="fill_parent"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp">
-
+        android:padding="8dp">
         <ImageView
             android:id="@+id/title_image"
-            android:layout_width="40dp"
-            android:layout_height="20dp"
-            android:layout_centerVertical="true"
-            android:layout_marginEnd="16dp"
-            android:layout_marginStart="16dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
             android:alpha="0.5"
             android:clickable="false"
             android:src="@mipmap/ic_label_black_24dp" />
 
         <AutoCompleteTextView
             android:id="@+id/workout_title_txt"
-            android:layout_width="fill_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="3dp"
-            android:layout_marginEnd="32dp"
-            android:layout_marginTop="3dp"
-            android:layout_toEndOf="@id/title_image"
+            android:layout_weight="1"
             android:hint="@string/title_hint"
-            android:singleLine="true"
-            android:inputType="textCapSentences"/>
-    </RelativeLayout>
+            android:maxLines="1"
+            android:inputType="textCapWords"/>
+    </LinearLayout>
 
 
-    <RelativeLayout
-        android:id="@+id/aaw_rl_02"
-        android:layout_width="fill_parent"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/aaw_rl_01">
-
+        android:padding="8dp">
         <ImageView
             android:id="@+id/location_image"
-            android:layout_width="40dp"
-            android:layout_height="20dp"
-            android:layout_centerVertical="true"
-            android:layout_marginEnd="16dp"
-            android:layout_marginStart="16dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
             android:alpha="0.5"
             android:clickable="false"
             android:src="@mipmap/ic_place_black_24dp" />
 
         <AutoCompleteTextView
             android:id="@+id/workout_location_txt"
-            android:layout_width="fill_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="3dp"
-            android:layout_marginEnd="32dp"
-            android:layout_marginTop="3dp"
-            android:layout_toEndOf="@id/location_image"
+            android:layout_weight="1"
             android:hint="@string/location_hint"
-            android:singleLine="true"
-            android:inputType="textCapSentences"/>
-    </RelativeLayout>
+            android:maxLines="1"
+            android:inputType="textCapWords"/>
+    </LinearLayout>
 
-    <RelativeLayout
-        android:id="@+id/aaw_rl_03"
-        android:layout_width="fill_parent"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/aaw_rl_02"
-        android:gravity="center">
-
+        android:padding="8dp">
         <AutoCompleteTextView
             android:id="@+id/custom_workout_exercise_actv"
-            android:layout_width="88dp"
-            android:layout_height="48dp"
-            android:singleLine="true"
-            android:inputType="textCapSentences"/>
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:maxLines="1"
+            android:inputType="textCapSentences"
+            android:layout_weight="1"
+            android:hint="@string/lift_hint"/>
 
         <EditText
             android:id="@+id/custom_workout_lbs_edit_text"
             android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_toEndOf="@id/custom_workout_exercise_actv"
+            android:layout_height="wrap_content"
             android:gravity="center"
-            android:inputType="number"/>
+            android:inputType="number"
+            android:maxLines="1"/>
 
         <TextView
             android:id="@+id/custom_workout_lbs_text_view"
             android:layout_width="wrap_content"
-            android:layout_height="48dp"
-            android:layout_toEndOf="@id/custom_workout_lbs_edit_text"
+            android:layout_height="wrap_content"
             android:text="lbs,"
             android:gravity="bottom"/>
 
         <EditText
             android:id="@+id/custom_workout_sets_edit_text"
             android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_toEndOf="@id/custom_workout_lbs_text_view"
+            android:layout_height="wrap_content"
             android:gravity="center"
-            android:inputType="number"/>
+            android:inputType="number"
+            android:maxLines="1"/>
 
         <TextView
             android:id="@+id/custom_workout_sets_text_view"
             android:layout_width="wrap_content"
-            android:layout_height="48dp"
-            android:layout_toEndOf="@id/custom_workout_sets_edit_text"
+            android:layout_height="wrap_content"
             android:text="sets"
             android:gravity="bottom"/>
 
         <EditText
             android:id="@+id/custom_workout_reps_edit_text"
             android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_toEndOf="@id/custom_workout_sets_text_view"
+            android:layout_height="wrap_content"
             android:gravity="center"
-            android:inputType="number"/>
+            android:inputType="number"
+            android:maxLines="1"/>
 
         <TextView
             android:id="@+id/custom_workout_reps_text_view"
             android:layout_width="wrap_content"
-            android:layout_height="48dp"
-            android:layout_toEndOf="@id/custom_workout_reps_edit_text"
+            android:layout_height="wrap_content"
             android:text="reps"
             android:gravity="bottom"
             />
@@ -131,53 +115,43 @@
             android:id="@+id/custom_workout_add_exercise_btn"
             style="?android:attr/borderlessButtonStyle"
             android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_toEndOf="@id/custom_workout_reps_text_view"
+            android:layout_height="wrap_content"
             android:src="@mipmap/ic_add_black_24dp"
             android:alpha="0.5"/>
+    </LinearLayout>
 
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:id="@+id/aaw_rl_04"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/aaw_rl_03">
-
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:padding="8dp">
         <ImageView
             android:id="@+id/description_image"
-            android:layout_width="40dp"
-            android:layout_height="20dp"
-            android:layout_centerVertical="true"
-            android:layout_marginEnd="16dp"
-            android:layout_marginStart="16dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
             android:alpha="0.5"
             android:clickable="false"
             android:src="@mipmap/ic_description_black_24dp" />
 
         <EditText
             android:id="@+id/workout_description_txt"
-            android:layout_width="fill_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:maxHeight="256dp"
-            android:layout_marginBottom="3dp"
-            android:layout_marginEnd="32dp"
-            android:layout_marginTop="3dp"
-            android:layout_toEndOf="@id/description_image"
-            android:hint="@string/description_hint"/>
-    </RelativeLayout>
+            android:layout_weight="1"
+            android:hint="@string/description_hint"
+            android:inputType="textMultiLine|textCapSentences"/>
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true">
-
-
+        android:padding="8dp">
         <ImageButton
             android:id="@+id/custom_workout_cancel"
             style="?android:attr/borderlessButtonStyle"
             android:layout_width="wrap_content"
-            android:layout_height="48dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
             android:src="@mipmap/ic_cancel_black_24dp"
             android:alpha="0.5"
@@ -187,7 +161,7 @@
             android:id="@+id/custom_workout_change_image"
             style="?android:attr/borderlessButtonStyle"
             android:layout_width="wrap_content"
-            android:layout_height="48dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
             android:src="@mipmap/ic_image_black_24dp"
             android:alpha="0.5"
@@ -197,7 +171,7 @@
             android:id="@+id/custom_workout_change_date"
             style="?android:attr/borderlessButtonStyle"
             android:layout_width="wrap_content"
-            android:layout_height="48dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
             android:src="@mipmap/ic_today_black_24dp"
             android:alpha="0.5"
@@ -207,13 +181,11 @@
             android:id="@+id/custom_workout_save"
             style="?android:attr/borderlessButtonStyle"
             android:layout_width="wrap_content"
-            android:layout_height="48dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
             android:src="@mipmap/ic_done_black_24dp"
             android:alpha="0.5"
             android:background="@drawable/ripple"/>
-
-
     </LinearLayout>
 
-</RelativeLayout>
+</LinearLayout>
