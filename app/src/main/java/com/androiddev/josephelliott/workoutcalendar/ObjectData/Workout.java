@@ -9,12 +9,12 @@ import java.util.Date;
  */
 public class Workout {
 
-    private long ID;
+    private long   ID;
     private String title;
     private String description;
     private String location;
-    private Date date;
-    private Image image;
+    private Date   date;
+    private Image  image;
     private double distance;
 
     public Workout() {
