@@ -1,17 +1,21 @@
 package com.androiddev.josephelliott.workoutcalendar.Activities.Presets;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ListView;
 
 import com.androiddev.josephelliott.workoutcalendar.Activities.Help.HelpActivity;
 import com.androiddev.josephelliott.workoutcalendar.Activities.Settings.SettingsActivity;
+import com.androiddev.josephelliott.workoutcalendar.ObjectData.PresetsDataSource;
 import com.androiddev.josephelliott.workoutcalendar.ObjectData.Workout;
 import com.androiddev.josephelliott.workoutcalendar.ObjectData.WorkoutDataSource;
 import com.androiddev.josephelliott.workoutcalendar.R;
+import com.github.clans.fab.FloatingActionButton;
 
 import java.util.ArrayList;
 
@@ -22,16 +26,26 @@ public class PresetsActivity extends Activity {
 
     private ListView listView;
 
+    private FloatingActionButton fabAdd;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_presets);
 
-        ArrayList<Workout> workouts = new ArrayList<>();
-        workouts.add(new Workout());
-
+        PresetsDataSource presetsDataSource = new PresetsDataSource(this);
+        presetsDataSource.open();
         listView = (ListView) findViewById(R.id.presets_list_view);
-        listView.setAdapter(new PresetsListAdapter(this, workouts));
+        listView.setAdapter(new PresetsListAdapter(this, presetsDataSource.getPresets()));
+        presetsDataSource.close();
+
+        fabAdd = (FloatingActionButton) findViewById(R.id.fab_presets);
+        fabAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // todo get dialog working
+            }
+        });
     }
 
     @Override

@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import com.androiddev.josephelliott.workoutcalendar.ObjectData.Preset;
 import com.androiddev.josephelliott.workoutcalendar.ObjectData.Workout;
 import com.androiddev.josephelliott.workoutcalendar.R;
 
@@ -20,23 +21,23 @@ public class PresetsListAdapter extends BaseAdapter {
 
     private Context context;
     private LayoutInflater layoutInflater;
-    private ArrayList<Workout> workouts;
+    private ArrayList<Preset> presets;
 
-    public PresetsListAdapter(Context context, ArrayList<Workout> workouts) {
+    public PresetsListAdapter(Context context, ArrayList<Preset> presets) {
         this.context = context;
-        this.workouts = workouts;
+        this.presets = presets;
         layoutInflater = (LayoutInflater) this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
 
     @Override
     public int getCount() {
-        return workouts.size();
+        return presets.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return workouts.get(position);
+        return presets.get(position);
     }
 
     @Override
@@ -46,7 +47,7 @@ public class PresetsListAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        Workout currentWorkout = workouts.get(position);
+        Preset preset = presets.get(position);
 
         if (convertView == null) {
             convertView = layoutInflater.inflate(R.layout.preset_inner_workout, parent, false);
@@ -58,9 +59,11 @@ public class PresetsListAdapter extends BaseAdapter {
         TextView txtFrequency   = (TextView) convertView.findViewById(R.id.txt_presets_inner_frequency);
         TextView txtExpires     = (TextView) convertView.findViewById(R.id.txt_presets_inner_expires);
 
-        txtTitle.setText(currentWorkout.getTitle());
-        txtLocation.setText(currentWorkout.getLocation());
-        txtDescription.setText(currentWorkout.getDescription());
+        txtTitle.setText(preset.getTitle());
+        txtLocation.setText(preset.getLocation());
+        txtDescription.setText(preset.getDescription());
+        txtFrequency.setText(preset.getFrequency());
+        txtExpires.setText("" + preset.getExpires().getTime());
 
         return convertView;
     }
