@@ -5,20 +5,33 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ListView;
 
-import com.androiddev.josephelliott.workoutcalendar.Activities.Misc.HelpActivity;
-import com.androiddev.josephelliott.workoutcalendar.Activities.Misc.SettingsActivity;
+import com.androiddev.josephelliott.workoutcalendar.Activities.Help.HelpActivity;
+import com.androiddev.josephelliott.workoutcalendar.Activities.Settings.SettingsActivity;
+import com.androiddev.josephelliott.workoutcalendar.ObjectData.Workout;
+import com.androiddev.josephelliott.workoutcalendar.ObjectData.WorkoutDataSource;
 import com.androiddev.josephelliott.workoutcalendar.R;
+
+import java.util.ArrayList;
 
 /**
  * Created by jellio on 9/21/16.
  */
 public class PresetsActivity extends Activity {
 
+    private ListView listView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_presets);
+
+        ArrayList<Workout> workouts = new ArrayList<>();
+        workouts.add(new Workout());
+
+        listView = (ListView) findViewById(R.id.presets_list_view);
+        listView.setAdapter(new PresetsListAdapter(this, workouts));
     }
 
     @Override

@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">Workout Calendar</string>
-    <string name="add_workout_activity_name">Custom Workout</string>
+    <string name="custom_workout_activity_name">Custom Workout</string>
     <string name="timer_activity_name">Timer</string>
-    <string name="preset_activity_name">Presets</string>
+    <string name="presets_activity_name">Presets</string>
     <string name="help_activity_name">Help</string>
     <string name="settings_activity_name">Settings</string>
 
@@ -12,6 +12,7 @@
     <string name="sign_up">Sign Up</string>
     <string name="use_local_storage">Use Local Storage</string>
     <string name="splash_welcome">Welcome</string>
+
     <string name="running">Record distance?</string>
 
     <string name="help_header_home_page">Home Page</string>
@@ -44,6 +45,9 @@
     <string name="description_hint">Workout details</string>
     <string name="jump_to_today">Jump To Today</string>
     <string name="change">Change</string>
+
+    <string name="frequency">Frequency</string>
+    <string name="expires">Expires</string>
 
     <string name="left">Left</string>
     <string name="right">Right</string>

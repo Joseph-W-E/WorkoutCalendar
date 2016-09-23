@@ -1,4 +1,4 @@
-package com.androiddev.josephelliott.workoutcalendar.Activities.Misc;
+package com.androiddev.josephelliott.workoutcalendar.Activities.Help;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -7,6 +7,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import com.androiddev.josephelliott.workoutcalendar.Activities.Settings.SettingsActivity;
 import com.androiddev.josephelliott.workoutcalendar.R;
 
 /**

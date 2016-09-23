@@ -1,4 +1,4 @@
-package com.androiddev.josephelliott.workoutcalendar.Activities.HomePage;
+package com.androiddev.josephelliott.workoutcalendar.SwipeCalendar;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -18,7 +18,6 @@ import com.androiddev.josephelliott.workoutcalendar.ObjectData.CurrentCalendarDa
 import com.androiddev.josephelliott.workoutcalendar.ObjectData.Workout;
 import com.androiddev.josephelliott.workoutcalendar.ObjectData.WorkoutDataSource;
 import com.androiddev.josephelliott.workoutcalendar.R;
-import com.androiddev.josephelliott.workoutcalendar.Utility.Utility;
 
 import java.util.ArrayList;
 

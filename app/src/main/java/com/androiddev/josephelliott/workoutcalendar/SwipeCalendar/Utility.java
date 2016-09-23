@@ -1,4 +1,4 @@
-package com.androiddev.josephelliott.workoutcalendar.Utility;
+package com.androiddev.josephelliott.workoutcalendar.SwipeCalendar;
 
 import android.view.View;
 import android.widget.Button;

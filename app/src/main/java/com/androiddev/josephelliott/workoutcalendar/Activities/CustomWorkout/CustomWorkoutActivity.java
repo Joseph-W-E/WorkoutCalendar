@@ -1,4 +1,4 @@
-package com.androiddev.josephelliott.workoutcalendar.Activities.AddingWorkouts;
+package com.androiddev.josephelliott.workoutcalendar.Activities.CustomWorkout;
 
 import android.app.Activity;
 import android.app.DatePickerDialog;
@@ -16,8 +16,8 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
-import com.androiddev.josephelliott.workoutcalendar.Activities.Misc.HelpActivity;
-import com.androiddev.josephelliott.workoutcalendar.Activities.Misc.SettingsActivity;
+import com.androiddev.josephelliott.workoutcalendar.Activities.Help.HelpActivity;
+import com.androiddev.josephelliott.workoutcalendar.Activities.Settings.SettingsActivity;
 import com.androiddev.josephelliott.workoutcalendar.ObjectData.Workout;
 import com.androiddev.josephelliott.workoutcalendar.ObjectData.WorkoutDataSource;
 import com.androiddev.josephelliott.workoutcalendar.R;
@@ -27,7 +27,7 @@ import java.util.Calendar;
 /**
  * Created by Joseph Elliott on 10/12/2015.
  */
-public class AddWorkoutActivity extends Activity {
+public class CustomWorkoutActivity extends Activity {
 
     private Context context;
 
@@ -45,10 +45,10 @@ public class AddWorkoutActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_workout);
+        setContentView(R.layout.activity_custom_workout);
 
         /*** Get the context ***/
-        context = AddWorkoutActivity.this;
+        context = CustomWorkoutActivity.this;
         /*** Get the current time ***/
         calendarDatePicked = Calendar.getInstance();
 

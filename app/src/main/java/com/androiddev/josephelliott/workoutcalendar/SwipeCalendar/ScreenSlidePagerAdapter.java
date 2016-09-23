@@ -1,11 +1,11 @@
-package com.androiddev.josephelliott.workoutcalendar.Utility;
+package com.androiddev.josephelliott.workoutcalendar.SwipeCalendar;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.view.ViewGroup;
 
-import com.androiddev.josephelliott.workoutcalendar.Activities.HomePage.CalendarFragment;
+import com.androiddev.josephelliott.workoutcalendar.SwipeCalendar.CalendarFragment;
 import com.androiddev.josephelliott.workoutcalendar.ObjectData.CurrentCalendarData;
 
 import java.util.HashMap;

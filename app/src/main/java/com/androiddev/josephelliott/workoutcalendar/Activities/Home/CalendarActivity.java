@@ -1,4 +1,4 @@
-package com.androiddev.josephelliott.workoutcalendar.Activities.HomePage;
+package com.androiddev.josephelliott.workoutcalendar.Activities.Home;
 
 import android.content.Context;
 import android.content.Intent;
@@ -11,14 +11,14 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import com.androiddev.josephelliott.workoutcalendar.Activities.AddingWorkouts.AddWorkoutActivity;
-import com.androiddev.josephelliott.workoutcalendar.Activities.Misc.HelpActivity;
-import com.androiddev.josephelliott.workoutcalendar.Activities.Misc.SettingsActivity;
+import com.androiddev.josephelliott.workoutcalendar.Activities.CustomWorkout.CustomWorkoutActivity;
+import com.androiddev.josephelliott.workoutcalendar.Activities.Help.HelpActivity;
+import com.androiddev.josephelliott.workoutcalendar.Activities.Settings.SettingsActivity;
 import com.androiddev.josephelliott.workoutcalendar.Activities.Presets.PresetsActivity;
-import com.androiddev.josephelliott.workoutcalendar.Activities.Running.TimerActivity;
+import com.androiddev.josephelliott.workoutcalendar.Activities.Timer.TimerActivity;
 import com.androiddev.josephelliott.workoutcalendar.ObjectData.CurrentCalendarData;
 import com.androiddev.josephelliott.workoutcalendar.R;
-import com.androiddev.josephelliott.workoutcalendar.Utility.ScreenSlidePagerAdapter;
+import com.androiddev.josephelliott.workoutcalendar.SwipeCalendar.ScreenSlidePagerAdapter;
 import com.github.clans.fab.FloatingActionButton;
 import com.github.clans.fab.FloatingActionMenu;
 
@@ -213,11 +213,11 @@ public class CalendarActivity extends FragmentActivity {
         fabTime = (FloatingActionButton) findViewById(R.id.fab_timer);
 
         // Make the MAIN FAB toggle the visibility of the other buttons.
-        // Start the AddWorkoutActivity
+        // Start the CustomWorkoutActivity
         fabCust.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(context, AddWorkoutActivity.class));
+                startActivity(new Intent(context, CustomWorkoutActivity.class));
             }
         });
         // Start the PresetWorkoutActivity

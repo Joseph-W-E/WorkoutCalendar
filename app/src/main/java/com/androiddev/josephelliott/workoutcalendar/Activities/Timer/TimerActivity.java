@@ -1,4 +1,4 @@
-package com.androiddev.josephelliott.workoutcalendar.Activities.Running;
+package com.androiddev.josephelliott.workoutcalendar.Activities.Timer;
 
 import android.app.Activity;
 import android.app.DatePickerDialog;
@@ -17,8 +17,8 @@ import android.widget.Chronometer;
 import android.widget.DatePicker;
 import android.widget.ImageButton;
 
-import com.androiddev.josephelliott.workoutcalendar.Activities.Misc.HelpActivity;
-import com.androiddev.josephelliott.workoutcalendar.Activities.Misc.SettingsActivity;
+import com.androiddev.josephelliott.workoutcalendar.Activities.Help.HelpActivity;
+import com.androiddev.josephelliott.workoutcalendar.Activities.Settings.SettingsActivity;
 import com.androiddev.josephelliott.workoutcalendar.ObjectData.Workout;
 import com.androiddev.josephelliott.workoutcalendar.ObjectData.WorkoutDataSource;
 import com.androiddev.josephelliott.workoutcalendar.R;

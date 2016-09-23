@@ -15,7 +15,7 @@
         android:theme="@style/AppTheme">
 
         <activity
-            android:name=".Activities.SplashPage.Splash"
+            android:name=".Activities.SplashScreen.Splash"
             android:theme="@style/AppTheme.Splash"
             android:screenOrientation="portrait">
             <intent-filter>
@@ -25,17 +25,17 @@
         </activity>
 
         <activity
-            android:name=".Activities.HomePage.CalendarActivity"
+            android:name=".Activities.Home.CalendarActivity"
             android:label="@string/app_name"
-            android:parentActivityName=".Activities.SplashPage.Splash"
+            android:parentActivityName=".Activities.SplashScreen.Splash"
             android:screenOrientation="portrait">
         </activity>
 
 
         <activity
-            android:name=".Activities.AddingWorkouts.AddWorkoutActivity"
-            android:label="@string/add_workout_activity_name"
-            android:parentActivityName=".Activities.HomePage.CalendarActivity"
+            android:name=".Activities.CustomWorkout.CustomWorkoutActivity"
+            android:label="@string/custom_workout_activity_name"
+            android:parentActivityName=".Activities.Home.CalendarActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode = "stateVisible">
         </activity>
@@ -43,32 +43,32 @@
 
         <activity
             android:name=".Activities.Presets.PresetsActivity"
-            android:label="@string/preset_activity_name"
-            android:parentActivityName=".Activities.HomePage.CalendarActivity"
+            android:label="@string/presets_activity_name"
+            android:parentActivityName=".Activities.Home.CalendarActivity"
             android:screenOrientation="portrait">
         </activity>
 
 
         <activity
-            android:name=".Activities.Running.TimerActivity"
+            android:name=".Activities.Timer.TimerActivity"
             android:label="@string/timer_activity_name"
-            android:parentActivityName=".Activities.HomePage.CalendarActivity"
+            android:parentActivityName=".Activities.Home.CalendarActivity"
             android:screenOrientation="portrait">
         </activity>
 
 
         <activity
-            android:name=".Activities.Misc.HelpActivity"
+            android:name=".Activities.Help.HelpActivity"
             android:label="@string/help_activity_name"
-            android:parentActivityName=".Activities.HomePage.CalendarActivity"
+            android:parentActivityName=".Activities.Home.CalendarActivity"
             android:screenOrientation="portrait">
         </activity>
 
 
         <activity
-            android:name=".Activities.Misc.SettingsActivity"
+            android:name=".Activities.Settings.SettingsActivity"
             android:label="@string/settings_activity_name"
-            android:parentActivityName=".Activities.HomePage.CalendarActivity"
+            android:parentActivityName=".Activities.Home.CalendarActivity"
             android:screenOrientation="portrait">
         </activity>
 
