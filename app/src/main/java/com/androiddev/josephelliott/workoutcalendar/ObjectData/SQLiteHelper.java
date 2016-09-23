@@ -30,13 +30,13 @@ public class SQLiteHelper extends SQLiteOpenHelper {
             + TABLE_WORKOUTS + "(" + COLUMN_WORKOUTS_ID + " integer primary key autoincrement, "
             + COLUMN_WORKOUTS_TITLE + " text not null, "
             + COLUMN_WORKOUTS_DATE + " text not null, "
-            + COLUMN_WORKOUTS_DESCRIPTION + ", "
-            + COLUMN_WORKOUTS_LOCATION + ", "
-            + COLUMN_WORKOUTS_DISTANCE + ", "
-            + COLUMN_WORKOUTS_IMAGE + ");";
+            + COLUMN_WORKOUTS_DESCRIPTION + " text, "
+            + COLUMN_WORKOUTS_LOCATION + " text, "
+            + COLUMN_WORKOUTS_DISTANCE + " real, "
+            + COLUMN_WORKOUTS_IMAGE + " blob);";
 
     /*** Constants for the "presets" table ***/
-    public static final String TABLE_PRESETS              = "";
+    public static final String TABLE_PRESETS              = "presets";
     public static final String COLUMN_PRESETS_ID          = "_id";
     public static final String COLUMN_PRESETS_TITLE       = "title";
     public static final String COLUMN_PRESETS_LOCATION    = "location";
@@ -46,12 +46,12 @@ public class SQLiteHelper extends SQLiteOpenHelper {
 
     /*** Statement to create a table for "presets" ***/
     private static final String PRESETS_DATABASE_CREATE = "create table "
-            + TABLE_PRESETS + "(" + COLUMN_PRESETS_ID + " integer primary key autoincrement, "
-            + COLUMN_PRESETS_TITLE + " text not null, "
-            + COLUMN_PRESETS_LOCATION + ", "
-            + COLUMN_PRESETS_DESCRIPTION + ", "
-            + COLUMN_PRESETS_FREQUENCY + ", "
-            + COLUMN_PRESETS_EXPIRES + ");";
+            + TABLE_PRESETS + "(" + COLUMN_PRESETS_ID + " integer primary key autoincrement,"
+            + COLUMN_PRESETS_TITLE + " text not null,"
+            + COLUMN_PRESETS_LOCATION + " text,"
+            + COLUMN_PRESETS_DESCRIPTION + " text,"
+            + COLUMN_PRESETS_FREQUENCY + " text,"
+            + COLUMN_PRESETS_EXPIRES + " text);";
 
     public SQLiteHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);

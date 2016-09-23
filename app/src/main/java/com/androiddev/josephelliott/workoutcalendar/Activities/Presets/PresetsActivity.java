@@ -2,6 +2,7 @@ package com.androiddev.josephelliott.workoutcalendar.Activities.Presets;
 
 import android.app.Activity;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -24,6 +25,8 @@ import java.util.ArrayList;
  */
 public class PresetsActivity extends Activity {
 
+    private Context context;
+
     private ListView listView;
 
     private FloatingActionButton fabAdd;
@@ -32,6 +35,8 @@ public class PresetsActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_presets);
+
+        context = this;
 
         PresetsDataSource presetsDataSource = new PresetsDataSource(this);
         presetsDataSource.open();
@@ -43,7 +48,7 @@ public class PresetsActivity extends Activity {
         fabAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // todo get dialog working
+                displayDialog();
             }
         });
     }
@@ -72,5 +77,11 @@ public class PresetsActivity extends Activity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private void displayDialog() {
+        Dialog dialog = new Dialog(this);
+        dialog.setContentView(R.layout.dialog_new_preset);
+        dialog.setTitle("New Preset");
     }
 }
