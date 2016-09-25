@@ -1,4 +1,4 @@
-package com.androiddev.josephelliott.workoutcalendar.SwipeCalendar;
+package com.androiddev.josephelliott.workoutcalendar.Activities.Home.SwipeCalendar;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -40,7 +40,7 @@ public class CalendarFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_calendar, container, false);
+        ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.calendar_fragment, container, false);
 
         updateFragment(rootView);
 
@@ -130,14 +130,14 @@ public class CalendarFragment extends Fragment {
 
         // Get the outer view
         LayoutInflater layoutInflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        ViewGroup outerView = (ViewGroup) layoutInflater.inflate(R.layout.dialog_view_workout, null);
+        ViewGroup outerView = (ViewGroup) layoutInflater.inflate(R.layout.calendar_dialog_workouts_outer, null);
 
         dialog.setContentView(outerView);
 
         // Create the children and add it to the outer view
         for (int i = 0; i < workouts.size(); i++) {
-            // for each workout, create a dialog_inner_workout and add it to the outer view
-            View tempView = layoutInflater.inflate(R.layout.dialog_inner_workout, null);
+            // for each workout, create a calendar_dialog_workouts_inner and add it to the outer view
+            View tempView = layoutInflater.inflate(R.layout.calendar_dialog_workouts_inner, null);
             TextView txtTitle = (TextView) tempView.findViewById(R.id.dialog_inner_workout_title);
             TextView txtDescription = (TextView) tempView.findViewById(R.id.dialog_inner_workout_description);
             TextView txtLocation = (TextView) tempView.findViewById(R.id.dialog_inner_workout_location);

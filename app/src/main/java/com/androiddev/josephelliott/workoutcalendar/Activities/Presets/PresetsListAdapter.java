@@ -8,7 +8,6 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.androiddev.josephelliott.workoutcalendar.ObjectData.Preset;
-import com.androiddev.josephelliott.workoutcalendar.ObjectData.Workout;
 import com.androiddev.josephelliott.workoutcalendar.R;
 
 import java.util.ArrayList;
@@ -50,7 +49,7 @@ public class PresetsListAdapter extends BaseAdapter {
         Preset preset = presets.get(position);
 
         if (convertView == null) {
-            convertView = layoutInflater.inflate(R.layout.preset_inner_workout, parent, false);
+            convertView = layoutInflater.inflate(R.layout.presets_list_view_item, parent, false);
         }
 
         TextView txtTitle       = (TextView) convertView.findViewById(R.id.txt_presets_inner_title);

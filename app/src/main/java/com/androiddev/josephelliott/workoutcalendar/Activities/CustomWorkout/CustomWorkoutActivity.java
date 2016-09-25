@@ -45,7 +45,7 @@ public class CustomWorkoutActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_custom_workout);
+        setContentView(R.layout.custom_workout_activity);
 
         /*** Get the context ***/
         context = CustomWorkoutActivity.this;

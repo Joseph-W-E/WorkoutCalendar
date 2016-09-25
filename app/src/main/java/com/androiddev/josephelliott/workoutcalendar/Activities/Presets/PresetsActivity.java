@@ -1,12 +1,9 @@
 package com.androiddev.josephelliott.workoutcalendar.Activities.Presets;
 
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -16,13 +13,8 @@ import com.androiddev.josephelliott.workoutcalendar.Activities.Help.HelpActivity
 import com.androiddev.josephelliott.workoutcalendar.Activities.Settings.SettingsActivity;
 import com.androiddev.josephelliott.workoutcalendar.ObjectData.Preset;
 import com.androiddev.josephelliott.workoutcalendar.ObjectData.PresetsDataSource;
-import com.androiddev.josephelliott.workoutcalendar.ObjectData.Workout;
-import com.androiddev.josephelliott.workoutcalendar.ObjectData.WorkoutDataSource;
 import com.androiddev.josephelliott.workoutcalendar.R;
 import com.github.clans.fab.FloatingActionButton;
-
-import java.util.ArrayList;
-import java.util.Date;
 
 /**
  * Created by jellio on 9/21/16.
@@ -38,7 +30,7 @@ public class PresetsActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_presets);
+        setContentView(R.layout.presets_activity);
 
         context = this;
 

@@ -18,7 +18,7 @@ import com.androiddev.josephelliott.workoutcalendar.Activities.Presets.PresetsAc
 import com.androiddev.josephelliott.workoutcalendar.Activities.Timer.TimerActivity;
 import com.androiddev.josephelliott.workoutcalendar.ObjectData.CurrentCalendarData;
 import com.androiddev.josephelliott.workoutcalendar.R;
-import com.androiddev.josephelliott.workoutcalendar.SwipeCalendar.ScreenSlidePagerAdapter;
+import com.androiddev.josephelliott.workoutcalendar.Activities.Home.SwipeCalendar.ScreenSlidePagerAdapter;
 import com.github.clans.fab.FloatingActionButton;
 import com.github.clans.fab.FloatingActionMenu;
 
@@ -56,7 +56,7 @@ public class CalendarActivity extends FragmentActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.calendar_activity);
 
         // Get the calendar data right away!! We need this for the pager adapter
         calendarData = new CurrentCalendarData();

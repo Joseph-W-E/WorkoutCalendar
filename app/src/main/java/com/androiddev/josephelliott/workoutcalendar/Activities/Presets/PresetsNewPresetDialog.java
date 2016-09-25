@@ -30,7 +30,7 @@ public class PresetsNewPresetDialog extends DialogFragment {
         // Get the layout inflater
         LayoutInflater inflater = getActivity().getLayoutInflater();
         // Get the view (so we can use findViewById
-        View view = inflater.inflate(R.layout.dialog_new_preset, null);
+        View view = inflater.inflate(R.layout.presets_dialog_new_preset, null);
 
         etTitle       = (EditText) view.findViewById(R.id.presets_dialog_inner_title);
         etLocation    = (EditText) view.findViewById(R.id.presets_dialog_inner_location);

@@ -1,4 +1,4 @@
-package com.androiddev.josephelliott.workoutcalendar.SwipeCalendar;
+package com.androiddev.josephelliott.workoutcalendar.Activities.Home.SwipeCalendar;
 
 import android.view.View;
 import android.widget.Button;

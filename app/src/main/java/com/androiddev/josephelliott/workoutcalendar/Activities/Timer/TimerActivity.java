@@ -57,7 +57,7 @@ public class TimerActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_timer);
+        setContentView(R.layout.timer_activity);
 
         /*** Get the context ***/
         context = TimerActivity.this;
