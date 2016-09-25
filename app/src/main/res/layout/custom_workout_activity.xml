@@ -31,7 +31,6 @@
         android:layout_height="wrap_content"
         android:padding="8dp">
         <ImageView
-            android:id="@+id/title_image"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
@@ -40,7 +39,7 @@
             android:src="@mipmap/ic_label_black_24dp" />
 
         <AutoCompleteTextView
-            android:id="@+id/workout_title_txt"
+            android:id="@+id/custom_workout_actv_title"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -55,7 +54,6 @@
         android:layout_height="wrap_content"
         android:padding="8dp">
         <ImageView
-            android:id="@+id/location_image"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
@@ -64,7 +62,7 @@
             android:src="@mipmap/ic_place_black_24dp" />
 
         <AutoCompleteTextView
-            android:id="@+id/workout_location_txt"
+            android:id="@+id/custom_workout_actv_location"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -78,7 +76,7 @@
         android:layout_height="wrap_content"
         android:padding="8dp">
         <AutoCompleteTextView
-            android:id="@+id/custom_workout_exercise_actv"
+            android:id="@+id/custom_workout_actv_lift"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="40dp"
@@ -88,7 +86,7 @@
             android:hint="@string/lift_hint"/>
 
         <EditText
-            android:id="@+id/custom_workout_lbs_edit_text"
+            android:id="@+id/custom_workout_et_lbs"
             android:layout_width="48dp"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -96,14 +94,13 @@
             android:maxLines="1"/>
 
         <TextView
-            android:id="@+id/custom_workout_lbs_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="lbs,"
             android:gravity="bottom"/>
 
         <EditText
-            android:id="@+id/custom_workout_sets_edit_text"
+            android:id="@+id/custom_workout_et_sets"
             android:layout_width="48dp"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -111,14 +108,13 @@
             android:maxLines="1"/>
 
         <TextView
-            android:id="@+id/custom_workout_sets_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="sets"
             android:gravity="bottom"/>
 
         <EditText
-            android:id="@+id/custom_workout_reps_edit_text"
+            android:id="@+id/custom_workout_et_reps"
             android:layout_width="48dp"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -126,7 +122,6 @@
             android:maxLines="1"/>
 
         <TextView
-            android:id="@+id/custom_workout_reps_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="reps"
@@ -134,7 +129,7 @@
             />
 
         <ImageButton
-            android:id="@+id/custom_workout_add_exercise_btn"
+            android:id="@+id/custom_workout_btn_add_lift_to_description"
             style="?android:attr/borderlessButtonStyle"
             android:layout_width="48dp"
             android:layout_height="wrap_content"
@@ -148,7 +143,6 @@
         android:layout_weight="1"
         android:padding="8dp">
         <ImageView
-            android:id="@+id/description_image"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
@@ -157,7 +151,7 @@
             android:src="@mipmap/ic_description_black_24dp" />
 
         <EditText
-            android:id="@+id/workout_description_txt"
+            android:id="@+id/custom_workout_et_description"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -171,7 +165,7 @@
         android:padding="8dp"
         android:minHeight="48dp">
         <ImageButton
-            android:id="@+id/custom_workout_cancel"
+            android:id="@+id/custom_workout_btn_cancel"
             style="?android:attr/borderlessButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -181,7 +175,7 @@
             android:background="@drawable/ripple"/>
 
         <ImageButton
-            android:id="@+id/custom_workout_change_image"
+            android:id="@+id/custom_workout_btn_image"
             style="?android:attr/borderlessButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -191,7 +185,7 @@
             android:background="@drawable/ripple"/>
 
         <ImageButton
-            android:id="@+id/custom_workout_change_date"
+            android:id="@+id/custom_workout_btn_date"
             style="?android:attr/borderlessButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -201,7 +195,7 @@
             android:background="@drawable/ripple"/>
 
         <ImageButton
-            android:id="@+id/custom_workout_save"
+            android:id="@+id/custom_workout_btn_save"
             style="?android:attr/borderlessButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
