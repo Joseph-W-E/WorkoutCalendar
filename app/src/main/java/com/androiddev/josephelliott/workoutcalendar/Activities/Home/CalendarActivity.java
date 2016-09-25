@@ -122,12 +122,8 @@ public class CalendarActivity extends FragmentActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
         if (id == R.id.menu_calendar_go_to_current_date) {
             calendarData.setTodaysDate();
             vpIndex = NUM_PAGES / 2;
@@ -135,12 +131,10 @@ public class CalendarActivity extends FragmentActivity {
             setMonthAndYearTextFields(calendarData.getDateObj());
             return true;
         } else if (id == R.id.menu_calendar_settings) {
-            Intent intent = new Intent(context, SettingsActivity.class);
-            startActivity(intent);
+            startActivity(new Intent(context, SettingsActivity.class));
             return true;
         } else if (id == R.id.menu_calendar_help) {
-            Intent intent = new Intent(context, HelpActivity.class);
-            startActivity(intent);
+            startActivity(new Intent(context, HelpActivity.class));
             return true;
         }
 
@@ -168,7 +162,6 @@ public class CalendarActivity extends FragmentActivity {
      * Call this AFTER setPrevMonth/setNextMonth.
      */
     private void moveViewPagerToMonth() {
-        // Go to the current view pager index
         mViewPager.setCurrentItem(vpIndex, true);
     }
 
@@ -202,7 +195,6 @@ public class CalendarActivity extends FragmentActivity {
     /**
      * Initializes the Floating Action Buttons.
      * This was taken out of the onCreate method to make things nicer to look at.
-     * // TODO Add animations to the FABs so that they slide in and out of visibility
      * */
     private void initializeFABs() {
         // Get all the FABs we will be working with
