@@ -63,9 +63,9 @@ public class CalendarActivity extends FragmentActivity {
         context = this.getApplicationContext();
 
         // Initialize all components in this activity
-        btnNextMonth = (ImageButton) findViewById(R.id.image_button_right);
-        btnPrevMonth = (ImageButton) findViewById(R.id.image_button_left);
-        mViewPager = (ViewPager) findViewById(R.id.pager);
+        btnNextMonth = (ImageButton) findViewById(R.id.calendar_activity_image_buttom_go_right);
+        btnPrevMonth = (ImageButton) findViewById(R.id.calendar_activity_image_buttom_go_left);
+        mViewPager = (ViewPager) findViewById(R.id.calendar_activity_view_pager);
         mPagerAdapter = new ScreenSlidePagerAdapter(getSupportFragmentManager(), NUM_PAGES, calendarData.getDateObj().getTime());
         mViewPager.setAdapter(mPagerAdapter);
 
@@ -153,11 +153,11 @@ public class CalendarActivity extends FragmentActivity {
      */
     private void setMonthAndYearTextFields(Date date) {
         // Set the current month
-        TextView monthText = (TextView) findViewById(R.id.text_view_month);
+        TextView monthText = (TextView) findViewById(R.id.calendar_activity_text_view_month);
         SimpleDateFormat monthTextSDF = new SimpleDateFormat("MMMM");
         monthText.setText(monthTextSDF.format(date));
         // Set the current year
-        TextView yearText = (TextView) findViewById(R.id.text_view_year);
+        TextView yearText = (TextView) findViewById(R.id.calendar_activity_text_view_year);
         SimpleDateFormat yearTextSDF = new SimpleDateFormat("yyyy");
         yearText.setText(yearTextSDF.format(date));
     }
@@ -207,10 +207,10 @@ public class CalendarActivity extends FragmentActivity {
     private void initializeFABs() {
         // Get all the FABs we will be working with
 
-        fabMain = (FloatingActionMenu) findViewById(R.id.fab_main);
-        fabCust = (FloatingActionButton) findViewById(R.id.fab_custom_workout);
-        fabPres = (FloatingActionButton) findViewById(R.id.fab_presets);
-        fabTime = (FloatingActionButton) findViewById(R.id.fab_timer);
+        fabMain = (FloatingActionMenu) findViewById(R.id.calendar_activity_fab_menu);
+        fabCust = (FloatingActionButton) findViewById(R.id.calendar_activity_fab_go_to_custom_workout_activity);
+        fabPres = (FloatingActionButton) findViewById(R.id.calendar_activity_fab_go_to_presets_activity);
+        fabTime = (FloatingActionButton) findViewById(R.id.calendar_activity_fab_go_to_timer_activity);
 
         // Make the MAIN FAB toggle the visibility of the other buttons.
         // Start the CustomWorkoutActivity

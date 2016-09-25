@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/main_rl"
+    android:id="@+id/calendar_activity_main_relative_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <RelativeLayout
-        android:id="@+id/relative_layout_top"
+        android:id="@+id/calendar_activity_relative_layout_top"
         android:layout_width="match_parent"
         android:layout_height="64dp"
         android:minHeight="64dp"
@@ -16,7 +16,7 @@
         android:layout_marginRight="8dp">
 
         <ImageButton
-            android:id="@+id/image_button_left"
+            android:id="@+id/calendar_activity_image_buttom_go_left"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_alignParentStart="true"
@@ -25,14 +25,14 @@
             android:background="@drawable/ripple"/>
 
         <LinearLayout
-            android:id="@+id/linear_layout_top_middle"
+            android:id="@+id/calendar_activity_linear_layout_middle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/text_view_year"
+                android:id="@+id/calendar_activity_text_view_year"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
@@ -40,7 +40,7 @@
                 android:textSize="12sp"/>
 
             <TextView
-                android:id="@+id/text_view_month"
+                android:id="@+id/calendar_activity_text_view_month"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
@@ -49,7 +49,7 @@
         </LinearLayout>
 
         <ImageButton
-            android:id="@+id/image_button_right"
+            android:id="@+id/calendar_activity_image_buttom_go_right"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_alignParentEnd="true"
@@ -60,13 +60,13 @@
     </RelativeLayout>
 
     <android.support.v4.view.ViewPager xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/pager"
+        android:id="@+id/calendar_activity_view_pager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/relative_layout_top"/>
+        android:layout_below="@id/calendar_activity_relative_layout_top"/>
 
     <com.github.clans.fab.FloatingActionMenu
-        android:id="@+id/fab_main"
+        android:id="@+id/calendar_activity_fab_menu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -78,7 +78,7 @@
         app:menu_colorPressed="@color/accent" >
 
         <com.github.clans.fab.FloatingActionButton
-            android:id="@+id/fab_timer"
+            android:id="@+id/calendar_activity_fab_go_to_timer_activity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:fab_colorNormal="@color/accent"
@@ -88,7 +88,7 @@
             app:fab_size="mini"/>
 
         <com.github.clans.fab.FloatingActionButton
-            android:id="@+id/fab_presets"
+            android:id="@+id/calendar_activity_fab_go_to_presets_activity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:fab_colorNormal="@color/accent"
@@ -98,7 +98,7 @@
             app:fab_size="mini"/>
 
         <com.github.clans.fab.FloatingActionButton
-            android:id="@+id/fab_custom_workout"
+            android:id="@+id/calendar_activity_fab_go_to_custom_workout_activity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:fab_colorNormal="@color/accent"
