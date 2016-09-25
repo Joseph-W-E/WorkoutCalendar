@@ -29,7 +29,6 @@ import java.util.Date;
 public class CustomWorkoutDialogLoadFromPresets extends DialogFragment {
 
     private RadioGroup radioGroup;
-    private ArrayList<RadioButton> radioButtons;
     private ArrayList<Preset> presets;
 
     @Override
