@@ -64,7 +64,7 @@ public class CustomWorkoutActivity extends Activity {
         etLbs  = (EditText) findViewById(R.id.custom_workout_et_lbs);
         etSets = (EditText) findViewById(R.id.custom_workout_et_sets);
         etReps = (EditText) findViewById(R.id.custom_workout_et_reps);
-        etLoc  = (EditText) findViewById(R.id.custom_workout_actv_location);
+        etLoc  = (EditText) findViewById(R.id.custom_workout_et_location);
         etDesc = (EditText) findViewById(R.id.custom_workout_et_description);
         actvWorkout = (AutoCompleteTextView) findViewById(R.id.custom_workout_actv_lift);
         actvTitle   = (AutoCompleteTextView) findViewById(R.id.custom_workout_actv_title);
