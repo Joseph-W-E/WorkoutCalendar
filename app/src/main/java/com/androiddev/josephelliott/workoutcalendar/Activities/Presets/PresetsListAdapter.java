@@ -55,14 +55,10 @@ public class PresetsListAdapter extends BaseAdapter {
         TextView txtTitle       = (TextView) convertView.findViewById(R.id.txt_presets_inner_title);
         TextView txtLocation    = (TextView) convertView.findViewById(R.id.txt_presets_inner_location);
         TextView txtDescription = (TextView) convertView.findViewById(R.id.txt_presets_inner_description);
-        TextView txtFrequency   = (TextView) convertView.findViewById(R.id.txt_presets_inner_frequency);
-        TextView txtExpires     = (TextView) convertView.findViewById(R.id.txt_presets_inner_expires);
 
         txtTitle.setText(preset.getTitle());
         txtLocation.setText(preset.getLocation());
         txtDescription.setText(preset.getDescription());
-        txtFrequency.setText(preset.getFrequency());
-        txtExpires.setText("" + preset.getExpires().getTime());
 
         return convertView;
     }

@@ -21,7 +21,6 @@ import java.util.Date;
 public class PresetsNewPresetDialog extends DialogFragment {
 
     private EditText etTitle, etLocation, etDescription;
-    private EditText etFrequency, etExpires;
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -29,14 +28,12 @@ public class PresetsNewPresetDialog extends DialogFragment {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         // Get the layout inflater
         LayoutInflater inflater = getActivity().getLayoutInflater();
-        // Get the view (so we can use findViewById
+        // Get the view (so we can use findViewById)
         View view = inflater.inflate(R.layout.presets_dialog_new_preset, null);
 
         etTitle       = (EditText) view.findViewById(R.id.presets_dialog_inner_title);
         etLocation    = (EditText) view.findViewById(R.id.presets_dialog_inner_location);
         etDescription = (EditText) view.findViewById(R.id.presets_dialog_inner_description);
-        etFrequency   = (EditText) view.findViewById(R.id.presets_dialog_inner_frequency);
-        etExpires     = (EditText) view.findViewById(R.id.presets_dialog_inner_expires);
 
         builder.setView(view)
                 // Add action buttons
@@ -59,7 +56,7 @@ public class PresetsNewPresetDialog extends DialogFragment {
         preset.setTitle(etTitle.getText().toString());
         preset.setLocation(etLocation.getText().toString());
         preset.setDescription(etDescription.getText().toString());
-        preset.setFrequency(etFrequency.getText().toString());
+        preset.setFrequency("");
         preset.setExpires(new Date());
 
         PresetsActivity presetsActivity = (PresetsActivity) getActivity();

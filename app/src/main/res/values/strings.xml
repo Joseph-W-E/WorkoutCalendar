@@ -47,11 +47,22 @@
     <string name="jump_to_today">Jump To Today</string>
     <string name="change">Change</string>
 
+
+
+    <string name="load_from_presets">Load From Presets</string>
+    <string name="save_to_presets">Save To Presets</string>
+
+
+
     <string name="frequency">Frequency</string>
     <string name="expires">Expires</string>
 
+
+
     <string name="left">Left</string>
     <string name="right">Right</string>
+
+
 
     <string name="sun">Sun</string>
     <string name="mon">Mon</string>
@@ -60,6 +71,8 @@
     <string name="thu">Thu</string>
     <string name="fri">Fri</string>
     <string name="sat">Sat</string>
+
+
 
     <string name="January">January</string>
     <string name="February">February</string>

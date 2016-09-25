@@ -29,20 +29,4 @@
         android:inputType="textMultiLine|textCapSentences"
         android:hint="@string/description_hint"/>
 
-    <EditText
-        android:id="@+id/presets_dialog_inner_frequency"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="textCapWords"
-        android:maxLines="1"
-        android:hint="@string/frequency"/>
-
-    <EditText
-        android:id="@+id/presets_dialog_inner_expires"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="textCapWords"
-        android:maxLines="1"
-        android:hint="@string/expires"/>
-
 </LinearLayout>

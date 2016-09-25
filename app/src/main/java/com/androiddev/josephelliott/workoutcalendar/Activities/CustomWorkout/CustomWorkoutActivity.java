@@ -12,17 +12,23 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import com.androiddev.josephelliott.workoutcalendar.Activities.Help.HelpActivity;
 import com.androiddev.josephelliott.workoutcalendar.Activities.Settings.SettingsActivity;
+import com.androiddev.josephelliott.workoutcalendar.ObjectData.Preset;
+import com.androiddev.josephelliott.workoutcalendar.ObjectData.PresetsDataSource;
 import com.androiddev.josephelliott.workoutcalendar.ObjectData.Workout;
 import com.androiddev.josephelliott.workoutcalendar.ObjectData.WorkoutDataSource;
 import com.androiddev.josephelliott.workoutcalendar.R;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 
 /**
  * Created by Joseph Elliott on 10/12/2015.
@@ -39,6 +45,7 @@ public class CustomWorkoutActivity extends Activity {
 
     /*** Variables for views ***/
     private AutoCompleteTextView actvWorkout, actvTitle;
+    private Button btnLoadFromPresets, btnSaveToPresets;
     private EditText etLbs, etSets, etReps, etLoc, etDesc;
     private ImageButton btnDate, btnImage, btnAddExercise, btnCancel, btnSave;
 
@@ -60,6 +67,8 @@ public class CustomWorkoutActivity extends Activity {
         etDesc = (EditText) findViewById(R.id.workout_description_txt);
         actvWorkout = (AutoCompleteTextView) findViewById(R.id.custom_workout_exercise_actv);
         actvTitle   = (AutoCompleteTextView) findViewById(R.id.workout_title_txt);
+        btnLoadFromPresets = (Button) findViewById(R.id.custom_workout_btn_load_from_presets);
+        btnSaveToPresets   = (Button) findViewById(R.id.custom_workout_btn_save_to_presets);
         btnDate        = (ImageButton) findViewById(R.id.custom_workout_change_date);
         btnImage       = (ImageButton) findViewById(R.id.custom_workout_change_image);
         btnAddExercise = (ImageButton) findViewById(R.id.custom_workout_add_exercise_btn);
@@ -144,6 +153,33 @@ public class CustomWorkoutActivity extends Activity {
             @Override
             public void onClick(View v) {
                 addButtonFunctionality();
+            }
+        });
+
+        btnLoadFromPresets.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                CustomWorkoutDialogLoadFromPresets dialog = new CustomWorkoutDialogLoadFromPresets();
+                dialog.show(getFragmentManager(), "Load From Presets");
+            }
+        });
+
+        btnSaveToPresets.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Preset preset = new Preset();
+                preset.setTitle(actvTitle.getText().toString());
+                preset.setLocation(etLoc.getText().toString());
+                preset.setDescription(etDesc.getText().toString());
+                preset.setFrequency("");
+                preset.setExpires(new Date());
+
+                PresetsDataSource dataSource = new PresetsDataSource(context);
+                dataSource.open();
+                dataSource.createPreset(preset);
+                dataSource.close();
+
+                Toast.makeText(context, "Created a new preset", Toast.LENGTH_LONG).show();
             }
         });
     }
@@ -326,5 +362,15 @@ public class CustomWorkoutActivity extends Activity {
         etSets.setText("");
         etReps.setText("");
         actvWorkout.setText("");
+    }
+
+    /**
+     * Loads a workout based on a preset.
+     * @param preset The workout to be loaded.
+     */
+    public void loadFromPreset(Preset preset) {
+        actvTitle.setText(preset.getTitle());
+        etLoc.setText(preset.getLocation());
+        etDesc.setText(preset.getDescription());
     }
 }
