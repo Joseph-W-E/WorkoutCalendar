@@ -52,9 +52,9 @@ public class PresetsListAdapter extends BaseAdapter {
             convertView = layoutInflater.inflate(R.layout.presets_list_view_item, parent, false);
         }
 
-        TextView txtTitle       = (TextView) convertView.findViewById(R.id.txt_presets_inner_title);
-        TextView txtLocation    = (TextView) convertView.findViewById(R.id.txt_presets_inner_location);
-        TextView txtDescription = (TextView) convertView.findViewById(R.id.txt_presets_inner_description);
+        TextView txtTitle       = (TextView) convertView.findViewById(R.id.presets_list_view_item_title);
+        TextView txtLocation    = (TextView) convertView.findViewById(R.id.presets_list_view_item_location);
+        TextView txtDescription = (TextView) convertView.findViewById(R.id.presets_list_view_item_description);
 
         txtTitle.setText(preset.getTitle());
         txtLocation.setText(preset.getLocation());

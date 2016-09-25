@@ -23,7 +23,7 @@ public class Splash extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.splash_screen);
 
-        btnUseLocal = (Button) findViewById(R.id.splash_local_storage_btn);
+        btnUseLocal = (Button) findViewById(R.id.splash_btn_local_storage);
 
         try {
             getActionBar().setElevation(0);

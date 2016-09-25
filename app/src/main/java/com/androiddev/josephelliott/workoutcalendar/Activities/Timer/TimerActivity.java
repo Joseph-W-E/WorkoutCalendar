@@ -68,14 +68,14 @@ public class TimerActivity extends Activity {
         calendarDatePicked = Calendar.getInstance();
 
         /*** Get all the used views ***/
-        btnTimer   = (ImageButton) findViewById(R.id.timer_reset_timer);
-        btnImage   = (ImageButton) findViewById(R.id.timer_change_image);
-        btnDate    = (ImageButton) findViewById(R.id.timer_change_date);
-        btnConfirm = (ImageButton) findViewById(R.id.timer_save);
+        btnTimer   = (ImageButton) findViewById(R.id.timer_btn_reset_timer);
+        btnImage   = (ImageButton) findViewById(R.id.timer_btn_change_image);
+        btnDate    = (ImageButton) findViewById(R.id.timer_btn_change_date);
+        btnConfirm = (ImageButton) findViewById(R.id.timer_btn_save);
         chronometer = (Chronometer) findViewById(R.id.timer_chronometer);
-        checkbox = (CheckBox) findViewById(R.id.timer_toggle_running);
-        etTitle  = (EditText) findViewById(R.id.timer_edit_text_title);
-        etDesc   = (EditText) findViewById(R.id.timer_edit_text_description);
+        checkbox = (CheckBox) findViewById(R.id.timer_check_box_record_distance);
+        etTitle  = (EditText) findViewById(R.id.timer_et_title);
+        etDesc   = (EditText) findViewById(R.id.timer_et_description);
 
         /*** Initialize needed variables ready ***/
         isRunning = false;

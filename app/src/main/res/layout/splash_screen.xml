@@ -7,7 +7,7 @@
     android:background="@color/primary_dark">
 
     <TextView
-        android:id="@+id/splash_welcome"
+        android:id="@+id/splash_txt_welcome"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
@@ -19,11 +19,11 @@
         android:gravity="center" />
 
     <TextView
-        android:id="@+id/splash_description"
+        android:id="@+id/splash_txt_slogan"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_below="@id/splash_welcome"
+        android:layout_below="@id/splash_txt_welcome"
         android:text="@string/splash_description"
         android:textSize="24sp"
         android:textColor="@android:color/white"
@@ -32,7 +32,7 @@
 
 
     <Button
-        android:id="@+id/splash_sign_up_btn"
+        android:id="@+id/splash_btn_sign_up"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -43,10 +43,10 @@
         android:textAllCaps="false"/>
 
     <Button
-        android:id="@+id/splash_log_in_btn"
+        android:id="@+id/splash_btn_log_in"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@id/splash_sign_up_btn"
+        android:layout_above="@id/splash_btn_sign_up"
         android:text="@string/log_in"
         android:textColor="@android:color/white"
         style="?android:attr/borderlessButtonStyle"
@@ -54,10 +54,10 @@
         android:textAllCaps="false"/>
 
     <Button
-        android:id="@+id/splash_local_storage_btn"
+        android:id="@+id/splash_btn_local_storage"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@id/splash_log_in_btn"
+        android:layout_above="@id/splash_btn_log_in"
         android:text="@string/use_local_storage"
         android:textColor="@android:color/white"
         style="?android:attr/borderlessButtonStyle"
