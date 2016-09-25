@@ -5,6 +5,8 @@ import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.media.Image;
 import android.os.Bundle;
 import android.os.SystemClock;
@@ -17,6 +19,7 @@ import android.widget.Chronometer;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import com.androiddev.josephelliott.workoutcalendar.Activities.Help.HelpActivity;
 import com.androiddev.josephelliott.workoutcalendar.Activities.Settings.SettingsActivity;
@@ -135,11 +138,6 @@ public class TimerActivity extends Activity {
                             // If we start running, set the start time and start getting locations.
                             chronometer.setBase(SystemClock.elapsedRealtime() + timeElapsed);
                             chronometer.start();
-                            if (checkbox.isChecked()) {
-                                startGatheringLocations();
-                            }
-                            // The user cannot start recording distances part way through. Not yet.
-                            checkbox.setVisibility(View.INVISIBLE);
                             isRunning = true;
                         }
                         return true;
@@ -212,9 +210,51 @@ public class TimerActivity extends Activity {
                 finish();
             }
         });
+
+        checkbox.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (!isRecordingDistance) {
+                    isRecordingDistance = true;
+                    //startGatheringLocations();
+                } else {
+                    isRecordingDistance = false;
+                    //stopGatheringLocations();
+                }
+            }
+        });
     }
 
     private void startGatheringLocations() {
+        // Acquire a reference to the system Location Manager
+        LocationManager locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
+
+        // Define a listener that responds to location updates
+        LocationListener locationListener = new LocationListener() {
+            public void onLocationChanged(Location location) {
+                // Called when a new location is found by the network location provider.
+                locations.add(location);
+            }
+
+            public void onStatusChanged(String provider, int status, Bundle extras) {}
+
+            public void onProviderEnabled(String provider) {}
+
+            public void onProviderDisabled(String provider) {}
+        };
+
+        // Register the listener with the Location Manager to receive location updates
+        try {
+            locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, locationListener);
+        } catch (SecurityException e) {
+            e.printStackTrace();
+            Toast.makeText(context, "Please enable GPS/location permission.", Toast.LENGTH_LONG).show();
+        }
+
+
+    }
+
+    private void stopGatheringLocations() {
 
     }
 
