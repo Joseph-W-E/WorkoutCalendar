@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:padding="8dp">
     <LinearLayout
-        android:id="@+id/dialog_view_workout_relative_layout"
+        android:id="@+id/calendar_dialog_workouts_outer_linear_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">

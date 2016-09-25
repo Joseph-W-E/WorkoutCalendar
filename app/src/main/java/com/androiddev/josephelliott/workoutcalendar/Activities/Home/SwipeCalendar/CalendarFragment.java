@@ -138,10 +138,10 @@ public class CalendarFragment extends Fragment {
         for (int i = 0; i < workouts.size(); i++) {
             // for each workout, create a calendar_dialog_workouts_inner and add it to the outer view
             View tempView = layoutInflater.inflate(R.layout.calendar_dialog_workouts_inner, null);
-            TextView txtTitle = (TextView) tempView.findViewById(R.id.dialog_inner_workout_title);
-            TextView txtDescription = (TextView) tempView.findViewById(R.id.dialog_inner_workout_description);
-            TextView txtLocation = (TextView) tempView.findViewById(R.id.dialog_inner_workout_location);
-            ImageButton btnDelete = (ImageButton) tempView.findViewById(R.id.dialog_inner_workout_button_delete);
+            TextView txtTitle = (TextView) tempView.findViewById(R.id.calendar_dialog_workouts_inner_title);
+            TextView txtDescription = (TextView) tempView.findViewById(R.id.calendar_dialog_workouts_inner_description);
+            TextView txtLocation = (TextView) tempView.findViewById(R.id.calendar_dialog_workouts_inner_location);
+            ImageButton btnDelete = (ImageButton) tempView.findViewById(R.id.calendar_dialog_workouts_inner_delete);
 
             // The DELETE WORKOUT feature
             final Workout deleteWorkout = workouts.get(i);
@@ -171,7 +171,7 @@ public class CalendarFragment extends Fragment {
             txtLocation.setText(workouts.get(i).getLocation());
 
             // Add this view to the outer view
-            ((ViewGroup) outerView.findViewById(R.id.dialog_view_workout_relative_layout)).addView(tempView);
+            ((ViewGroup) outerView.findViewById(R.id.calendar_dialog_workouts_outer_linear_layout)).addView(tempView);
         }
 
     }
