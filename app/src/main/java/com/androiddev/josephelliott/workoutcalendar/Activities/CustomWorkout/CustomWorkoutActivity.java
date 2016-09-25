@@ -34,16 +34,16 @@ import java.util.Date;
  */
 public class CustomWorkoutActivity extends Activity {
 
+    /*** Context is always useful to have! ***/
     private Context context;
 
-    private Calendar calendarDatePicked;
-
     /*** Variables needed for recording the workout ***/
+    private Calendar calendarDatePicked;
     private Image image;
     private Workout workout;
 
     /*** Variables for views ***/
-    private AutoCompleteTextView actvWorkout, actvTitle;
+    private AutoCompleteTextView actvTitle, actvWorkout;
     private Button btnLoadFromPresets, btnSaveToPresets;
     private EditText etLbs, etSets, etReps, etLoc, etDesc;
     private ImageButton btnDate, btnImage, btnAddExercise, btnCancel, btnSave;
@@ -57,6 +57,8 @@ public class CustomWorkoutActivity extends Activity {
         context = CustomWorkoutActivity.this;
         /*** Get the current time ***/
         calendarDatePicked = Calendar.getInstance();
+        /*** Get the to-be-created workout object ready ***/
+        workout = new Workout();
 
         /*** Get all the used views ***/
         etLbs  = (EditText) findViewById(R.id.custom_workout_et_lbs);
@@ -73,9 +75,6 @@ public class CustomWorkoutActivity extends Activity {
         btnAddExercise = (ImageButton) findViewById(R.id.custom_workout_btn_add_lift_to_description);
         btnCancel      = (ImageButton) findViewById(R.id.custom_workout_btn_cancel);
         btnSave        = (ImageButton) findViewById(R.id.custom_workout_btn_save);
-
-        /*** Get the to-be-created workout object ready ***/
-        workout = new Workout();
 
         /*** Set the logic for the views ***/
         initializeButtons();
@@ -125,11 +124,6 @@ public class CustomWorkoutActivity extends Activity {
             @Override
             public void onClick(View v) {
                 Toast.makeText(context, "Sorry, this button isn't working yet.", Toast.LENGTH_SHORT).show();
-                // Open an image picker dialog
-
-                // Select an image
-
-                // store the image for later use
                 image = null;
             }
         });
@@ -159,6 +153,7 @@ public class CustomWorkoutActivity extends Activity {
         btnLoadFromPresets.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                /*** Launch the preset-picker dialog ***/
                 CustomWorkoutDialogLoadFromPresets dialog = new CustomWorkoutDialogLoadFromPresets();
                 dialog.show(getFragmentManager(), "Load From Presets");
             }
@@ -167,6 +162,7 @@ public class CustomWorkoutActivity extends Activity {
         btnSaveToPresets.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                /*** Create a new preset ***/
                 Preset preset = new Preset();
                 preset.setTitle(actvTitle.getText().toString());
                 preset.setLocation(etLoc.getText().toString());
@@ -174,11 +170,13 @@ public class CustomWorkoutActivity extends Activity {
                 preset.setFrequency("");
                 preset.setExpires(new Date());
 
+                /*** Add it to the database ***/
                 PresetsDataSource dataSource = new PresetsDataSource(context);
                 dataSource.open();
                 dataSource.createPreset(preset);
                 dataSource.close();
 
+                /*** Notify the user ***/
                 Toast.makeText(context, "Created a new preset", Toast.LENGTH_LONG).show();
             }
         });

@@ -61,8 +61,8 @@
             android:clickable="false"
             android:src="@mipmap/ic_place_black_24dp" />
 
-        <AutoCompleteTextView
-            android:id="@+id/custom_workout_actv_location"
+        <EditText
+            android:id="@+id/custom_workout_et_location"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
