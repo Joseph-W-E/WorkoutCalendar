@@ -1,13 +1,17 @@
 package com.androiddev.josephelliott.workoutcalendar.Activities.Presets;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.androiddev.josephelliott.workoutcalendar.Activities.Help.HelpActivity;
 import com.androiddev.josephelliott.workoutcalendar.Activities.Settings.SettingsActivity;
@@ -39,6 +43,27 @@ public class PresetsActivity extends Activity {
         listView = (ListView) findViewById(R.id.presets_list_view);
         listView.setAdapter(new PresetsListAdapter(this, presetsDataSource.getPresets()));
         presetsDataSource.close();
+        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                builder.setTitle("Delete Preset?")
+                        .setMessage("Are you sure you want to delete this preset?")
+                        .setNegativeButton("Cancel", null)
+                        .setPositiveButton("Delete", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                PresetsDataSource dataSource = new PresetsDataSource(context);
+                                dataSource.open();
+                                dataSource.deletePreset(dataSource.getPresets().get(position));
+                                dataSource.close();
+                                updateData();
+                            }
+                        }).show();
+
+                return true;
+            }
+        });
 
         fabAdd = (FloatingActionButton) findViewById(R.id.presets_fab);
         fabAdd.setOnClickListener(new View.OnClickListener() {
@@ -47,6 +72,13 @@ public class PresetsActivity extends Activity {
                 displayDialog();
             }
         });
+    }
+
+    public void updateData() {
+        PresetsDataSource dataSource = new PresetsDataSource(this);
+        dataSource.open();
+        listView.setAdapter(new PresetsListAdapter(this, dataSource.getPresets()));
+        dataSource.close();
     }
 
     public void updateData(Preset preset) {

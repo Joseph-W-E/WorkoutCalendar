@@ -125,6 +125,7 @@ public class CustomWorkoutActivity extends Activity {
         btnImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Toast.makeText(context, "Sorry, this button isn't working yet.", Toast.LENGTH_SHORT).show();
                 // Open an image picker dialog
 
                 // Select an image
