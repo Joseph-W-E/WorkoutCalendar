@@ -58,14 +58,16 @@ public class CalendarActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.calendar_activity);
 
+        getActionBar().setDisplayHomeAsUpEnabled(false);
+
         // Get the calendar data right away!! We need this for the pager adapter
         calendarData = new CurrentCalendarData();
-        context = this.getApplicationContext();
+        context      = this.getApplicationContext();
 
         // Initialize all components in this activity
-        btnNextMonth = (ImageButton) findViewById(R.id.calendar_activity_image_buttom_go_right);
-        btnPrevMonth = (ImageButton) findViewById(R.id.calendar_activity_image_buttom_go_left);
-        mViewPager = (ViewPager) findViewById(R.id.calendar_activity_view_pager);
+        btnNextMonth  = (ImageButton) findViewById(R.id.calendar_activity_image_buttom_go_right);
+        btnPrevMonth  = (ImageButton) findViewById(R.id.calendar_activity_image_buttom_go_left);
+        mViewPager    = (ViewPager) findViewById(R.id.calendar_activity_view_pager);
         mPagerAdapter = new ScreenSlidePagerAdapter(getSupportFragmentManager(), NUM_PAGES, calendarData.getDateObj().getTime());
         mViewPager.setAdapter(mPagerAdapter);
 

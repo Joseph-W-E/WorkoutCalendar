@@ -31,11 +31,7 @@ public class Splash extends Activity {
 
         context = this;
 
-        try {
-            getActionBar().setElevation(0);
-        } catch (NullPointerException e) {
-            // Do nothing
-        }
+        getActionBar().hide();
 
         initializeLocalStorageButton();
         initializeLogInButton();
