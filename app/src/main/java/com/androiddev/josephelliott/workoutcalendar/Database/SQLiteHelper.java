@@ -8,7 +8,7 @@ import android.util.Log;
 /**
  * Created by Joseph Elliott on 12/12/2015.
  */
-public class SQLiteHelper extends SQLiteOpenHelper {
+class SQLiteHelper extends SQLiteOpenHelper {
 
     /*** The database file name ***/
     private static final String DATABASE_NAME = "workout_data.db";
@@ -16,14 +16,14 @@ public class SQLiteHelper extends SQLiteOpenHelper {
     private static final int DATABASE_VERSION = 1;
 
     /*** Constants for the "workouts" table ***/
-    public static final String TABLE_WORKOUTS              = "workouts";
-    public static final String COLUMN_WORKOUTS_ID          = "_id";
-    public static final String COLUMN_WORKOUTS_TITLE       = "title";
-    public static final String COLUMN_WORKOUTS_DESCRIPTION = "description";
-    public static final String COLUMN_WORKOUTS_LOCATION    = "location";
-    public static final String COLUMN_WORKOUTS_DISTANCE    = "distance";
-    public static final String COLUMN_WORKOUTS_IMAGE       = "image";
-    public static final String COLUMN_WORKOUTS_DATE        = "date";
+    static final String TABLE_WORKOUTS              = "workouts";
+    static final String COLUMN_WORKOUTS_ID          = "_id";
+    static final String COLUMN_WORKOUTS_TITLE       = "title";
+    static final String COLUMN_WORKOUTS_DESCRIPTION = "description";
+    static final String COLUMN_WORKOUTS_LOCATION    = "location";
+    static final String COLUMN_WORKOUTS_DISTANCE    = "distance";
+    static final String COLUMN_WORKOUTS_IMAGE       = "image";
+    static final String COLUMN_WORKOUTS_DATE        = "date";
 
     /*** Statement to create a table for "workouts" ***/
     private static final String WORKOUT_DATABASE_CREATE = "create table "
@@ -36,13 +36,13 @@ public class SQLiteHelper extends SQLiteOpenHelper {
             + COLUMN_WORKOUTS_IMAGE + " blob);";
 
     /*** Constants for the "presets" table ***/
-    public static final String TABLE_PRESETS              = "presets";
-    public static final String COLUMN_PRESETS_ID          = "_id";
-    public static final String COLUMN_PRESETS_TITLE       = "title";
-    public static final String COLUMN_PRESETS_LOCATION    = "location";
-    public static final String COLUMN_PRESETS_DESCRIPTION = "description";
-    public static final String COLUMN_PRESETS_FREQUENCY   = "frequency";
-    public static final String COLUMN_PRESETS_EXPIRES     = "expires";
+    static final String TABLE_PRESETS              = "presets";
+    static final String COLUMN_PRESETS_ID          = "_id";
+    static final String COLUMN_PRESETS_TITLE       = "title";
+    static final String COLUMN_PRESETS_LOCATION    = "location";
+    static final String COLUMN_PRESETS_DESCRIPTION = "description";
+    static final String COLUMN_PRESETS_FREQUENCY   = "frequency";
+    static final String COLUMN_PRESETS_EXPIRES     = "expires";
 
     /*** Statement to create a table for "presets" ***/
     private static final String PRESETS_DATABASE_CREATE = "create table "
@@ -53,7 +53,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
             + COLUMN_PRESETS_FREQUENCY + " text,"
             + COLUMN_PRESETS_EXPIRES + " text);";
 
-    public SQLiteHelper(Context context) {
+    SQLiteHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
