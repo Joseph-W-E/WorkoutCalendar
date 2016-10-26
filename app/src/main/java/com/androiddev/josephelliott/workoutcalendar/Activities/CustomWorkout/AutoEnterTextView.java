@@ -3,6 +3,7 @@ package com.androiddev.josephelliott.workoutcalendar.Activities.CustomWorkout;
 import android.content.Context;
 import android.database.DataSetObserver;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.widget.AutoCompleteTextView;
 import android.widget.Filterable;
 import android.widget.ListAdapter;
@@ -33,14 +34,21 @@ class AutoEnterTextView extends AutoCompleteTextView {
     @Override
     public <T extends ListAdapter & Filterable> void setAdapter(T adapter) {
         super.setAdapter(adapter);
+
         adapter.registerDataSetObserver(new DataSetObserver() {
             @Override
             public void onChanged() {
                 super.onChanged();
-                if (getDropDownAnchor() == 0) return;
                 dropDownTopElement = getAdapter().getItem(0);
             }
+
+            @Override
+            public void onInvalidated() {
+                super.onInvalidated();
+                dropDownTopElement = null;
+            }
         });
+
     }
 
     public String getFirstElementOfDropDownList() {
