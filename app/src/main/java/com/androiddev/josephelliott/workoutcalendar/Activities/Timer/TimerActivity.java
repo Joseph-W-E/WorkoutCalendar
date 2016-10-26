@@ -23,8 +23,8 @@ import android.widget.Toast;
 
 import com.androiddev.josephelliott.workoutcalendar.Activities.Help.HelpActivity;
 import com.androiddev.josephelliott.workoutcalendar.Activities.Settings.SettingsActivity;
-import com.androiddev.josephelliott.workoutcalendar.ObjectData.Workout;
-import com.androiddev.josephelliott.workoutcalendar.ObjectData.WorkoutDataSource;
+import com.androiddev.josephelliott.workoutcalendar.Database.Workout;
+import com.androiddev.josephelliott.workoutcalendar.Database.WorkoutDataSource;
 import com.androiddev.josephelliott.workoutcalendar.R;
 
 import java.util.ArrayList;

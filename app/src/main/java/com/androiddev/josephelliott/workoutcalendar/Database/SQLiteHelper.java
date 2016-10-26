@@ -1,4 +1,4 @@
-package com.androiddev.josephelliott.workoutcalendar.ObjectData;
+package com.androiddev.josephelliott.workoutcalendar.Database;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;

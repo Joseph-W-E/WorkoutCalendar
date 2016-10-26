@@ -7,20 +7,14 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
-import com.androiddev.josephelliott.workoutcalendar.Activities.CustomWorkout.CustomWorkoutActivity;
-import com.androiddev.josephelliott.workoutcalendar.Activities.Presets.PresetsNewPresetDialog;
-import com.androiddev.josephelliott.workoutcalendar.ObjectData.Preset;
-import com.androiddev.josephelliott.workoutcalendar.ObjectData.PresetsDataSource;
+import com.androiddev.josephelliott.workoutcalendar.Database.Preset;
+import com.androiddev.josephelliott.workoutcalendar.Database.PresetsDataSource;
 import com.androiddev.josephelliott.workoutcalendar.R;
 
 import java.util.ArrayList;
-import java.util.Date;
 
 /**
  * Created by jellio on 9/23/16.

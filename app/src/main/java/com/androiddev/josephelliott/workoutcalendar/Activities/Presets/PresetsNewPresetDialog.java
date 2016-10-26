@@ -9,7 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
 
-import com.androiddev.josephelliott.workoutcalendar.ObjectData.Preset;
+import com.androiddev.josephelliott.workoutcalendar.Database.Preset;
 import com.androiddev.josephelliott.workoutcalendar.R;
 
 import java.util.Date;

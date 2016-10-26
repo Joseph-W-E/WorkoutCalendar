@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import com.androiddev.josephelliott.workoutcalendar.ObjectData.Preset;
+import com.androiddev.josephelliott.workoutcalendar.Database.Preset;
 import com.androiddev.josephelliott.workoutcalendar.R;
 
 import java.util.ArrayList;

@@ -14,8 +14,8 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import com.androiddev.josephelliott.workoutcalendar.ObjectData.Workout;
-import com.androiddev.josephelliott.workoutcalendar.ObjectData.WorkoutDataSource;
+import com.androiddev.josephelliott.workoutcalendar.Database.Workout;
+import com.androiddev.josephelliott.workoutcalendar.Database.WorkoutDataSource;
 import com.androiddev.josephelliott.workoutcalendar.R;
 
 import java.util.ArrayList;
