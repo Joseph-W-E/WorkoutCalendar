@@ -9,6 +9,7 @@
     <string name="splash_description">Keeping track of your workouts\nhas never been easier.</string>
     <string name="get_started">Get Started</string>
     <string name="log_in">Log In</string>
+    <string name="log_out">Log Out</string>
     <string name="sign_up">Sign Up</string>
     <string name="use_local_storage">Use Local Storage</string>
     <string name="splash_welcome">Welcome</string>

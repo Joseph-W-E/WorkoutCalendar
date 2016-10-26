@@ -1,12 +1,18 @@
 package com.androiddev.josephelliott.workoutcalendar.Activities.Settings;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.Toast;
 
 import com.androiddev.josephelliott.workoutcalendar.Activities.Help.HelpActivity;
+import com.androiddev.josephelliott.workoutcalendar.Activities.SplashScreen.Splash;
 import com.androiddev.josephelliott.workoutcalendar.R;
 
 /**
@@ -14,11 +20,23 @@ import com.androiddev.josephelliott.workoutcalendar.R;
  */
 public class SettingsActivity extends Activity {
 
+    /*** Classic, getting the context ***/
+    private Context context;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.settings_activity);
 
+        context = this;
+
+        Button btnLogOut = (Button) findViewById(R.id.settings_btn_log_out);
+        btnLogOut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(context, "Sorry, this button doesn't work :/", Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
     @Override

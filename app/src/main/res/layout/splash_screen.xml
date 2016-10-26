@@ -1,68 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/main_rl_splash"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/splash_fl_main"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:paddingTop="48dp"
-    android:background="@color/primary_dark">
+    android:layout_height="match_parent">
 
-    <LinearLayout
+    <ImageView
+        android:id="@+id/splash_iv_background_image"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_weight="1">
+        android:layout_height="match_parent" />
 
-        <TextView
-            android:id="@+id/splash_txt_welcome"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="48dp"
-            android:text="@string/splash_welcome"
-            android:textSize="36sp"
-            android:textColor="@android:color/white"
-            android:gravity="center"/>
-
-        <TextView
-            android:id="@+id/splash_txt_slogan"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/splash_description"
-            android:textSize="24sp"
-            android:textColor="@android:color/white"
-            android:gravity="center"/>
-
-    </LinearLayout>
-
-    <Button
-        android:id="@+id/splash_btn_log_in"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/log_in"
-        android:textSize="20sp"
-        android:textColor="@android:color/white"
-        style="?android:attr/borderlessButtonStyle"
-        android:textAllCaps="false"/>
-
-    <Button
-        android:id="@+id/splash_btn_local_storage"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/use_local_storage"
-        android:textSize="20sp"
-        android:textColor="@android:color/white"
-        style="?android:attr/borderlessButtonStyle"
-        android:textAllCaps="false"/>
-
-    <Button
-        android:id="@+id/splash_btn_sign_up"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:text="@string/sign_up"
-        android:textSize="20sp"
-        android:textColor="@android:color/white"
-        style="?android:attr/borderlessButtonStyle"
-        android:textAllCaps="false"/>
-
-</LinearLayout>
+</FrameLayout>
