@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.database.DataSetObserver;
 import android.media.Image;
 import android.os.Bundle;
 import android.view.KeyEvent;
@@ -48,6 +49,13 @@ public class CustomWorkoutActivity extends Activity {
     private EditText etLbs, etSets, etReps, etLoc, etDesc;
     private ImageButton btnDate, btnImage, btnAddExercise, btnCancel, btnSave;
 
+    /*** Needed AutoCompleteTextView variables
+     * Note that this is a very hacked way of getting the first item from the
+     * drop down list of suggestions.
+     * ***/
+    private Object actvWorkoutFirstItem;
+    private Object actvTitleFirstItem;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -80,7 +88,7 @@ public class CustomWorkoutActivity extends Activity {
         initializeButtons();
         initializeSaveButton();
         initializeAutoCompleteTextFields();
-        initializeEditTexts();
+        setInputTextTransitions();
     }
 
     @Override
@@ -198,13 +206,31 @@ public class CustomWorkoutActivity extends Activity {
                 "Legs", "Quads", "Calves", "Hamstrings"
         };
 
-        ArrayAdapter<String> adapterWorkouts = new ArrayAdapter<>(this,
+        final ArrayAdapter<String> adapterWorkouts = new ArrayAdapter<>(this,
                 android.R.layout.simple_dropdown_item_1line, workoutTypes);
+        adapterWorkouts.registerDataSetObserver(new DataSetObserver() {
+            @Override
+            public void onChanged() {
+                super.onChanged();
+                int isDropDownAnchorDisplayed = actvWorkout.getDropDownAnchor();
+                if (isDropDownAnchorDisplayed == 0) return;
+                actvWorkoutFirstItem = adapterWorkouts.getItem(0);
+            }
+        });
         actvWorkout.setThreshold(1);
         actvWorkout.setAdapter(adapterWorkouts);
 
-        ArrayAdapter<String> adapterTitles = new ArrayAdapter<>(this,
+        final ArrayAdapter<String> adapterTitles = new ArrayAdapter<>(this,
                 android.R.layout.simple_dropdown_item_1line, titleTypes);
+        adapterTitles.registerDataSetObserver(new DataSetObserver() {
+            @Override
+            public void onChanged() {
+                super.onChanged();
+                int isDropDownAnchorDisplayed = actvTitle.getDropDownAnchor();
+                if (isDropDownAnchorDisplayed == 0) return;
+                actvTitleFirstItem = adapterTitles.getItem(0);
+            }
+        });
         actvTitle.setThreshold(1);
         actvTitle.setAdapter(adapterTitles);
     }
@@ -246,7 +272,7 @@ public class CustomWorkoutActivity extends Activity {
      * Initializes the edit texts.
      * Lets one edit text 'enter press' go to the next edit text.
      * */
-    private void initializeEditTexts() {
+    private void setInputTextTransitions() {
         //private EditText etLbs, etSets, etReps, etLoc, etDesc;
         // Title -> Location -> Workout -> Lbs -> Sets -> Reps -> Workout
         actvTitle.setFocusable(true);
@@ -259,6 +285,10 @@ public class CustomWorkoutActivity extends Activity {
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
                 if (keyCode == KeyEvent.KEYCODE_ENTER && event.getAction() == KeyEvent.ACTION_UP) {
+                    if (actvTitleFirstItem != null) {
+                        actvTitle.setText(actvTitleFirstItem.toString());
+                        actvTitleFirstItem = null;
+                    }
                     actvTitle.clearFocus();
                     etLoc.requestFocus();
                     return true;
@@ -281,6 +311,10 @@ public class CustomWorkoutActivity extends Activity {
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
                 if (keyCode == KeyEvent.KEYCODE_ENTER && event.getAction() == KeyEvent.ACTION_UP) {
+                    if (actvWorkoutFirstItem != null) {
+                        actvWorkout.setText(actvWorkoutFirstItem.toString());
+                        actvWorkoutFirstItem = null;
+                    }
                     actvWorkout.clearFocus();
                     etLbs.requestFocus();
                     return true;
