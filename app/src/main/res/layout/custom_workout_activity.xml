@@ -38,7 +38,7 @@
             android:clickable="false"
             android:src="@mipmap/ic_label_black_24dp" />
 
-        <AutoCompleteTextView
+        <com.androiddev.josephelliott.workoutcalendar.Activities.CustomWorkout.AutoEnterTextView
             android:id="@+id/custom_workout_actv_title"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -75,7 +75,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="8dp">
-        <AutoCompleteTextView
+        <com.androiddev.josephelliott.workoutcalendar.Activities.CustomWorkout.AutoEnterTextView
             android:id="@+id/custom_workout_actv_lift"
             android:layout_width="0dp"
             android:layout_height="wrap_content"

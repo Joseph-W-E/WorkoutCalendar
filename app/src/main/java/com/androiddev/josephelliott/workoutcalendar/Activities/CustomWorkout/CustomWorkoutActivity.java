@@ -12,7 +12,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -44,17 +43,10 @@ public class CustomWorkoutActivity extends Activity {
     private Workout workout;
 
     /*** Variables for views ***/
-    private AutoCompleteTextView actvTitle, actvWorkout;
+    private AutoEnterTextView aetvTitle, aetvWorkout;
     private Button btnLoadFromPresets, btnSaveToPresets;
     private EditText etLbs, etSets, etReps, etLoc, etDesc;
     private ImageButton btnDate, btnImage, btnAddExercise, btnCancel, btnSave;
-
-    /*** Needed AutoCompleteTextView variables
-     * Note that this is a very hacked way of getting the first item from the
-     * drop down list of suggestions.
-     * ***/
-    private Object actvWorkoutFirstItem;
-    private Object actvTitleFirstItem;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,8 +66,8 @@ public class CustomWorkoutActivity extends Activity {
         etReps = (EditText) findViewById(R.id.custom_workout_et_reps);
         etLoc  = (EditText) findViewById(R.id.custom_workout_et_location);
         etDesc = (EditText) findViewById(R.id.custom_workout_et_description);
-        actvWorkout = (AutoCompleteTextView) findViewById(R.id.custom_workout_actv_lift);
-        actvTitle   = (AutoCompleteTextView) findViewById(R.id.custom_workout_actv_title);
+        aetvWorkout = (AutoEnterTextView) findViewById(R.id.custom_workout_actv_lift);
+        aetvTitle   = (AutoEnterTextView) findViewById(R.id.custom_workout_actv_title);
         btnLoadFromPresets = (Button) findViewById(R.id.custom_workout_btn_load_from_presets);
         btnSaveToPresets   = (Button) findViewById(R.id.custom_workout_btn_save_to_presets);
         btnDate        = (ImageButton) findViewById(R.id.custom_workout_btn_date);
@@ -172,7 +164,7 @@ public class CustomWorkoutActivity extends Activity {
             public void onClick(View v) {
                 /*** Create a new preset ***/
                 Preset preset = new Preset();
-                preset.setTitle(actvTitle.getText().toString());
+                preset.setTitle(aetvTitle.getText().toString());
                 preset.setLocation(etLoc.getText().toString());
                 preset.setDescription(etDesc.getText().toString());
                 preset.setFrequency("");
@@ -208,31 +200,13 @@ public class CustomWorkoutActivity extends Activity {
 
         final ArrayAdapter<String> adapterWorkouts = new ArrayAdapter<>(this,
                 android.R.layout.simple_dropdown_item_1line, workoutTypes);
-        adapterWorkouts.registerDataSetObserver(new DataSetObserver() {
-            @Override
-            public void onChanged() {
-                super.onChanged();
-                int isDropDownAnchorDisplayed = actvWorkout.getDropDownAnchor();
-                if (isDropDownAnchorDisplayed == 0) return;
-                actvWorkoutFirstItem = adapterWorkouts.getItem(0);
-            }
-        });
-        actvWorkout.setThreshold(1);
-        actvWorkout.setAdapter(adapterWorkouts);
+        aetvWorkout.setThreshold(1);
+        aetvWorkout.setAdapter(adapterWorkouts);
 
         final ArrayAdapter<String> adapterTitles = new ArrayAdapter<>(this,
                 android.R.layout.simple_dropdown_item_1line, titleTypes);
-        adapterTitles.registerDataSetObserver(new DataSetObserver() {
-            @Override
-            public void onChanged() {
-                super.onChanged();
-                int isDropDownAnchorDisplayed = actvTitle.getDropDownAnchor();
-                if (isDropDownAnchorDisplayed == 0) return;
-                actvTitleFirstItem = adapterTitles.getItem(0);
-            }
-        });
-        actvTitle.setThreshold(1);
-        actvTitle.setAdapter(adapterTitles);
+        aetvTitle.setThreshold(1);
+        aetvTitle.setAdapter(adapterTitles);
     }
 
     /**
@@ -244,7 +218,7 @@ public class CustomWorkoutActivity extends Activity {
             @Override
             public void onClick(View v) {
                 // Get the title
-                workout.setTitle(actvTitle.getText().toString());
+                workout.setTitle(aetvTitle.getText().toString());
                 // Get the location
                 workout.setLocation(etLoc.getText().toString());
                 // Get the description
@@ -275,21 +249,24 @@ public class CustomWorkoutActivity extends Activity {
     private void setInputTextTransitions() {
         //private EditText etLbs, etSets, etReps, etLoc, etDesc;
         // Title -> Location -> Workout -> Lbs -> Sets -> Reps -> Workout
-        actvTitle.setFocusable(true);
+        aetvTitle.setFocusable(true);
         etLoc.setFocusable(true);
-        actvWorkout.setFocusable(true);
+        aetvWorkout.setFocusable(true);
         etLbs.setFocusable(true);
         etSets.setFocusable(true);
         etReps.setFocusable(true);
-        actvTitle.setOnKeyListener(new View.OnKeyListener() {
+        aetvTitle.setOnKeyListener(new View.OnKeyListener() {
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
                 if (keyCode == KeyEvent.KEYCODE_ENTER && event.getAction() == KeyEvent.ACTION_UP) {
-                    if (actvTitleFirstItem != null) {
-                        actvTitle.setText(actvTitleFirstItem.toString());
-                        actvTitleFirstItem = null;
+
+                    String autotext = aetvTitle.getFirstElementOfDropDownList();
+                    if (!autotext.isEmpty()) {
+                        // There was an element in the drop down when the user hit enter
+                        aetvTitle.setText(autotext);
                     }
-                    actvTitle.clearFocus();
+
+                    aetvTitle.clearFocus();
                     etLoc.requestFocus();
                     return true;
                 }
@@ -301,21 +278,24 @@ public class CustomWorkoutActivity extends Activity {
             public boolean onKey(View v, int keyCode, KeyEvent event) {
                 if (keyCode == KeyEvent.KEYCODE_ENTER && event.getAction() == KeyEvent.ACTION_UP) {
                     etLoc.clearFocus();
-                    actvWorkout.requestFocus();
+                    aetvWorkout.requestFocus();
                     return true;
                 }
                 return false;
             }
         });
-        actvWorkout.setOnKeyListener(new View.OnKeyListener() {
+        aetvWorkout.setOnKeyListener(new View.OnKeyListener() {
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
                 if (keyCode == KeyEvent.KEYCODE_ENTER && event.getAction() == KeyEvent.ACTION_UP) {
-                    if (actvWorkoutFirstItem != null) {
-                        actvWorkout.setText(actvWorkoutFirstItem.toString());
-                        actvWorkoutFirstItem = null;
+
+                    String autotext = aetvWorkout.getFirstElementOfDropDownList();
+                    if (!autotext.isEmpty()) {
+                        // There was an element in the drop down when the user hit enter
+                        aetvWorkout.setText(autotext);
                     }
-                    actvWorkout.clearFocus();
+
+                    aetvWorkout.clearFocus();
                     etLbs.requestFocus();
                     return true;
                 }
@@ -349,7 +329,7 @@ public class CustomWorkoutActivity extends Activity {
             public boolean onKey(View v, int keyCode, KeyEvent event) {
                 if (keyCode == KeyEvent.KEYCODE_ENTER && event.getAction() == KeyEvent.ACTION_UP) {
                     etReps.clearFocus();
-                    actvWorkout.requestFocus();
+                    aetvWorkout.requestFocus();
 
                     // Here is where we will mimic the + button.
                     addButtonFunctionality();
@@ -368,8 +348,8 @@ public class CustomWorkoutActivity extends Activity {
         // We want to get the workout and add it to the description
         String result = "";
         // Only add text if it isn't empty
-        if (!actvWorkout.getText().toString().isEmpty()) {
-            result += actvWorkout.getText().toString();
+        if (!aetvWorkout.getText().toString().isEmpty()) {
+            result += aetvWorkout.getText().toString();
         }
         if (!etLbs.getText().toString().isEmpty()) {
             result += " " + etLbs.getText().toString() + "lbs";
@@ -393,7 +373,7 @@ public class CustomWorkoutActivity extends Activity {
         etLbs.setText("");
         etSets.setText("");
         etReps.setText("");
-        actvWorkout.setText("");
+        aetvWorkout.setText("");
     }
 
     /**
@@ -401,7 +381,7 @@ public class CustomWorkoutActivity extends Activity {
      * @param preset The workout to be loaded.
      */
     public void loadFromPreset(Preset preset) {
-        actvTitle.setText(preset.getTitle());
+        aetvTitle.setText(preset.getTitle());
         etLoc.setText(preset.getLocation());
         etDesc.setText(preset.getDescription());
     }
