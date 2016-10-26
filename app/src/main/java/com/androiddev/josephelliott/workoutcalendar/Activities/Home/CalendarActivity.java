@@ -16,7 +16,7 @@ import com.androiddev.josephelliott.workoutcalendar.Activities.Help.HelpActivity
 import com.androiddev.josephelliott.workoutcalendar.Activities.Settings.SettingsActivity;
 import com.androiddev.josephelliott.workoutcalendar.Activities.Presets.PresetsActivity;
 import com.androiddev.josephelliott.workoutcalendar.Activities.Timer.TimerActivity;
-import com.androiddev.josephelliott.workoutcalendar.ObjectData.CurrentCalendarData;
+import com.androiddev.josephelliott.workoutcalendar.Activities.Home.SwipeCalendar.CurrentCalendarData;
 import com.androiddev.josephelliott.workoutcalendar.R;
 import com.androiddev.josephelliott.workoutcalendar.Activities.Home.SwipeCalendar.ScreenSlidePagerAdapter;
 import com.github.clans.fab.FloatingActionButton;
