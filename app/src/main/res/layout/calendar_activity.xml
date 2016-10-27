@@ -59,11 +59,11 @@
 
     </RelativeLayout>
 
-    <android.support.v4.view.ViewPager xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/calendar_activity_view_pager"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/calendar_activity_relative_layout_top"/>
+    <com.androiddev.josephelliott.workoutcalendar.Activities.Home.SwipeCalendar.CalendarViewPager
+        android:id="@+id/calendar_activity_custom_view_pager"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/calendar_activity_relative_layout_top" />
 
     <com.github.clans.fab.FloatingActionMenu
         android:id="@+id/calendar_activity_fab_menu"

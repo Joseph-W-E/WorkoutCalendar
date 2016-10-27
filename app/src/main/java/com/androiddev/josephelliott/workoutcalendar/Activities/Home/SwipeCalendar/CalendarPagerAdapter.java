@@ -15,21 +15,21 @@ import java.util.HashMap;
  * */
 public class CalendarPagerAdapter extends FragmentStatePagerAdapter {
 
+    /*** The maximum number of pages we can make ***/
     private int NUM_PAGES;
+
+    /*** How we map a page number to a CalendarFragment ***/
     private HashMap<Integer, CalendarFragment> map;
-    private long timeInMillis;
 
     /**
      * Initialize a new ScreenSlidePagerAdapater.
      * @param fm Used only for super.
      * @param NUM_PAGES The number of months allotted to the calendar.
-     * @param timeInMillis The user's current time.
      */
-    public CalendarPagerAdapter(FragmentManager fm, int NUM_PAGES, long timeInMillis) {
+    public CalendarPagerAdapter(FragmentManager fm, int NUM_PAGES) {
         super(fm);
         this.NUM_PAGES = NUM_PAGES;
         map = new HashMap<>();
-        this.timeInMillis = timeInMillis;
     }
 
     @Override
@@ -45,22 +45,22 @@ public class CalendarPagerAdapter extends FragmentStatePagerAdapter {
     @Override
     public Fragment getItem(int position) {
         // The position refers to what month we are looking at. NUM_PAGES / 2 is today.
-        CalendarWrapper ccd = new CalendarWrapper(timeInMillis);
+        CalendarWrapper calendar = new CalendarWrapper();
 
         // Set the new month for the fragment based off the position in the ViewPager
         if (position > NUM_PAGES / 2) {
             // We are traveling forward in time
             for (int i = NUM_PAGES / 2; i < position; i++) {
-                ccd.addMonth();
+                calendar.addMonth();
             }
         } else if (position < NUM_PAGES / 2) {
             // We are traveling backward in time
             for (int i = position; i < NUM_PAGES / 2; i++) {
-                ccd.subtractMonth();
+                calendar.subtractMonth();
             }
         }
 
-        CalendarFragment cf = CalendarFragment.newInstance(ccd.getDate().getTime());
+        CalendarFragment cf = CalendarFragment.newInstance(calendar.getDate().getTime());
         map.put(position, cf);
         return cf;
     }

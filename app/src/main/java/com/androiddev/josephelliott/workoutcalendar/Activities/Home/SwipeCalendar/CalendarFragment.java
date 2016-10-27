@@ -25,7 +25,7 @@ import java.util.ArrayList;
  */
 public class CalendarFragment extends Fragment {
 
-    private CalendarWrapper ccd;
+    private CalendarWrapper calendar;
 
     public static CalendarFragment newInstance(long timeInMillis) {
         CalendarFragment myFragment = new CalendarFragment();
@@ -49,13 +49,13 @@ public class CalendarFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ccd = new CalendarWrapper(getArguments().getLong("timeInMillis"));
+        calendar = new CalendarWrapper(getArguments().getLong("timeInMillis"));
     }
 
     private void updateFragment(ViewGroup viewGroup) {
         // Things we'll need to know when there are days in the month
-        int firstDayOfMonth = ccd.getFirstDayOfMonth();
-        int numberOfDaysInMonth = ccd.getNumberOfDaysInMonth();
+        int firstDayOfMonth = calendar.getFirstDayOfMonth();
+        int numberOfDaysInMonth = calendar.getNumberOfDaysInMonth();
 
         // List of the cells available. Should be 42 of them.
         ArrayList<Button> arrayList = Utility.getCellsFromCalendarFragment(viewGroup);
@@ -77,22 +77,22 @@ public class CalendarFragment extends Fragment {
                 // All the days DURING the month
 
                 // Update the CalendarWrapper to reflect the current day
-                ccd.setDay(i + 1 - counter);
+                calendar.setDay(i + 1 - counter);
 
                 // Get the workouts for the day
                 WorkoutDataSource dataSource = new WorkoutDataSource(getContext());
                 dataSource.open();
-                final ArrayList<Workout> workouts = dataSource.getWorkouts(ccd.getDate());
+                final ArrayList<Workout> workouts = dataSource.getWorkouts(calendar.getDate());
                 dataSource.close();
 
                 // Make the cell "visible" to the reader
-                currentButton.setText(Integer.toString(ccd.getDay()));
+                currentButton.setText(Integer.toString(calendar.getDay()));
                 currentButton.setTextColor(Color.LTGRAY);
 
                 // If the day has workouts, let the user be able to view them
                 if (!workouts.isEmpty()) {
                     // First, get the information that we are going to need. We already have the list of workouts
-                    final int day = ccd.getDay();
+                    final int day = calendar.getDay();
                     currentButton.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
@@ -120,7 +120,7 @@ public class CalendarFragment extends Fragment {
         final Dialog dialog = new Dialog(getContext(), R.style.WorkoutDialog);
 
         // Set the title to the current date
-        dialog.setTitle(ccd.getMonthText() + " " + Integer.toString(day));
+        dialog.setTitle(calendar.getMonthText() + " " + Integer.toString(day));
 
         // Only show the dialog if we did something
         if (!workouts.isEmpty()) {
@@ -152,8 +152,8 @@ public class CalendarFragment extends Fragment {
                     WorkoutDataSource dataSource = new WorkoutDataSource(getContext());
                     dataSource.open();
                     dataSource.deleteWorkout(deleteWorkout);
-                    ccd.setDay(currentDay);
-                    ArrayList<Workout> newWorkouts = dataSource.getWorkouts(ccd.getDate());
+                    calendar.setDay(currentDay);
+                    ArrayList<Workout> newWorkouts = dataSource.getWorkouts(calendar.getDate());
                     dataSource.close();
 
                     // Close the dialog
