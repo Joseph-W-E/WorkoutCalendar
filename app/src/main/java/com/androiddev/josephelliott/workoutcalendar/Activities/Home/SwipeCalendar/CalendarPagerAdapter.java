@@ -5,8 +5,6 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.view.ViewGroup;
 
-import java.util.HashMap;
-
 
 /**
  * Custom ViewPagerAdapter.
@@ -18,9 +16,6 @@ public class CalendarPagerAdapter extends FragmentStatePagerAdapter {
     /*** The maximum number of pages we can make ***/
     private int NUM_PAGES;
 
-    /*** How we map a page number to a CalendarFragment ***/
-    private HashMap<Integer, CalendarFragment> map;
-
     /**
      * Initialize a new ScreenSlidePagerAdapater.
      * @param fm Used only for super.
@@ -29,7 +24,6 @@ public class CalendarPagerAdapter extends FragmentStatePagerAdapter {
     public CalendarPagerAdapter(FragmentManager fm, int NUM_PAGES) {
         super(fm);
         this.NUM_PAGES = NUM_PAGES;
-        map = new HashMap<>();
     }
 
     @Override
@@ -60,9 +54,7 @@ public class CalendarPagerAdapter extends FragmentStatePagerAdapter {
             }
         }
 
-        CalendarFragment cf = CalendarFragment.newInstance(calendar.getDate().getTime());
-        map.put(position, cf);
-        return cf;
+        return CalendarFragment.newInstance(calendar.getDate().getTime());
     }
 
     /**
@@ -74,16 +66,6 @@ public class CalendarPagerAdapter extends FragmentStatePagerAdapter {
     @Override
     public void destroyItem(ViewGroup container, int position, Object object) {
         super.destroyItem(container, position, object);
-        map.remove(position);
-    }
-
-    /**
-     * Returns the fragment given the hash map key.
-     * @param key The integer value associated with the fragment in a hash map.
-     * @return The CalendarFragment pointed to by the key.
-     */
-    public CalendarFragment getFragment(int key) {
-        return map.get(key);
     }
 
 }
