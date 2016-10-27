@@ -25,7 +25,7 @@ import java.util.ArrayList;
  */
 public class CalendarFragment extends Fragment {
 
-    private CurrentCalendarData ccd;
+    private CalendarWrapper ccd;
 
     public static CalendarFragment newInstance(long timeInMillis) {
         CalendarFragment myFragment = new CalendarFragment();
@@ -49,7 +49,7 @@ public class CalendarFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ccd = new CurrentCalendarData(getArguments().getLong("timeInMillis"));
+        ccd = new CalendarWrapper(getArguments().getLong("timeInMillis"));
     }
 
     private void updateFragment(ViewGroup viewGroup) {
@@ -76,13 +76,13 @@ public class CalendarFragment extends Fragment {
 
                 // All the days DURING the month
 
-                // Update the CurrentCalendarData to reflect the current day
+                // Update the CalendarWrapper to reflect the current day
                 ccd.setDay(i + 1 - counter);
 
                 // Get the workouts for the day
                 WorkoutDataSource dataSource = new WorkoutDataSource(getContext());
                 dataSource.open();
-                final ArrayList<Workout> workouts = dataSource.getWorkouts(ccd.getDateObj());
+                final ArrayList<Workout> workouts = dataSource.getWorkouts(ccd.getDate());
                 dataSource.close();
 
                 // Make the cell "visible" to the reader
@@ -153,7 +153,7 @@ public class CalendarFragment extends Fragment {
                     dataSource.open();
                     dataSource.deleteWorkout(deleteWorkout);
                     ccd.setDay(currentDay);
-                    ArrayList<Workout> newWorkouts = dataSource.getWorkouts(ccd.getDateObj());
+                    ArrayList<Workout> newWorkouts = dataSource.getWorkouts(ccd.getDate());
                     dataSource.close();
 
                     // Close the dialog

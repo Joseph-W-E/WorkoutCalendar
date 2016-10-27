@@ -7,24 +7,25 @@ import java.util.Locale;
 /**
  * Created by Joseph Elliott on 10/9/2015.
  */
-public class CurrentCalendarData {
+public class CalendarWrapper {
 
     private Calendar calendar;
 
     /**
      * Creates the calendar.
      * Defaults to today's date.*/
-    public CurrentCalendarData() {
+    public CalendarWrapper() {
         calendar = Calendar.getInstance();
     }
 
-    public CurrentCalendarData(long timeInMillis) {
+    public CalendarWrapper(long timeInMillis) {
         Calendar calendar = Calendar.getInstance();
         calendar.setTimeInMillis(timeInMillis);
         this.calendar = calendar;
     }
 
-    public Date getDateObj() {
+    /*** Date object related methods ***/
+    public Date getDate() {
         return calendar.getTime();
     }
 
@@ -36,14 +37,8 @@ public class CurrentCalendarData {
         return Calendar.getInstance().getTimeInMillis();
     }
 
-    public void addMonth() {
-        calendar.add(Calendar.MONTH, 1);
-    }
 
-    public void subtractMonth() {
-        calendar.add(Calendar.MONTH, -1);
-    }
-
+    /*** Day related methods ***/
     public void setDay(int day) {
         calendar.set(Calendar.DAY_OF_MONTH, day);
     }
@@ -52,18 +47,40 @@ public class CurrentCalendarData {
         return calendar.get(Calendar.DAY_OF_MONTH);
     }
 
+
+    /*** Month related methods ***/
+    public void addMonth() {
+        calendar.add(Calendar.MONTH, 1);
+    }
+
+    public void subtractMonth() {
+        calendar.add(Calendar.MONTH, -1);
+    }
+
     public int getMonth() {
         return calendar.get(Calendar.MONTH);
+    }
+
+    public void setMonth(int month) {
+        calendar.set(Calendar.MONTH, month);
     }
 
     public String getMonthText() {
         return calendar.getDisplayName(Calendar.MONTH, Calendar.LONG, Locale.US);
     }
 
+
+    /*** Year related methods ***/
+    public void setYear(int year) {
+        calendar.set(Calendar.YEAR, year);
+    }
+
     public int getYear() {
         return calendar.get(Calendar.YEAR);
     }
 
+
+    /*** Added functionality methods ***/
     public int getFirstDayOfMonth() {
         Calendar temp = Calendar.getInstance();
         temp.setTimeInMillis(calendar.getTimeInMillis());

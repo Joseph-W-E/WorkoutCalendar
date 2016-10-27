@@ -16,9 +16,9 @@ import com.androiddev.josephelliott.workoutcalendar.Activities.Help.HelpActivity
 import com.androiddev.josephelliott.workoutcalendar.Activities.Settings.SettingsActivity;
 import com.androiddev.josephelliott.workoutcalendar.Activities.Presets.PresetsActivity;
 import com.androiddev.josephelliott.workoutcalendar.Activities.Timer.TimerActivity;
-import com.androiddev.josephelliott.workoutcalendar.Activities.Home.SwipeCalendar.CurrentCalendarData;
+import com.androiddev.josephelliott.workoutcalendar.Activities.Home.SwipeCalendar.CalendarWrapper;
 import com.androiddev.josephelliott.workoutcalendar.R;
-import com.androiddev.josephelliott.workoutcalendar.Activities.Home.SwipeCalendar.ScreenSlidePagerAdapter;
+import com.androiddev.josephelliott.workoutcalendar.Activities.Home.SwipeCalendar.CalendarPagerAdapter;
 import com.github.clans.fab.FloatingActionButton;
 import com.github.clans.fab.FloatingActionMenu;
 
@@ -35,7 +35,7 @@ public class CalendarActivity extends FragmentActivity {
      * Components to be used in this activity.
      */
     private ViewPager mViewPager;
-    private ScreenSlidePagerAdapter mPagerAdapter;
+    private CalendarPagerAdapter mPagerAdapter;
     private ImageButton btnNextMonth;
     private ImageButton btnPrevMonth;
     private FloatingActionMenu fabMain;
@@ -45,7 +45,7 @@ public class CalendarActivity extends FragmentActivity {
     /**
      * Variables to be manipulated through the activity's lifetime.
      */
-    private CurrentCalendarData calendarData;
+    private CalendarWrapper calendarData;
     private int vpIndex = NUM_PAGES / 2;
     /**
      * Other variables
@@ -61,19 +61,19 @@ public class CalendarActivity extends FragmentActivity {
         getActionBar().setDisplayHomeAsUpEnabled(false);
 
         // Get the calendar data right away!! We need this for the pager adapter
-        calendarData = new CurrentCalendarData();
+        calendarData = new CalendarWrapper();
         context      = this.getApplicationContext();
 
         // Initialize all components in this activity
         btnNextMonth  = (ImageButton) findViewById(R.id.calendar_activity_image_buttom_go_right);
         btnPrevMonth  = (ImageButton) findViewById(R.id.calendar_activity_image_buttom_go_left);
         mViewPager    = (ViewPager) findViewById(R.id.calendar_activity_view_pager);
-        mPagerAdapter = new ScreenSlidePagerAdapter(getSupportFragmentManager(), NUM_PAGES, calendarData.getDateObj().getTime());
+        mPagerAdapter = new CalendarPagerAdapter(getSupportFragmentManager(), NUM_PAGES, calendarData.getDate().getTime());
         mViewPager.setAdapter(mPagerAdapter);
 
         // Set up the activity data
         moveViewPagerToMonth();
-        setMonthAndYearTextFields(calendarData.getDateObj());
+        setMonthAndYearTextFields(calendarData.getDate());
 
         // Add all component listeners
         mViewPager.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
@@ -84,12 +84,12 @@ public class CalendarActivity extends FragmentActivity {
                     // Then we scrolled to the right
                     calendarData.addMonth();
                     vpIndex++;
-                    setMonthAndYearTextFields(calendarData.getDateObj());
+                    setMonthAndYearTextFields(calendarData.getDate());
                 } else if (position < vpIndex) {
                     // Then we scrolled to the left
                     calendarData.subtractMonth();
                     vpIndex--;
-                    setMonthAndYearTextFields(calendarData.getDateObj());
+                    setMonthAndYearTextFields(calendarData.getDate());
                 }
             }
         });
@@ -104,7 +104,7 @@ public class CalendarActivity extends FragmentActivity {
         // Refresh the viewpager
         mViewPager.setAdapter(mPagerAdapter);
         moveViewPagerToMonth();
-        setMonthAndYearTextFields(calendarData.getDateObj());
+        setMonthAndYearTextFields(calendarData.getDate());
     }
 
     @Override
@@ -130,7 +130,7 @@ public class CalendarActivity extends FragmentActivity {
             calendarData.setTodaysDate();
             vpIndex = NUM_PAGES / 2;
             moveViewPagerToMonth();
-            setMonthAndYearTextFields(calendarData.getDateObj());
+            setMonthAndYearTextFields(calendarData.getDate());
             return true;
         } else if (id == R.id.menu_calendar_settings) {
             startActivity(new Intent(context, SettingsActivity.class));
@@ -179,7 +179,7 @@ public class CalendarActivity extends FragmentActivity {
                 calendarData.addMonth();
                 vpIndex++;
                 moveViewPagerToMonth();
-                setMonthAndYearTextFields(calendarData.getDateObj());
+                setMonthAndYearTextFields(calendarData.getDate());
             }
         });
         btnPrevMonth.setOnClickListener(new View.OnClickListener() {
@@ -189,7 +189,7 @@ public class CalendarActivity extends FragmentActivity {
                 calendarData.subtractMonth();
                 vpIndex--;
                 moveViewPagerToMonth();
-                setMonthAndYearTextFields(calendarData.getDateObj());
+                setMonthAndYearTextFields(calendarData.getDate());
             }
         });
     }

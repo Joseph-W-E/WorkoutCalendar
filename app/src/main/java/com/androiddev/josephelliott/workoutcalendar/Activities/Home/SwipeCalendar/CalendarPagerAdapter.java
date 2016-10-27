@@ -13,7 +13,7 @@ import java.util.HashMap;
  * Returns a CalendarFragment().
  * This adapter handles all the logic for the calendar grid.
  * */
-public class ScreenSlidePagerAdapter extends FragmentStatePagerAdapter {
+public class CalendarPagerAdapter extends FragmentStatePagerAdapter {
 
     private int NUM_PAGES;
     private HashMap<Integer, CalendarFragment> map;
@@ -25,7 +25,7 @@ public class ScreenSlidePagerAdapter extends FragmentStatePagerAdapter {
      * @param NUM_PAGES The number of months allotted to the calendar.
      * @param timeInMillis The user's current time.
      */
-    public ScreenSlidePagerAdapter(FragmentManager fm, int NUM_PAGES, long timeInMillis) {
+    public CalendarPagerAdapter(FragmentManager fm, int NUM_PAGES, long timeInMillis) {
         super(fm);
         this.NUM_PAGES = NUM_PAGES;
         map = new HashMap<>();
@@ -44,10 +44,8 @@ public class ScreenSlidePagerAdapter extends FragmentStatePagerAdapter {
      */
     @Override
     public Fragment getItem(int position) {
-        // The position refers to what month we are looking at
-        // For example, if the position is 500, then we are at today
-        // If the position is NUM_PAGES / 2 + 2, we are looking at december.
-        CurrentCalendarData ccd = new CurrentCalendarData(timeInMillis);
+        // The position refers to what month we are looking at. NUM_PAGES / 2 is today.
+        CalendarWrapper ccd = new CalendarWrapper(timeInMillis);
 
         // Set the new month for the fragment based off the position in the ViewPager
         if (position > NUM_PAGES / 2) {
@@ -62,7 +60,7 @@ public class ScreenSlidePagerAdapter extends FragmentStatePagerAdapter {
             }
         }
 
-        CalendarFragment cf = CalendarFragment.newInstance(ccd.getDateObj().getTime());
+        CalendarFragment cf = CalendarFragment.newInstance(ccd.getDate().getTime());
         map.put(position, cf);
         return cf;
     }
