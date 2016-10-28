@@ -1,13 +1,13 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:id="@+id/frag_layout_parent"
     tools:context=".Activities.Home.CalendarActivity">
 
     <RelativeLayout
         android:id="@+id/rl_row_0"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal">
 
@@ -92,7 +92,7 @@
 
     <RelativeLayout
         android:id="@+id/rl_row_1"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_below="@id/rl_row_0">
 
@@ -163,7 +163,7 @@
 
     <RelativeLayout
         android:id="@+id/rl_row_2"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_below="@id/rl_row_1">
 
@@ -234,7 +234,7 @@
 
     <RelativeLayout
         android:id="@+id/rl_row_3"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_below="@id/rl_row_2">
 
@@ -305,7 +305,7 @@
 
     <RelativeLayout
         android:id="@+id/rl_row_4"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_below="@id/rl_row_3">
 
@@ -377,7 +377,7 @@
 
     <RelativeLayout
         android:id="@+id/rl_row_5"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_below="@id/rl_row_4">
 
@@ -449,7 +449,7 @@
 
     <RelativeLayout
         android:id="@+id/rl_row_6"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_below="@id/rl_row_5">
 

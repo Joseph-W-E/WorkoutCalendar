@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -136,11 +137,11 @@ public class CalendarFragment extends Fragment {
         // Create the children and add it to the outer view
         for (int i = 0; i < workouts.size(); i++) {
             // for each workout, create a calendar_dialog_workouts_inner and add it to the outer view
-            View tempView = layoutInflater.inflate(R.layout.calendar_dialog_workouts_inner, null);
-            TextView txtTitle = (TextView) tempView.findViewById(R.id.calendar_dialog_workouts_inner_title);
+            View tempView           = layoutInflater.inflate(R.layout.calendar_dialog_workouts_inner, null);
+            TextView txtTitle       = (TextView) tempView.findViewById(R.id.calendar_dialog_workouts_inner_title);
             TextView txtDescription = (TextView) tempView.findViewById(R.id.calendar_dialog_workouts_inner_description);
-            TextView txtLocation = (TextView) tempView.findViewById(R.id.calendar_dialog_workouts_inner_location);
-            ImageButton btnDelete = (ImageButton) tempView.findViewById(R.id.calendar_dialog_workouts_inner_delete);
+            TextView txtLocation    = (TextView) tempView.findViewById(R.id.calendar_dialog_workouts_inner_location);
+            ImageButton btnDelete   = (ImageButton) tempView.findViewById(R.id.calendar_dialog_workouts_inner_delete);
 
             // The DELETE WORKOUT feature
             final Workout deleteWorkout = workouts.get(i);
