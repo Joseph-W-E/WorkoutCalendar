@@ -39,8 +39,8 @@ public class CalendarActivity extends FragmentActivity {
 
         calendarViewPager = (CalendarViewPager) findViewById(R.id.calendar_activity_custom_view_pager);
         calendarViewPager.initializeAdapter(getSupportFragmentManager(), 1000);
-        calendarViewPager.setForwardButton(findViewById(R.id.calendar_activity_image_buttom_go_right));
-        calendarViewPager.setBackwardButton(findViewById(R.id.calendar_activity_image_buttom_go_left));
+        calendarViewPager.setForwardButton(findViewById(R.id.calendar_activity_image_button_go_right));
+        calendarViewPager.setBackwardButton(findViewById(R.id.calendar_activity_image_button_go_left));
         calendarViewPager.setMonthTextField((TextView) findViewById(R.id.calendar_activity_text_view_month));
         calendarViewPager.setYearTextField((TextView) findViewById(R.id.calendar_activity_text_view_year));
 
@@ -56,6 +56,7 @@ public class CalendarActivity extends FragmentActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        calendarViewPager.refresh();
         if (fabMain != null) fabMain.close(true);
     }
 

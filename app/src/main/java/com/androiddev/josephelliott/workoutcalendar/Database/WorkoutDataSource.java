@@ -70,6 +70,22 @@ public class WorkoutDataSource {
     }
 
     /**
+     * Updates a workout in the database based off the given workout.
+     * @param workout The workout to update in the database.
+     * @return True if the update was successful, false otherwise.
+     */
+    public boolean updateWorkout(Workout workout) {
+        ContentValues values = new ContentValues();
+        values.put(SQLiteHelper.COLUMN_WORKOUTS_TITLE, workout.getTitle());
+        values.put(SQLiteHelper.COLUMN_WORKOUTS_DATE, workout.getDate().getTime());
+        values.put(SQLiteHelper.COLUMN_WORKOUTS_DESCRIPTION, workout.getDescription());
+        values.put(SQLiteHelper.COLUMN_WORKOUTS_DISTANCE, workout.getDistance());
+        values.put(SQLiteHelper.COLUMN_WORKOUTS_IMAGE, 0);
+        values.put(SQLiteHelper.COLUMN_WORKOUTS_LOCATION, workout.getLocation());
+        return database.update(SQLiteHelper.TABLE_WORKOUTS, values, "_id=" + workout.getID(), null) != 0;
+    }
+
+    /**
      * Removes a workout from the database.
      * @param workout The workout to be deleted. (This is based off the ID.)
      */
@@ -79,7 +95,30 @@ public class WorkoutDataSource {
     }
 
     /**
-     * Gets the workouts for the given date (year/month/day_of_month).
+     * Gets all the workouts in the database.
+     * @return A list of workouts.
+     */
+    public ArrayList<Workout> getWorkouts() {
+        // List of workouts to return
+        ArrayList<Workout> workouts = new ArrayList<>();
+
+        // Cursor is what moves throughout the entire database
+        Cursor cursor = database.query(SQLiteHelper.TABLE_WORKOUTS,
+                allColumns, null, null, null, null,
+                SQLiteHelper.COLUMN_WORKOUTS_DATE + " DESC");
+
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            workouts.add(cursorToWorkout(cursor));
+            cursor.moveToNext();
+        }
+        cursor.close();
+
+        return workouts;
+    }
+
+    /**
+     * Gets the workouts for the given date (year/month).
      * @param date The date in which to compare to the workouts.
      * @return A list of workouts for the given date.
      */
@@ -103,10 +142,8 @@ public class WorkoutDataSource {
             Workout workout = cursorToWorkout(cursor);
             rowCalendar.setTime(workout.getDate());
 
-            // if the dates are in the same day, month and year, add the workout
             if ((calendar.get(Calendar.YEAR) == rowCalendar.get(Calendar.YEAR))
-                    && (calendar.get(Calendar.MONTH) == rowCalendar.get(Calendar.MONTH))
-                    && (calendar.get(Calendar.DAY_OF_MONTH) == rowCalendar.get(Calendar.DAY_OF_MONTH))) {
+                    && (calendar.get(Calendar.MONTH) == rowCalendar.get(Calendar.MONTH))) {
                 workouts.add(workout);
             }
 

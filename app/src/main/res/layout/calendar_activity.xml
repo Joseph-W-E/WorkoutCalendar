@@ -3,34 +3,28 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/calendar_activity_main_relative_layout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:padding="16dp">
 
-    <RelativeLayout
-        android:id="@+id/calendar_activity_relative_layout_top"
+    <LinearLayout
+        android:id="@+id/calendar_activity_ll_header"
         android:layout_width="match_parent"
-        android:layout_height="64dp"
-        android:minHeight="64dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal">
 
         <ImageButton
-            android:id="@+id/calendar_activity_image_buttom_go_left"
+            android:id="@+id/calendar_activity_image_button_go_left"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentBottom="true"
             android:src="@mipmap/ic_action_back"
             android:background="@drawable/ripple"/>
 
         <LinearLayout
-            android:id="@+id/calendar_activity_linear_layout_middle"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:orientation="vertical">
-
+            android:orientation="vertical"
+            android:layout_weight="1">
             <TextView
                 android:id="@+id/calendar_activity_text_view_year"
                 android:layout_width="wrap_content"
@@ -38,7 +32,6 @@
                 android:layout_gravity="center_horizontal"
                 android:text="@string/date_hint"
                 android:textSize="12sp"/>
-
             <TextView
                 android:id="@+id/calendar_activity_text_view_month"
                 android:layout_width="wrap_content"
@@ -49,21 +42,19 @@
         </LinearLayout>
 
         <ImageButton
-            android:id="@+id/calendar_activity_image_buttom_go_right"
+            android:id="@+id/calendar_activity_image_button_go_right"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
             android:src="@mipmap/ic_action_forward"
             android:background="@drawable/ripple"/>
 
-    </RelativeLayout>
+    </LinearLayout>
 
     <com.androiddev.josephelliott.workoutcalendar.Activities.Home.SwipeCalendar.CalendarViewPager
         android:id="@+id/calendar_activity_custom_view_pager"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/calendar_activity_relative_layout_top" />
+        android:layout_below="@id/calendar_activity_ll_header"/>
 
     <com.github.clans.fab.FloatingActionMenu
         android:id="@+id/calendar_activity_fab_menu"
@@ -71,7 +62,6 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
-        android:layout_margin="8dp"
         android:src="@mipmap/ic_add_white_24dp"
         app:menu_colorNormal="@color/accent"
         app:menu_colorRipple="@color/accent_ripple"

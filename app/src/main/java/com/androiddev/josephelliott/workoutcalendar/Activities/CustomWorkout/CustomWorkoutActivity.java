@@ -4,9 +4,9 @@ import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
-import android.database.DataSetObserver;
 import android.media.Image;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -26,6 +26,7 @@ import com.androiddev.josephelliott.workoutcalendar.Database.Workout;
 import com.androiddev.josephelliott.workoutcalendar.Database.WorkoutDataSource;
 import com.androiddev.josephelliott.workoutcalendar.R;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -42,6 +43,9 @@ public class CustomWorkoutActivity extends Activity {
     private Image image;
     private Workout workout;
 
+    /*** Enabled only if we are in edit mode ***/
+    private boolean editMode = false;
+
     /*** Variables for views ***/
     private AutoEnterTextView aetvTitle, aetvWorkout;
     private Button btnLoadFromPresets, btnSaveToPresets;
@@ -57,8 +61,6 @@ public class CustomWorkoutActivity extends Activity {
         context = CustomWorkoutActivity.this;
         /*** Get the current time ***/
         calendarDatePicked = Calendar.getInstance();
-        /*** Get the to-be-created workout object ready ***/
-        workout = new Workout();
 
         /*** Get all the used views ***/
         etLbs  = (EditText) findViewById(R.id.custom_workout_et_lbs);
@@ -75,6 +77,25 @@ public class CustomWorkoutActivity extends Activity {
         btnAddExercise = (ImageButton) findViewById(R.id.custom_workout_btn_add_lift_to_description);
         btnCancel      = (ImageButton) findViewById(R.id.custom_workout_btn_cancel);
         btnSave        = (ImageButton) findViewById(R.id.custom_workout_btn_save);
+
+        /*** Get the to-be-created (or to-be-edited) workout object ready ***/
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            long workoutID = extras.getLong("_id");
+            WorkoutDataSource database = new WorkoutDataSource(this);
+            database.open();
+            ArrayList<Workout> workouts = database.getWorkouts();
+            database.close();
+            for (Workout w : workouts) {
+                if (w.getID() == workoutID) {
+                    workout = w;
+                    enableEditMode();
+                    break;
+                }
+            }
+        } else {
+            workout = new Workout();
+        }
 
         /*** Set the logic for the views ***/
         initializeButtons();
@@ -217,6 +238,7 @@ public class CustomWorkoutActivity extends Activity {
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 // Get the title
                 workout.setTitle(aetvTitle.getText().toString());
                 // Get the location
@@ -233,7 +255,18 @@ public class CustomWorkoutActivity extends Activity {
                 // Now that we have a complete workout, save it to the database
                 WorkoutDataSource dataSource = new WorkoutDataSource(context);
                 dataSource.open();
-                dataSource.createWorkout(workout);
+
+                if (editMode) {
+                    if (dataSource.updateWorkout(workout)) {
+                        Log.d("update", "successfully updated workout with id: " + workout.getID());
+                    } else {
+                        Log.d("update", "failed to update workout with id: " + workout.getID());
+                    }
+                } else {
+                    dataSource.createWorkout(workout);
+                    Log.d("create", "created workout with id: " + workout.getID());
+                }
+
                 dataSource.close();
 
                 // rip in pieces
@@ -247,7 +280,6 @@ public class CustomWorkoutActivity extends Activity {
      * Lets one edit text 'enter press' go to the next edit text.
      * */
     private void setInputTextTransitions() {
-        //private EditText etLbs, etSets, etReps, etLoc, etDesc;
         // Title -> Location -> Workout -> Lbs -> Sets -> Reps -> Workout
         aetvTitle.setFocusable(true);
         etLoc.setFocusable(true);
@@ -384,5 +416,13 @@ public class CustomWorkoutActivity extends Activity {
         aetvTitle.setText(preset.getTitle());
         etLoc.setText(preset.getLocation());
         etDesc.setText(preset.getDescription());
+    }
+
+    private void enableEditMode() {
+        editMode = true;
+        aetvTitle.setText(workout.getTitle());
+        etLoc.setText(workout.getLocation());
+        etDesc.setText(workout.getDescription());
+        calendarDatePicked.setTime(workout.getDate());
     }
 }

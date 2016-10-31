@@ -58,10 +58,10 @@ public class CalendarPagerAdapter extends FragmentStatePagerAdapter {
     }
 
     /**
-     * Removes the CalendarFragment from the hash map.
-     * @param container Used only for super.
-     * @param position Used only for super.
-     * @param object Used only for super.
+     * Pending.
+     * @param container X
+     * @param position X
+     * @param object X
      */
     @Override
     public void destroyItem(ViewGroup container, int position, Object object) {
