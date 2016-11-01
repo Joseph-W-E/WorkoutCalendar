@@ -63,7 +63,8 @@ public class TimerActivity extends Activity {
         setContentView(R.layout.timer_activity);
 
         /*** Get the context ***/
-        context = TimerActivity.this;
+        context = this;
+
         /*** Get the current time ***/
         calendarDatePicked = Calendar.getInstance();
 
@@ -166,6 +167,7 @@ public class TimerActivity extends Activity {
             @Override
             public void onClick(View v) {
                 // TODO set up the choose picture functionality LAST
+                Toast.makeText(context, "Sorry, this button doesn't work yet :/", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -195,8 +197,8 @@ public class TimerActivity extends Activity {
                 workout.setDescription(etDesc.getText().toString());
                 // Get the date
                 workout.setDate(calendarDatePicked.getTime());
-                // Get the distance (shouldn't be one)
-                workout.setDistance(calculateDistance());
+                // Get the distance
+                workout.setDistance(0);
                 // Get the image
                 workout.setImage(image);
 
@@ -223,43 +225,6 @@ public class TimerActivity extends Activity {
                 }
             }
         });
-    }
-
-    private void startGatheringLocations() {
-        // Acquire a reference to the system Location Manager
-        LocationManager locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
-
-        // Define a listener that responds to location updates
-        LocationListener locationListener = new LocationListener() {
-            public void onLocationChanged(Location location) {
-                // Called when a new location is found by the network location provider.
-                locations.add(location);
-            }
-
-            public void onStatusChanged(String provider, int status, Bundle extras) {}
-
-            public void onProviderEnabled(String provider) {}
-
-            public void onProviderDisabled(String provider) {}
-        };
-
-        // Register the listener with the Location Manager to receive location updates
-        try {
-            locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, locationListener);
-        } catch (SecurityException e) {
-            e.printStackTrace();
-            Toast.makeText(context, "Please enable GPS/location permission.", Toast.LENGTH_LONG).show();
-        }
-
-
-    }
-
-    private void stopGatheringLocations() {
-
-    }
-
-    private double calculateDistance() {
-        return 0;
     }
 
 }
