@@ -1,21 +1,18 @@
 package com.androiddev.josephelliott.workoutcalendar.Activities.Timer;
 
+import android.Manifest;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
-import android.location.Location;
-import android.location.LocationListener;
-import android.location.LocationManager;
-import android.media.Image;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.os.SystemClock;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.CheckBox;
-import android.widget.Chronometer;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -27,7 +24,7 @@ import com.androiddev.josephelliott.workoutcalendar.Database.Workout;
 import com.androiddev.josephelliott.workoutcalendar.Database.WorkoutDataSource;
 import com.androiddev.josephelliott.workoutcalendar.R;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 
 /**
@@ -35,25 +32,25 @@ import java.util.Calendar;
  */
 public class TimerActivity extends Activity {
 
+    /*** Constants ***/
+    private final int REQUEST_CODE_USER_LOCATION = 7;
+
+    /*** Always needs the activity context ***/
     private Context context;
 
+    /*** The date that the user selected for this workout ***/
     private Calendar calendarDatePicked;
 
-    /*** Variables needed for recording distance ***/
+    /*** The LocationRelay, used to gather the user's location ***/
+    private LocationRelay locationRelay;
     private boolean isRecordingDistance;
-    private ArrayList<Location> locations;
-
-    /*** Variables needed for recording time ***/
-    private boolean isRunning;
-    private long timeElapsed;
 
     /*** Variables needed for recording the workout ***/
-    private Image image;
     private Workout workout;
 
     /*** Variables for views ***/
     private ImageButton btnTimer, btnImage, btnDate, btnConfirm;
-    private Chronometer chronometer;
+    private CustomChronometer chronometer;
     private CheckBox checkbox;
     private EditText etTitle, etDesc;
 
@@ -68,24 +65,25 @@ public class TimerActivity extends Activity {
         /*** Get the current time ***/
         calendarDatePicked = Calendar.getInstance();
 
+        /*** Setup the LocationRelay ***/
+        locationRelay = new LocationRelay(context);
+        isRecordingDistance = false;
+
         /*** Get all the used views ***/
         btnTimer   = (ImageButton) findViewById(R.id.timer_btn_reset_timer);
         btnImage   = (ImageButton) findViewById(R.id.timer_btn_change_image);
         btnDate    = (ImageButton) findViewById(R.id.timer_btn_change_date);
         btnConfirm = (ImageButton) findViewById(R.id.timer_btn_save);
-        chronometer = (Chronometer) findViewById(R.id.timer_chronometer);
+        chronometer = (CustomChronometer) findViewById(R.id.timer_chronometer);
         checkbox = (CheckBox) findViewById(R.id.timer_check_box_record_distance);
         etTitle  = (EditText) findViewById(R.id.timer_et_title);
         etDesc   = (EditText) findViewById(R.id.timer_et_description);
 
         /*** Initialize needed variables ready ***/
-        isRunning = false;
-        isRecordingDistance = false;
         workout = new Workout();
 
         /*** Set the logic for the views ***/
-        initializeChronometer();
-        initializeButtons();
+        initializeViews();
     }
 
     @Override
@@ -115,51 +113,13 @@ public class TimerActivity extends Activity {
     }
 
     /**
-     * Set the on touch listener for the chronometer
-     * // TODO Make chronometer also record milliseconds
-     * */
-    private void initializeChronometer() {
-        chronometer.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                switch(event.getAction()) {
-                    case MotionEvent.ACTION_DOWN:
-                        // Change the color to the primary for the 'highlight' feel
-                        chronometer.setTextColor(getResources().getColor(R.color.primary, null));
-                        return true;
-                    case MotionEvent.ACTION_UP:
-                        // Change the color back to normal
-                        chronometer.setTextColor(getResources().getColor(R.color.accent, null));
-                        if (isRunning) {
-                            // If we were running, record the elapsed time and calculate distance.
-                            timeElapsed = chronometer.getBase() - SystemClock.elapsedRealtime();
-                            chronometer.stop();
-                            isRunning = false;
-                        } else {
-                            // If we start running, set the start time and start getting locations.
-                            chronometer.setBase(SystemClock.elapsedRealtime() + timeElapsed);
-                            chronometer.start();
-                            isRunning = true;
-                        }
-                        return true;
-
-                }
-                return false;
-            }
-        });
-    }
-
-    /**
      * Set up the buttons.
      * */
-    private void initializeButtons() {
+    private void initializeViews() {
         btnTimer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                timeElapsed = 0;
-                chronometer.stop();
-                chronometer.setText("00:00");
-                isRunning = false;
+                chronometer.reset();
             }
         });
 
@@ -192,15 +152,15 @@ public class TimerActivity extends Activity {
                 // Get the title
                 workout.setTitle(etTitle.getText().toString());
                 // Get the location
-                workout.setLocation("");
+                workout.setLocation(locationRelay.estimateRunningLocation());
                 // Get the description
                 workout.setDescription(etDesc.getText().toString());
                 // Get the date
                 workout.setDate(calendarDatePicked.getTime());
                 // Get the distance
-                workout.setDistance(0);
+                workout.setDistance(locationRelay.calculateDistance());
                 // Get the image
-                workout.setImage(image);
+                workout.setImage(null);
 
                 // Now that we have a complete workout, save it to the database
                 WorkoutDataSource dataSource = new WorkoutDataSource(context);
@@ -217,14 +177,107 @@ public class TimerActivity extends Activity {
             @Override
             public void onClick(View v) {
                 if (!isRecordingDistance) {
+                    requestPermission();
                     isRecordingDistance = true;
-                    //startGatheringLocations();
                 } else {
+                    removeChronometerUpdateListener();
                     isRecordingDistance = false;
-                    //stopGatheringLocations();
                 }
             }
         });
+
+        chronometer.setUpdateInterval(5 * 1000);
+        chronometer.setStartListener(new CustomChronometer.OnStartListener() {
+            @Override
+            public void onStart() {
+                checkbox.setEnabled(false);
+                etTitle.setEnabled(false);
+                etDesc.setEnabled(false);
+                btnDate.setEnabled(false);
+                btnConfirm.setEnabled(false);
+                btnImage.setEnabled(false);
+            }
+        });
+        chronometer.setPauseListener(new CustomChronometer.OnPauseListener() {
+            @Override
+            public void onPause() {
+                checkbox.setEnabled(true);
+                etTitle.setEnabled(true);
+                etDesc.setEnabled(true);
+                btnDate.setEnabled(true);
+                btnConfirm.setEnabled(true);
+                btnImage.setEnabled(true);
+            }
+        });
+    }
+
+    private void setChronometerUpdateListener() {
+        chronometer.setOnIntervalUpdate(new CustomChronometer.OnIntervalUpdateListener() {
+            @Override
+            public void onIntervalUpdate() {
+                locationRelay.poll();
+            }
+        });
+    }
+
+    private void removeChronometerUpdateListener() {
+        chronometer.setOnIntervalUpdate(new CustomChronometer.OnIntervalUpdateListener() {
+            @Override
+            public void onIntervalUpdate() {}
+        });
+    }
+
+
+
+    /*** Handle user permissions ***/
+
+    private void requestPermission() {
+        int hasLocationPermission = checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION);
+        if (hasLocationPermission != PackageManager.PERMISSION_GRANTED) {
+
+            if (!shouldShowRequestPermissionRationale(Manifest.permission.ACCESS_FINE_LOCATION)) {
+                showPermissionRational("You need to enable location permission to record where you run.",
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                requestPermissions(new String[] {Manifest.permission.ACCESS_FINE_LOCATION},
+                                        REQUEST_CODE_USER_LOCATION);
+                            }
+                        });
+                return;
+            }
+            requestPermissions(new String[] {Manifest.permission.ACCESS_FINE_LOCATION},
+                    REQUEST_CODE_USER_LOCATION);
+            return;
+        }
+
+        setChronometerUpdateListener();
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        switch (requestCode) {
+            case REQUEST_CODE_USER_LOCATION: {
+                // If request is cancelled, the result arrays are empty.
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    // Permission granted
+                } else {
+                    // Permission denied
+                    Toast.makeText(this, "ACCESS LOCATION permission denied :(", Toast.LENGTH_SHORT).show();
+                }
+            }
+            default:
+                super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        }
+    }
+
+    private void showPermissionRational(String message, DialogInterface.OnClickListener okListener) {
+        new AlertDialog.Builder(this)
+                .setMessage(message)
+                .setPositiveButton("OK", okListener)
+                .setNegativeButton("CANCEL", null)
+                .create()
+                .show();
     }
 
 }

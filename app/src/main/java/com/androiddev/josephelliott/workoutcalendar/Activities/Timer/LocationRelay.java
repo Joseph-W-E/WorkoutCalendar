@@ -1,10 +1,12 @@
 package com.androiddev.josephelliott.workoutcalendar.Activities.Timer;
 
 import android.content.Context;
+import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.os.Looper;
 
 import java.util.ArrayList;
 
@@ -26,6 +28,8 @@ public class LocationRelay {
 
     private LocationManager  locationManager;
     private LocationListener locationListener;
+    private Criteria criteria;
+    private Looper looper;
 
     /**
      * Constructs a new LocationRelay.
@@ -35,11 +39,25 @@ public class LocationRelay {
         this.applicationContext = applicationContext;
         locations = new ArrayList<>();
 
+        setupGPS();
+    }
+
+    /**
+     * Sets up the GPS information.
+     * 1. Get the LocationManager from the system service.
+     * 2. Setup the LocationListener.
+     * 3. Setup the Criteria
+     * 4. Setup the Looper
+     */
+    private void setupGPS() {
+        // Get the LocationManager
         locationManager = (LocationManager) applicationContext.getSystemService(Context.LOCATION_SERVICE);
+
+        // Setup the LocationListener
         locationListener = new LocationListener() {
             @Override
             public void onLocationChanged(Location location) {
-                // called when a new location is found by the GPS
+                locations.add(location);
             }
             @Override
             public void onStatusChanged(String s, int i, Bundle bundle) {}
@@ -49,11 +67,19 @@ public class LocationRelay {
             public void onProviderDisabled(String s) {}
         };
 
-        try {
-            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
-        } catch (SecurityException e) {
-            e.printStackTrace();
-        }
+        // Setup the GPS Criteria
+        criteria = new Criteria();
+        criteria.setAccuracy(Criteria.ACCURACY_FINE);
+        criteria.setPowerRequirement(Criteria.POWER_LOW);
+        criteria.setAltitudeRequired(false);
+        criteria.setBearingRequired(false);
+        criteria.setSpeedRequired(false);
+        criteria.setCostAllowed(true);
+        criteria.setHorizontalAccuracy(Criteria.ACCURACY_HIGH);
+        criteria.setVerticalAccuracy(Criteria.ACCURACY_HIGH);
+
+        // Setup a null looper
+        looper = null;
     }
 
     /**
@@ -62,7 +88,13 @@ public class LocationRelay {
      * @return True if successfully retrieved a location, false otherwise.
      */
     public boolean poll() {
-        return false;
+        try {
+            locationManager.requestSingleUpdate(criteria, locationListener, looper);
+            return true;
+        } catch (SecurityException e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 
     /**
@@ -74,11 +106,21 @@ public class LocationRelay {
     }
 
     /**
+     * // TODO
+     * Calculates the distance ran based off of the gathered locations.
+     * @return The total distance between the starting point and the end point, and every point in between.
+     */
+    public double calculateDistance() {
+        return 0.0;
+    }
+
+    /**
+     * // TODO
      * Estimates where the user was running based off the gathered GPS locations.
      * @return A string of the user's location.
      */
     public String estimateRunningLocation() {
-        return null;
+        return "default_location";
     }
 
     /**

@@ -11,7 +11,7 @@
         android:layout_gravity="center_horizontal"
         android:padding="30dp">
 
-        <Chronometer
+        <com.androiddev.josephelliott.workoutcalendar.Activities.Timer.CustomChronometer
             android:id="@+id/timer_chronometer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
