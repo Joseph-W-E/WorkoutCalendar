@@ -52,7 +52,7 @@ public class TimerActivity extends Activity {
     private ImageButton btnTimer, btnImage, btnDate, btnConfirm;
     private CustomChronometer chronometer;
     private CheckBox checkbox;
-    private EditText etTitle, etDesc;
+    private EditText etTitle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,7 +77,6 @@ public class TimerActivity extends Activity {
         chronometer = (CustomChronometer) findViewById(R.id.timer_chronometer);
         checkbox = (CheckBox) findViewById(R.id.timer_check_box_record_distance);
         etTitle  = (EditText) findViewById(R.id.timer_et_title);
-        etDesc   = (EditText) findViewById(R.id.timer_et_description);
 
         /*** Initialize needed variables ready ***/
         workout = new Workout();
@@ -149,26 +148,18 @@ public class TimerActivity extends Activity {
         btnConfirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Get the title
                 workout.setTitle(etTitle.getText().toString());
-                // Get the location
                 workout.setLocation(locationRelay.estimateRunningLocation());
-                // Get the description
-                workout.setDescription(etDesc.getText().toString());
-                // Get the date
+                workout.setDescription(String.format("%d seconds", chronometer.getTimeElapsed() / 1000));
                 workout.setDate(calendarDatePicked.getTime());
-                // Get the distance
                 workout.setDistance(locationRelay.calculateDistance());
-                // Get the image
                 workout.setImage(null);
 
-                // Now that we have a complete workout, save it to the database
                 WorkoutDataSource dataSource = new WorkoutDataSource(context);
                 dataSource.open();
                 dataSource.createWorkout(workout);
                 dataSource.close();
 
-                // rip in pieces
                 finish();
             }
         });
@@ -192,7 +183,6 @@ public class TimerActivity extends Activity {
             public void onStart() {
                 checkbox.setEnabled(false);
                 etTitle.setEnabled(false);
-                etDesc.setEnabled(false);
                 btnDate.setEnabled(false);
                 btnConfirm.setEnabled(false);
                 btnImage.setEnabled(false);
@@ -203,7 +193,6 @@ public class TimerActivity extends Activity {
             public void onPause() {
                 checkbox.setEnabled(true);
                 etTitle.setEnabled(true);
-                etDesc.setEnabled(true);
                 btnDate.setEnabled(true);
                 btnConfirm.setEnabled(true);
                 btnImage.setEnabled(true);

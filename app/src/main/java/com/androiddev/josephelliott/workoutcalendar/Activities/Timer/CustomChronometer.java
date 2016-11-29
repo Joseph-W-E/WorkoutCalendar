@@ -25,10 +25,16 @@ class CustomChronometer extends Chronometer {
         void onIntervalUpdate();
     }
 
+    /**
+     * Interface used for adding an "On Start, do this" functionality.
+     */
     public interface OnStartListener {
         void onStart();
     }
 
+    /**
+     * Interface used for adding an "On Pause, do this" functionality.
+     */
     public interface OnPauseListener {
         void onPause();
     }
@@ -44,8 +50,8 @@ class CustomChronometer extends Chronometer {
     /*** How often the updateListener will trigger. ***/
     private long interval;
 
-    /*** The start time ***/
-    private long timeBase, timeElapsed;
+    /*** The start time and elapsed time ***/
+    private long timeElapsed;
     private int counter;
 
     /*** Constructors ***/
@@ -68,12 +74,12 @@ class CustomChronometer extends Chronometer {
      */
     @Override
     public void start() {
-        timeBase = SystemClock.elapsedRealtime() + timeElapsed;
-        setBase(timeBase);
+        setBase(SystemClock.elapsedRealtime() + timeElapsed);
 
         running = true;
 
-        startListener.onStart();
+        if (startListener != null)
+            startListener.onStart();
 
         super.start();
     }
@@ -86,7 +92,8 @@ class CustomChronometer extends Chronometer {
 
         running = false;
 
-        pauseListener.onPause();
+        if (pauseListener != null)
+            pauseListener.onPause();
 
         stop();
     }
@@ -98,7 +105,6 @@ class CustomChronometer extends Chronometer {
     public void reset() {
         stop();
         running = false;
-        timeBase  = 0;
         timeElapsed = 0;
         counter = 0;
         setText("00:00");
@@ -156,7 +162,8 @@ class CustomChronometer extends Chronometer {
             public void onChronometerTick(Chronometer chronometer) {
                 counter++;
                 if (counter == interval / 1000) {
-                    updateListener.onIntervalUpdate();
+                    if (updateListener != null)
+                        updateListener.onIntervalUpdate();
                     counter = 0;
                     Log.d("UPDATE", "launched an update after " + interval + " milliseconds");
                 }
